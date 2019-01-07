@@ -1,8 +1,8 @@
 {
     "latex-workshop.latex.autoBuild.onSave.enabled": false,
-    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": true,
-    "latex-workshop.latex.clean.enabled": true,
-    "latex-workshop.latex.clean.onFailBuild.enabled": true,
+    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
+    "latex-workshop.latex.clean.enabled": false,
+    "latex-workshop.latex.clean.onFailBuild.enabled": false,
     "latex-workshop.latex.clean.fileTypes":[
         "*.aux",
         "*.bbl",
@@ -26,5 +26,6 @@
         "*.synctex.gz",
         "**/*.aux"
     ],
-    "latex-workshop.view.pdf.viewer": "tab"
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.message.badbox.show": false
 }
