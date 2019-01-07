@@ -1,0 +1,66 @@
+% Math-mode symbol & verbatim
+\def\W#1#2{$#1{#2}$ &\tt\string#1\string{#2\string}}
+\def\X#1{$#1$ &\tt\string#1}
+\def\Y#1{$\big#1$ &\tt\string#1}
+\def\Z#1{\tt\string#1}
+
+
+
+\newenvironment{Proof}{\begin{trivlist}\item[\hskip%
+\labelsep{\bf พิสูจน์\quad}]} 
+{\hfill\qed\end{trivlist}}
+\newenvironment{Solution}{\begin{trivlist}\item[\hskip%
+\labelsep{\bf วิธีทำ\quad}]} 
+{\hfill\qed\end{trivlist}}
+
+%\newcommand{\qrule}{{\color[rgb]{0.501961,0.501961,0.501961}\rule{1.00\textwidth}{0.1mm}}}
+
+\newcommand{\posterrule}{{\rule{1.00\textwidth}{1mm}}\\}
+\newcommand{\prule}{{\rule{1.00\textwidth}{0.25mm}}\\}
+\newenvironment{sitquote}{\begin{quote}\bf\textsf}{\end{quote}}
+
+\newenvironment{myeq}[1]{\par$\hfill #1}{\stepcounter{equation}\hfill {\textnormal{Eq.}}\arabic{equation} $}
+
+\oddsidemargin = 18pt
+\evensidemargin = 18pt
+\topmargin = -20pt
+\headheight = 12pt
+\headsep = 35pt
+\textheight = 609pt
+\textwidth = 424pt
+\paperwidth = 597pt
+\paperheight = 845pt
+
+\newcommand{\Rtitle}[4]{%
+\thispagestyle{empty}
+\clearpage
+\vspace{2in}
+\begin{center}
+{\Large{ #1}}\\
+{\Large{#2}}\\
+\vspace{2in}
+{\normalsize{จัดทำโดย}}\\
+{\large{#3}}\\
+\vspace{2in}
+{\normalsize{อาจารย์ที่ปรึกษา}}\\ {\large{#4}}\\
+\vfill
+\normalsize{เอกสารฉบับนี้เป็นส่วนหนึ่งของรายวิชา 511 493 โครงงานวิจัย\\ ภาคเรียนที่ 2 ปีการศึกษา 2561 \\
+สาขาวิชาคณิตศาสตร์ ภาควิชาคณิตศาสตร์ คณะวิทยาศาสตร์ มหาวิทยาลัยศิลปากร}
+\end{center}
+\newpage
+}
+
+
+\newcommand{\backcover}[4]{{%
+\thispagestyle{empty}%
+\clearpage%
+\vspace{2in}%
+{#1}\\
+\vfill
+\flushleft{\rule{2in}{0.1mm}\\ \vspace{0.5cm} {#2}\; อาจารย์ที่ปรึกษา\\ \vspace{0.5cm} \rule{1cm}{0.1mm}/\rule{1cm}{0.1mm}/\rule{1cm}{0.1mm}}
+\vspace{0.5in}
+\flushleft{\rule{2in}{0.1mm}\\ \vspace{0.5cm} {#3}\; กรรมการ\\ \vspace{0.5cm} \rule{1cm}{0.1mm}/\rule{1cm}{0.1mm}/\rule{1cm}{0.1mm}}
+\vspace{0.5in}
+\flushleft{\rule{2in}{0.1mm}\\ \vspace{0.5cm} {#4}\; กรรมการ\\ \vspace{0.5cm} \rule{1cm}{0.1mm}/\rule{1cm}{0.1mm}/\rule{1cm}{0.1mm}}
+}}
+

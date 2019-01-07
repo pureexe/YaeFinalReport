@@ -1,0 +1,30 @@
+{
+    "latex-workshop.latex.autoBuild.onSave.enabled": false,
+    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": true,
+    "latex-workshop.latex.clean.enabled": true,
+    "latex-workshop.latex.clean.onFailBuild.enabled": true,
+    "latex-workshop.latex.clean.fileTypes":[
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.ist",
+        "*.fls",
+        "*.log",
+        "*.fdb_latexmk",
+        "*.synctex.gz",
+        "**/*.aux"
+    ],
+    "latex-workshop.view.pdf.viewer": "tab"
+}

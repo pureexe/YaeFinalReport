@@ -1,0 +1,25 @@
+% to genererate final report please compile this file
+
+% this file is writing on latex workshop (vscode extension) 
+% please use latex workshop and Xelatex compiler for best result
+
+% Author: Pakkapon Phongthawee <phongthawee_p@silpakorn.edu>
+
+% magic command for Latex Workshop to setup compiler
+% !TEX program = xelatex
+
+\documentclass[a4paper,12pt,oneside]{book}
+\include{template/package}
+\include{template/thai_language}
+
+\begin{document}
+    \include{page/cover}
+    \include{page/inner_cover}
+    \pagenumbering{roman}
+    \include{page/abstract}
+    \include{page/abstract_english}
+    \include{page/acknowledgment}
+    \include{page/tableofcontent}
+    \pagenumbering{arabic}
+    \include{chapter/introduction}
+\end{document}
