@@ -5,21 +5,25 @@
 
 % Author: Pakkapon Phongthawee <phongthawee_p@silpakorn.edu>
 
-% magic command for Latex Workshop to setup compiler
+% magic comment for Latex Workshop to setup compiler
 % !TEX program = xelatex
 
 \documentclass[a4paper,12pt,oneside]{book}
-\include{template/package}
-\include{template/thai_language}
+\input{template/package}
+\input{template/thai_language}
 
 \begin{document}
-    \include{page/cover}
-    \include{page/inner_cover}
+    \input{page/cover}
+    \input{page/inner_cover}
     \pagenumbering{roman}
-    \include{page/abstract}
-    \include{page/abstract_english}
-    \include{page/acknowledgment}
-    \include{page/tableofcontent}
+    \input{page/abstract}
+    \input{page/abstract_english}
+    \input{page/acknowledgment}
+    \input{page/tableofcontent}
     \pagenumbering{arabic}
-    \include{chapter/introduction}
+    \input{chapter/introduction}
+    \input{chapter/literature}
+    \input{chapter/experiment}
+    \input{chapter/conclusion}
+    \input{page/reference}
 \end{document}

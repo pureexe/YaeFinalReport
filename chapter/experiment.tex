@@ -1,0 +1,845 @@
+\chapter{การทดลองเชิงตัวเลข}
+\section{การซ่อมแซมภาพจิตรกรรมไทยโบราณ}
+\hspace{1cm} สำหรับการซ่อมแซมจิตรกรรมไทยโบราณ ผู้วิจัยจะเริ่มจากการทำการปรับปรุงขั้นตอนวิธีเชิงตัวเลขที่มีอยู่แล้ว โดยใช้ภาพสีที่ได้สังเคราะห์ขึ้นทั้งสิ้น 5 ภาพ โดยแต่ละภาพมีขนาด 256 x 256 พิกเซล ดังรูปที่ \ref{image:synart_original}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.4\linewidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{image/image_inpaint_synthetic/case01-original.png}
+    \end{subfigure}
+    \begin{subfigure}{0.4\linewidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{image/image_inpaint_synthetic/case02-original.png}
+    \end{subfigure}
+    \bigskip
+    \begin{subfigure}{0.4\linewidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{image/image_inpaint_synthetic/case03-original.png}			
+    \end{subfigure}
+    \begin{subfigure}{0.4\linewidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{image/image_inpaint_synthetic/case04-original.png}			
+    \end{subfigure}
+    \bigskip
+    \begin{subfigure}{0.4\linewidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{image/image_inpaint_synthetic/case05-original.png}			
+    \end{subfigure}
+    \caption{ภาพต้นฉบับ}
+    \label{image:synart_original}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.4\linewidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{image/image_inpaint_synthetic/case01-toinpaint.png}
+    \end{subfigure}
+    \begin{subfigure}{0.4\linewidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{image/image_inpaint_synthetic/case02-toinpaint.png}
+    \end{subfigure}
+    \begin{subfigure}{0.4\linewidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{image/image_inpaint_synthetic/case03-toinpaint.png}		
+    \end{subfigure}
+    \bigskip
+    \begin{subfigure}{0.4\linewidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{image/image_inpaint_synthetic/case04-toinpaint.png}		
+    \end{subfigure}
+    \begin{subfigure}{0.4\linewidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{image/image_inpaint_synthetic/case05-toinpaint.png}		
+    \end{subfigure}
+    \caption{ภาพที่จะทำการซ่อมแซม}
+\end{figure}
+\subsection{การเปรียบเทียบประสิทธิภาพขั้นตอนวิธีเชิงตัวเลขที่มีอยู่แล้ว}
+\hspace{1cm}
+การทดสอบประสิทธิภาพจะใช้ $\varepsilon = 1 \times 10^{-4}$ และ $N= 10,000$ โดยรูปที่ \ref{result:image-timemarching} - \ref{result:image-splitbregman} และตารางที่ \ref{result:table-timemarching} - \ref{result:table-splitbregman} แสดงผลการซ่อมแซมภาพสังเคราะห์ทั้ง 5 ภาพ
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.4\linewidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{image/result_ex1/timemarch01.png}
+    \end{subfigure}
+    \begin{subfigure}{0.4\linewidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{image/result_ex1/timemarch02.png}
+    \end{subfigure}
+    \begin{subfigure}{0.4\linewidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{image/result_ex1/timemarch03.png}			
+    \end{subfigure}
+    \begin{subfigure}{0.4\linewidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{image/result_ex1/timemarch04.png}			
+    \end{subfigure}
+    \begin{subfigure}{0.4\linewidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{image/result_ex1/timemarch05.png}			
+    \end{subfigure}
+    \caption{ผลการซ่อมแซมจากวิธีการเดินเวลา}
+    \label{result:image-timemarching}
+\end{figure}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}[ht]{|c|c|c|c|c|}
+		\hline
+		รูปภาพ &เวลาประมวล  (วินาที) & PSNR (dB) & SSIM \\
+		\hline
+		1 & 82.40 & 25.17 & 0.9997 \\ 
+		2 & 127.36 & 17.92 & 0.9980 \\
+		3 &  116.39 & 13.33 & 0.9941 \\
+		4 & 160.59  &12.40  & 0.9927 \\
+		5 & 116.66  & 14.79  & 0.9958 \\
+		\hline
+		เฉลี่ย & 120.68  & 16.72  & 0.9960 \\
+		\hline
+	\end{tabular}
+	\caption{ผลการซ่อมแซมวิธีการเดินเวลา}
+	\label{result:table-timemarching}
+\end{table}	
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.4\linewidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{image/result_ex1/fixpoint01.png}
+	\end{subfigure}
+	\begin{subfigure}{0.4\linewidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{image/result_ex1/fixpoint02.png}
+	\end{subfigure}
+	\begin{subfigure}{0.4\linewidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{image/result_ex1/fixpoint03.png}			
+	\end{subfigure}
+	\begin{subfigure}{0.4\linewidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{image/result_ex1/fixpoint04.png}			
+	\end{subfigure}
+	\begin{subfigure}{0.4\linewidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{image/result_ex1/fixpoint05.png}			
+	\end{subfigure}
+	\caption{ผลการซ่อมแซมจากวิธีการทำซ้ำแบบจุดตรึง}
+\end{figure}
+\begin{table}[H]
+	\centering
+	\begin{tabular}[ht]{|c|c|c|c|c|}
+		\hline
+		รูปภาพ &เวลาประมวล  (วินาที) & PSNR (dB) & SSIM \\
+		\hline
+		1 & 24.97 & 60.95 & 1.0000 \\ 
+		2 & 53.06 & 37.69 & 1.0000 \\
+		3 &  190.64 & 25.17 & 0.9997 \\
+		4 & 50.63  & 28.81  & 0.9999 \\
+		5 & 54.74  & 40.73  & 1.0000 \\
+		\hline
+		เฉลี่ย & 74.81  & 38.67  & 0.9999 \\
+		\hline
+	\end{tabular}
+	\caption{ผลการซ่อมแซมของวิธีการทำซ้ำแบบจุดตรึง}
+\end{table}	
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.4\linewidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{image/result_ex1/splitbergman01.png}
+	\end{subfigure}
+	\begin{subfigure}{0.4\linewidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{image/result_ex1/splitbergman02.png}
+	\end{subfigure}
+	\begin{subfigure}{0.4\linewidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{image/result_ex1/splitbergman03.png}			
+	\end{subfigure}
+	\begin{subfigure}{0.4\linewidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{image/result_ex1/splitbergman04.png}			
+	\end{subfigure}
+	\begin{subfigure}{0.4\linewidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{image/result_ex1/splitbergman05.png}			
+	\end{subfigure}
+	\caption{ผลการซ่อมแซมจากวิธีการสปริทเบรกแมน}
+		\label{result:image-splitbregman}
+\end{figure}
+\begin{table}[H]
+	\centering
+	\begin{tabular}[ht]{|c|c|c|c|c|}
+		\hline
+		รูปภาพ &เวลาประมวล  (วินาที) & PSNR (dB) & SSIM \\
+		\hline
+		1 & 3.39 & 71.54 & 1.0000 \\ 
+		2 & 10.74 & 37.08 & 1.0000 \\
+		3 &  24.50 & 26.08 & 0.9997 \\
+		4 & 15.80  & 29.61  & 0.9999 \\
+		5 & 15.85  & 32.78  & 1.0000 \\
+		\hline
+		เฉลี่ย & 14.06  & 39.42  & 0.9999 \\
+		\hline
+	\end{tabular}
+	\caption{ผลการซ่อมแซมของวิธีสปริทเบรกแมน}
+	\label{result:table-splitbregman}
+\end{table}
+\hspace{1cm} ประสิทธิภาพของวิธีการเชิงตัวเลขทั้ง 3 วิธี สามารถสรุปได้ดังนี้
+\input{table/inpaint_average}
+\hspace{1cm} 
+จากทั้ง 3 วิธีที่ได้ทดสอบ จะเห็นได้ว่าวิธีการสปริทเบรกแมนใช้เวลาน้อยกว่าวิธีอื่น และมีคุณภาพ ซึ่งพิจารณาจาก ค่า PSNR และค่า SSIM มากกว่าวิธีอื่น ผู้วิจัยจึงสนใจทำการปรับปรุงวิธีสปิทเบรกแมนให้มีประสิทธิภาพสูง
+
+\subsection{ขั้นตอนวิธีเชิงตัวเลขสำหรับต่อเติมภาพชนิดใหม่}
+
+\hspace{1cm} เพื่อให้วิธีการสปริทเบรกแมนประมวลผลภาพได้รวดเร็วขึ้น ผู้วิจัยได้พัฒนากระบวนการกำหนดคำตอบเริ่มต้น โดยวิธีการ มัลติรีโซลูชัน (multi-resolution method) หรือวิธีการพีระมิดรูปภาพ (pyramid method) \cite{ref:image-pyramid}
+	เริ่มจากการย่อขนาดรูปลงครึ่งนึงโดยใช้วิธี Bilinear Interpolation จนกระทั่งถึงระดับความคมชัดที่ต้องการ จากนั้นทำการต่อเติมภาพขนาดเล็ก และนำผลลัพธ์ที่ได้จากภาพขนาดเล็กทำการขยายภาพขึ้นสองเท่าโดยใช้ Bilinear Interpolation เป็นคำตอบเริ่มต้นสำหรับการต่อเติมภาพในชั้นถัดไป
+	 	\begin{figure}[H]
+	 	\centering
+	 	\begin{subfigure}{0.4\linewidth}
+	 		\centering
+	 		\includegraphics[width=0.8\linewidth]{image/image_inpaint_synthetic/image_pyramid.png}
+	 	\end{subfigure}
+ 		 \caption{วิธีการพีระมิดรูปภาพ}
+	 \end{figure}
+\hspace{1cm} ขั้นตอนวิธีสำหรับการทำพีระมิดรูปภาพสำหรับการต่อเติมภาพแบบสปริทเบรกแมนเพื่อให้ประมวลผลได้เร็วขึ้นนั้นสามารถสรุปได้ดังนี้
+
+\begin{algorithm}[H]
+    \label{algo:MultiSplitBregmanColorInpaint}
+    \caption{Multi-resolution SB method}
+    \SetAlgoNoLine
+    \SetKwFunction{FMain}{$u \longleftarrow MRSBC $}
+    \SetKwProg{Fn}{}{}{}
+    \Fn{\FMain{$\boldsymbol{u}, \boldsymbol{z},\lambda, \theta, N_{gs}, N_0,N_1,N_2, \varepsilon,c,m$}}{
+        \textbf{Initialize} $height = $ ความสูงของภาพ $\boldsymbol{u}$, $width = $ ความกว้างของภาพ $\boldsymbol{u}$ \\
+        \If{c < m}{
+            $\boldsymbol{x} = Bilinear(\boldsymbol{u},\lfloor width * 0.5 \rfloor,\lfloor height * 0.5 \rfloor)$\\
+            $y = Bilinear(\lambda,\lfloor width * 0.5 \rfloor,\lfloor height * 0.5 \rfloor)$\\
+            $r = MRSBC(\boldsymbol{x},\boldsymbol{z},y, \lambda, \theta,$ \\$ \hspace{1cm}  N_{gs}, N_0, N_1, N_2, \varepsilon,c+1,m)$\\
+            $\boldsymbol{u} = Bilinear(r,width,height)$\\
+        }
+        \uIf{$c = 1$}{$N_{SB}=N_0$}
+        \uElseIf{$c = m$}{$N_{SB} = N_2$}
+        \Else{
+            $N_{SB} = N_1$
+        }
+        $u = SBC(\boldsymbol{u}, \boldsymbol{z}, \lambda, \theta, N_{gs}, N_{SB}, \varepsilon) $  \\
+    }
+\end{algorithm}
+\begin{algorithm}[H]
+    \caption{Bilinear Interpolation}
+    \SetAlgoNoLine
+    % https://stackoverflow.com/questions/26142288
+    \SetKwFunction{FMain}{$J \longleftarrow Bilinear$}
+    \SetKwProg{Fn}{}{}{}
+    \Fn{\FMain{$I,x,y$}}{
+        \textbf{Initialize}  $v =$ ความสูงของภาพ $I$, $w$ คือความกว้างของภาพ $I$,\\ $S_R = \frac{c}{a}, S_C = \frac{d}{b}, r = 1,2,...,v, c = 1,2,...,w,$\\$r' = 1,2,...x, c' = 1,2,...,y,  $ \\
+        $r_f = \lfloor r' \cdot S_R \rfloor $\\
+        $c_f = \lfloor c' \cdot S_C \rfloor $\\
+        $\triangle r = r_f - r$ \\
+        $\triangle c = c_f - c$ \\
+        $J(r',c') = I(r,c)\cdot(1-\triangle r)\cdot (1-\triangle c) $\\$+ I(r+1,c) \cdot \triangle r \cdot (1 - \triangle c) $\\$+I(r,c+1)\cdot(1-\triangle r)\cdot\triangle c$\\$+ I(r+1,c+1)\cdot\triangle r \cdot \triangle c$ \\
+    }
+\end{algorithm}\hspace{1cm} ตารางที่ \ref{result:table-multiresolution1} แสดงผลการเปรียบเทียบประสิทธิภาพของขั้นตอนวิธีการที่ \ref{algo:MultiSplitBregmanColorInpaint} ภายใต้การเปลี่ยนแปลงจำนวนรอบของการทำซ้ำของวิธีการสปริทเบรกแมนบนภาพที่มีความคมชัด 256x256 พิกเซล ตัวอย่าง เช่น 10/3/3/10000 หมายถึงที่ระดับความคมชัดหยาบสุดซึ่งมีขนาดเป็น 32x32 พิกเซลจะทำซ้ำไม่เกิน 10 ครั้ง สำหรับที่ความคมชัดละเอียดขึ้นเป็น 64x64 พิกเซลจะทำซ้ำไม่เกิน 3 ครั้ง และสำหรับที่ระดับความคมชัดเป็น 128x128 พิกเซลจะทำซ้ำ 3 ครั้ง และที่ระดับความคมชัดเป็น 256x256 จะทำซ้ำไม่เกิน 10,000 ครั้งหรือจนค่าความคลาดเคลื่อนสัมพัทธ์ต่างกันไม่เกิน 0.0001 
+	
+\begin{table}[H]
+    \footnotesize
+    \centering
+    \begin{tabular}[ht]{|l|c|c|c|c|c|}
+        \hline
+        รูปแบบการทำซ้ำ  & รูปภาพ &เวลาประมวล  (วินาที) & PSNR (dB) & SSIM \\
+        \hline
+        ไม่ใช้พีระมิดรูปภาพ & 1 & 4.49  & 71.54 & 1.0000 \\ 
+        & 2 & 13.16 & 37.08 & 1.0000 \\
+        & 3 & 29.46 & 26.08 & 0.9997 \\
+        & 4 & 20.50 & 29.61 & 0.9999 \\
+        & 5 & 19.32 & 32.78 & 1.0000 \\
+        \hline
+        10/1/1/10000 & 1 & 2.44 & 69.59& 1.0000 \\
+        & 2 & 11.31 &37.04 & 1.0000 \\
+        & 3 & 23.48 & 27.34 & 0.9998 \\
+        & 4 & 16.60 & 29.42 & 0.9999 \\
+        & 5 & 13.75 & 33.53 & 1.0000 \\
+        \hline
+        10/3/3/10000  & 1 & 2.24 & 69.96 & 1.0000\\
+        & 2 & 10.91 & 37.05 & 1.0000 \\
+        & 3 & 21.99 & 27.66 & 0.9998 \\
+        & 4 & 12.70 & 29.35 & 0.9999 \\
+        & 5 & 11.49 & 33.69 & 1.0000\\
+        \hline
+        10/10/10/10000  & 1 & 1.83 & 71.58 & 1.0000 \\
+        & 2 & 7.83 & 37.05 & 1.0000 \\
+        & 3 & 16.75 & 28.62 & 0.9998 \\
+        & 4 & 11.89 & 29.32 & 0.9999 \\
+        & 5 & 8.00 & 34.26 & 1.0000 \\
+        \hline
+        100/1/1/10000  & 1 & 1.43 & 67.63 & 1.0000\\
+        & 2 & 7.17 & 37.10 & 1.0000 \\
+        & 3 & 20.86 & 27.70 & 0.9998 \\
+        & 4 & 12.80 & 29.64 & 0.9999\\
+        & 5 & 9.17 & 33.14 & 1.0000 \\
+        \hline
+        100/3/3/10000  & 1 & 1.68 & 71.18 & 1.0000 \\
+        & 2 & 7.41 & 37.11 & 1.0000\\
+        & 3 & 21.08 & 28.00 & 0.9998 \\
+        & 4 & 13.28 & 29.38 & 0.9999 \\
+        & 5 & 7.96 & 33.34 & 1.0000\\
+        \hline
+        100/10/10/10000  & 1 & 1.76 & 71.56 & 1.0000 \\
+        & 2 & 7.32 & 37.04 & 1.0000\\
+        & 3 & 16.62 & 28.65 & 0.9998 \\
+        & 4 & 13.18 & 29.39 & 0.9999\\
+        & 5 & 7.45 & 33.94 & 1.0000 \\
+        \hline
+    \end{tabular}
+    \caption{ผลการซ่อมแซมภาพโดยวิธีการเชิงตัวเลขที่นำเสนอ}
+    \label{result:table-multiresolution1}
+\end{table}	
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}[ht]{|l|c|c|c|c|}
+        \hline
+        รูปแบบการทำซ้ำ  & เวลาประมวล  (วินาที) & PSNR (dB) & SSIM \\
+        \hline
+        ไม่ใช้พีระมิดรูปภาพ & 17.38 & 39.42 & 0.9999 \\
+        10/1/1/10000 & 13.52 & 39.38 & 0.9999 \\
+        10/3/3/10000 & 11.86 & 39.54 & 0.9999 \\
+        10/10/10/10000 & 9.26 & 40.17 & 0.9999\\
+        100/1/1/10000 & 10.28 & 39.04 & 0.9999\\
+        100/3/3/10000 & 10.28 & 39.80 & 0.9999\\
+        100/10/10/10000 & 9.27 & 40.12 & 0.9999 \\
+        \hline
+    \end{tabular}
+    \caption{ผลการซ่อมแซมภาพโดยวิธีการเชิงตัวเลขที่นำเสนอในรูปของค่าเฉลี่ยของผลที่ได้จากตารางที่ \ref{result:table-multiresolution1}}
+    \label{result:table-multiresolution1-summary}
+\end{table}	
+
+\hspace{1cm}จากตารางที่ \ref{result:table-multiresolution1-summary} สังเกตว่า ยิ่งจำนวนการทำซ้ำในชั้นที่รูปภาพมีขนาดเล็กจำนวนมากครั้ง จะยิ่งทำให้เวลาประมวลผลที่ใช้ในการต่อเติมภาพใช้เวลาน้อยลง
+
+\hspace{1cm} นอกจากนี้แล้ว ผู้วิจัยยังได้สังเกตอีกว่า การทำซ้ำน จะลู่เข้าเร็วในช่วงแรก จากนั้นความเร็วในการลู่เข้าจะลดลง ซึ่งทำให้การทำซ้ำเพียงไม่กี่ครั้งในระดับความคมชัดเดิม  มีผลการซ่อมแซมภาพจนแสดงความคล้ายคลึงกับภาพต้นฉบับได้
+
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.4\linewidth}
+        \centering
+        \includegraphics[width=0.7\linewidth]{image/just10enough/only5time.png}
+        \caption{5 ครั้ง}
+    \end{subfigure}
+    \begin{subfigure}{0.4\linewidth}
+        \centering
+        \includegraphics[width=0.7\linewidth]{image/just10enough/only10time.png}
+        \caption{10 ครั้ง}
+    \end{subfigure}
+    \begin{subfigure}{0.4\linewidth}
+        \centering
+        \includegraphics[width=0.7\linewidth]{image/just10enough/only50time.png}			
+        \caption{50 ครั้ง}
+    \end{subfigure}
+    \begin{subfigure}{0.4\linewidth}
+        \centering
+        \includegraphics[width=0.7\linewidth]{image/just10enough/only100time.png}			
+        \caption{100 ครั้ง}
+    \end{subfigure}
+    \caption{พีระมิดที่ลำดับการทำซ้ำเป็น 10/10/10 และที่ระดับความคมชัดละเอียดสุดใช้จำนวนการทำซ้ำที่ต่างกัน}
+\end{figure}
+
+\hspace{1cm} ผู้วิจัยจึงกำหนดให้การทำซ้ำในระดับความละเอียดสุดเท่ากับ 10 ครั้ง และพบว่าได้ผลการซ่อมแซมดังตารางที่ \ref{result:table-multiresolution2}
+\begin{table}[H]
+    \centering
+	\small
+	\begin{tabular}[ht]{|l|c|c|c|c|c|}
+		\hline
+		รูปแบบการทำซ้ำ  & รูปภาพ &เวลาประมวล  (วินาที) & PSNR (dB) & SSIM \\
+		\hline
+		ไม่ใช้พีระมิดรูปภาพ & 1 & 0.30  & 26.71  & 0.9998 \\ 
+		& 2 & 0.39  & 18.39  & 0.9982 \\
+		& 3 & 0.38 & 13.66  & 0.9944 \\
+		& 4 & 0.40  & 12.86 & 0.9934 \\
+		& 5 & 0.38 & 14.69 &  0.9956\\
+		\hline
+		10/1/1/10 & 1 & 0.29 & 40.10 & 1.0000\\
+		& 2 & 0.41 & 31.28 & 0.9999 \\
+		& 3 & 0.46 & 16.51 & 0.9970 \\
+		& 4 & 0.47 & 26.56 & 0.9998\\
+		& 5 & 0.39 & 28.25 & 0.9998 \\
+		\hline
+		10/3/3/10  & 1 & 0.28 & 42.53 & 1.0000\\
+		& 2 & 0.36 & 32.91 & 1.0000 \\
+		& 3 & 0.35 & 16.88 & 0.9972 \\
+		& 4 & 0.34 & 27.06 &  0.9998 \\
+		& 5 & 0.34 & 29.76 & 0.9999 \\
+		\hline
+		10/10/10/10  & 1 & 0.31 & 50.06 & 1.0000 \\
+		& 2 & 0.41 & 34.01 & 1.0000\\
+		& 3 & 0.38 & 18.19 & 0.9980\\
+		& 4 & 0.39 & 27.50 & 0.9998\\
+		& 5 & 0.40 & 33.05 &  1.0000\\
+		\hline
+		100/1/1/10  & 1 & 0.27 & 43.97 & 1.0000 \\
+		& 2 & 0.37  & 31.28 & 0.9999\\
+		& 3 & 0.36 & 24.98 & 0.9997\\
+		& 4 & 0.36  &28.05 & 0.9998\\
+		& 5 & 0.36 & 29.24 & 0.9999 \\
+		\hline
+		100/3/3/10  & 1 & 0.29 & 45.08& 1.0000 \\
+		& 2 & 0.36 & 32.36 & 0.9999\\
+		& 3 & 0.40 & 24.35 & 0.9996\\
+		& 4 & 0.38 & 27.88 & 0.9998\\
+		& 5 & 0.37 & 30.28 & 0.9999 \\
+		\hline
+		100/10/10/10  & 1 & 0.28 & 50.05 &  1.0000\\
+		& 2 & 0.41 & 33.25 &  1.0000\\
+		& 3 & 0.42 & 23.51 & 0.9995 \\
+		& 4 & 0.42 & 27.78 & 0.9998 \\
+		& 5 & 0.39 & 32.38 & 0.9999 \\
+		\hline
+	\end{tabular}
+	\caption{ผลการซ่อมแซมภาพโดยวิธีการเชิงตัวเลขที่นำเสนอเมื่อใช้การทำซ้ำในระดับความคมชัดละเอียดสุด 10 ครั้ง}
+	\label{result:table-multiresolution2}
+\end{table}	
+\begin{table}[H]
+    \centering
+    \begin{tabular}[ht]{|l|c|c|c|c|}
+        \hline
+        รูปแบบการทำซ้ำ  & เวลาประมวล  (วินาที) & PSNR (dB) & SSIM \\
+        \hline
+        ไม่ใช้พีระมิดรูปภาพ & 0.37 & 17.26 & 0.9963  \\
+        10/1/1/10 & 0.40 & 28.54 & 0.9993 \\
+        10/3/3/10 & 0.33 & 29.83  & 0.9994 \\
+        10/10/10/10 & 0.38 & 32.56 & 0.9995 \\
+        100/1/1/10 & 0.34 & 31.50 & 0.9999 \\
+        100/3/3/10 & 0.36 & 31.99 & 0.9999 \\
+        100/10/10/10 & 0.38 & 33.39 & 0.9998 \\
+        \hline
+    \end{tabular}
+    \caption{ผลการซ่อมแซมภาพโดยวิธีการเชิงตัวเลขที่นำเสนอในรูปของค่าเฉลี่ยของผลที่ได้จากตารางที่ \ref{result:table-multiresolution2}}
+    \label{result:table-multiresolution2-summary}
+\end{table}	
+
+\hspace{1cm}จากตารางจะเห็นว่า การทำซ้ำในชั้นที่รูปภาพมีขนาดเล็กมากจำนวนมาก ไม่ช่วยให้การประมวลผลได้เร็วขึ้น ผู้วิจัยจึงเลือกใช้การทำซ้ำแบบ 10/3/3/10 ในการต่อเติมภาพ
+
+\subsection{การทดสอบประสิทธิภาพในการซ่อมแซมภาพจิตรกรรมไทยโบราณ}
+
+\hspace{1cm}ภาพจิตรกรรมทีี่ใช้ทดสอบ มีทั้งสิ้น 5  ภาพ โดยแต่ละภาพเป็นภาพสีที่มีขนาด 256x256 พิกเซล ซึ่งทั้ง 5 ภาพได้แก่ ภาพที่ \ref{image:thaiart_case01_original} \footnote{ภาพถ่ายที่วัดแก้วไพฑูรย์; ภาพจาก  https://commons.wikimedia.org/wiki/File:จิตรกรรมฝาผนัง\_วัดแก้วไพฑูรย์\_(7).jpg สืบค้นเมื่อวันที่ 23 กันยายน 2561}   และภาพที่ \ref{image:thaiart_case02_original} \footnote{ภาพถ่ายที่วัดแก้วไพฑูรย์; ภาพจาก  https://commons.wikimedia.org/wiki/File:จิตรกรรมฝาผนัง\_วัดแก้วไพฑูรย์\_(2).jpg สืบค้นเมื่อวันที่ 23 กันยายน 2561} คือ จิตรกรรมฝาผนังวัดแก้วไพฑูรย์ ภาพที่ \ref{image:thaiart_case03_original} \footnote{ภาพถ่ายที่วัดพระยืนพุทธบาทยุคล; ภาพจาก https://commons.wikimedia.org/wiki/File:Wat\_Phra\_Yuen \_Phutthabat\_Yukhon\_01.jpg สืบค้นเมื่อวันที่ 23 กันยายน 2561}  คือ จิตรกรรมฝาผนังวัดพระยืนพุทธบาทยุคล ภาพที่ \ref{image:thaiart_case04_original} \footnote{ภาพถ่ายที่วัดคงคาราม; ภาพจาก  https://commons.wikimedia.org/wiki/File:จิตรกรรม\_อุโบสถวัดคงคาราม.JPG สืบค้นเมื่อวันที่ 23 กันยายน 2561} คือ จิตรกรรมฝาผนังวัดคงคาราม และภาพที่ \ref{image:thaiart_case05_original} \footnote{ภาพถ่ายที่วัดท่าถนน; ภาพจาก  https://commons.wikimedia.org/wiki/File:Wat\_Tha\_Thanon\_05.JPG สืบค้นเมื่อวันที่ 23 กันยายน 2561} คือ จิตรกรรมฝาผนังวัดท่าถนน
+    โดยจะทำให้ข้อมูลข้องทั้ง 5 ภาพเกิดความเสียหาย โดยใช้รอยความเสียหายจากภาพพระเจ้าสร้างอดัม
+    
+
+    \begin{figure}[H]
+		\centering
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[width=0.8\linewidth]{image/thaiart/case01-original.png}
+			\caption{วัดแก้วไพฑูรย์}
+			\label{image:thaiart_case01_original}
+		\end{subfigure}
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[width=0.8\linewidth]{image/thaiart/case02-original.png}
+			\caption{วัดแก้วไพฑูรย์}
+			\label{image:thaiart_case02_original}
+		\end{subfigure}
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[width=0.8\linewidth]{image/thaiart/case03-original.png}
+			\caption{วัดพระยืนพุทธบาทยุคล}
+			\label{image:thaiart_case03_original}			
+		\end{subfigure}		
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[width=0.8\linewidth]{image/thaiart/case04-original.png}
+			\caption{วัดคงคาราม}
+			\label{image:thaiart_case04_original}			
+		\end{subfigure}
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[width=0.8\linewidth]{image/thaiart/case05-original.png}
+			\caption{วัดท่าถนน}
+			\label{image:thaiart_case05_original}			
+		\end{subfigure}
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[width=0.8\linewidth]{image/thaiart/inpaint-domain.png}
+			\caption{รอยความเสียหาย}
+		\end{subfigure}
+		\caption{ภาพต้นฉบับสำหรับใช้ในการทดสอบ}
+	\end{figure}
+	\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.4\linewidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{image/thaiart/case01-toinpaint.png}
+	\end{subfigure}
+	\begin{subfigure}{0.4\linewidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{image/thaiart/case02-toinpaint.png}
+	\end{subfigure}
+	\vspace{1cm}
+	\begin{subfigure}{0.4\linewidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{image/thaiart/case03-toinpaint.png}			
+	\end{subfigure}
+	\begin{subfigure}{0.4\linewidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{image/thaiart/case04-toinpaint.png}			
+	\end{subfigure}
+	\begin{subfigure}{0.4\linewidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{image/thaiart/case05-toinpaint.png}			
+	\end{subfigure}
+	\caption{ภาพที่ทำให้เสียหาย}
+\end{figure}
+
+\hspace{1cm} จากนั้นทำการทดสอบการต่อเติมภาพทั้ง 5 โดยทดสอบวิธีสปริทเบรกแมน และวิธีทีที่พัฒนาขึ้นโดยใช้วิธีการสปริทเบรกแมนพร้อมทั้งการใช้พีระมิดรูปภาพที่มีการทำซ้ำแต่ละชั้นเป็น 10/3/3/10  ได้ผลลัพธ์ออกมาเป็นดังนี้
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[width=0.8\linewidth]{image/result_ex4/splitbergman_case01.png}
+		\end{subfigure}
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[width=0.8\linewidth]{image/result_ex4/splitbergman_case02.png}
+		\end{subfigure}
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[width=0.8\linewidth]{image/result_ex4/splitbergman_case03.png}			
+		\end{subfigure}
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[width=0.8\linewidth]{image/result_ex4/splitbergman_case04.png}			
+		\end{subfigure}
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[width=0.8\linewidth]{image/result_ex4/splitbergman_case05.png}			
+		\end{subfigure}
+		\caption{ผลการซ่อมแซมโดยวิธีการสปริทเบรกแมน}
+	\end{figure}
+	\begin{table}[H]
+		\centering
+		\begin{tabular}[ht]{|c|c|c|c|c|}
+			\hline
+			รูปภาพ &เวลาประมวล  (วินาที) & PSNR (dB) & SSIM \\
+			\hline
+			1 & 2.95 & 33.92 & 1.0000 \\ 
+			2 & 2.64 & 37.33 & 1.0000 \\
+			3 &  3.49 & 37.21 & 1.0000 \\
+			4 & 2.70  & 29.47  & 1.0000 \\
+			5 & 15.85  & 32.78  & 1.0000 \\
+			\hline
+			เฉลี่ย & 2.72  & 34.89  & 1.0000 \\
+			\hline
+		\end{tabular}
+		\caption{ผลการซ่อมแซมภาพศิลปะไทยจากวิธีการสปิทเบรกแมน}
+		\label{result:table-thaiart-splitbregman}
+	\end{table}
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[width=0.8\linewidth]{image/result_ex4/multisplitbergman_case01.png}
+		\end{subfigure}
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[width=0.8\linewidth]{image/result_ex4/multisplitbergman_case02.png}
+		\end{subfigure}
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[width=0.8\linewidth]{image/result_ex4/multisplitbergman_case03.png}			
+		\end{subfigure}
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[width=0.8\linewidth]{image/result_ex4/multisplitbergman_case04.png}			
+		\end{subfigure}
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[width=0.8\linewidth]{image/result_ex4/multisplitbergman_case05.png}			
+		\end{subfigure}
+		\caption{ผลการซ่อมแซมภาพโดยวิธีการเชิงตัวเลขที่พัฒนาขึ้น}
+	\end{figure}
+		\begin{table}[H]
+		\centering
+		\begin{tabular}[ht]{|c|c|c|c|c|}
+			\hline
+			รูปภาพ &เวลาประมวล  (วินาที) & PSNR (dB) & SSIM \\
+			\hline
+			1 & 0.40 & 34.13 & 1.0000 \\ 
+			2 & 0.40 & 38.18 & 1.0000 \\
+			3 &  0.39 & 37.73 & 1.0000 \\
+			4 & 0.38  & 29.38  & 1.0000 \\
+			5 & 0.39  & 37.11  & 1.0000 \\
+			\hline
+			เฉลี่ย & 0.39  & 35.30  & 1.0000 \\
+			\hline
+		\end{tabular}
+		\caption{ผลการซ่อมแซมภาพศิลปะไทยโดยวิธีการเชิงตัวเลขที่พัฒนาขึ้น}
+		\label{result:table-thaiart-mutisplitbregman}
+	\end{table}	 
+	\hspace{1cm}ทั้งสองวิธี ได้ผลลัพธ์การซ่อมแซมภาพศิลปะไทยในรูปค่าเฉลี่ยออกมาดังนี้
+	\begin{table}[H]
+		\centering
+		\begin{tabular}[ht]{|l|c|c|c|c|}
+			\hline
+			วิธีการ  & เวลาประมวล  (วินาที) & PSNR (dB) & SSIM \\
+			\hline
+			สปริทเบรกแมน & 2.72 & 34.89 & 1.0000 \\ 
+			วิธีการที่พัฒนาขึ้น & 0.39 & 35.30 & 1.0000 \\
+			\hline
+		\end{tabular}
+		\caption{แสดงผลการซ่อมแซมภาพศิลปะไทยในรูปค่าเฉลี่ยจากตารางที่ 		\ref{result:table-thaiart-splitbregman} และตารางที่ 		\ref{result:table-thaiart-mutisplitbregman} }
+		\label{result:table-thaiart-summary}
+	\end{table}	
+	\hspace{1cm} จากตารางที่ \ref{result:table-thaiart-summary} จะเห็นได้ว่า วิธีที่พัฒนาขึ้นนั้นสามารถทำงานได้เร็วกว่าวิธีสปริทเบรกแมนเดิม และยังมีคุณภาพที่ดีขึ้นด้วย
+
+\section{การลบบทบรรยายบนอนิเมะ}
+\hspace{1cm} สำหรับการลบบทบรรยายอนิเมะ จะใช้วิดีโอ Anime Festival Asia Special Video - feat. Inori Aizawa ซึ่งผลิตโดย Collateral Damage Studios โดยจะตัดวิดีโอ 1 นาทีแรกสำหรับการทดลอง โดยวิดีโอดังกล่าวขนาด 1280 x 720 พิกเซล แต่เนื่องจากโดยปกติแล้ว อนิเมะมักมีบรรทัดเพียง 1 ถึง 2 บรรทัด จึงทำการแบ่งวิดีโอออกอีกเป็น 5 ส่วนได้ขนาดเป็น 1280 x 144 พิกเซลก่อนนำไปทดสอบในลำดับถัดไป
+\hspace{1cm} และสำหรับบทบรรยายที่จะใช้ทดสอบนั้น เนื่องจากวิดีโอ Anime Festival Asia Special Video - feat. Inori Aizawa ไม่มีคำพูดใดๆ จึงใช้บทความ lorem ipsum เป็นบทบรรยาย โดยจะทำการแสดงบทบรรยาย 1 บรรทัด ความยาว 3 วินาที ทุก 2 วินาที นั่นคือในวิดีโอดังกล่าวจะมีบทบรรยายทั้งสิ้น 20 บรรทัด	
+	
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}{0.8\linewidth}
+			\centering
+			\includegraphics[width=0.8\linewidth]{image/inori-subbed-preview.png}
+		\end{subfigure}
+		\caption{การแบ่งไฟล์วิดีโอเป็น 5 ส่วนสำหรับใช้เป็น 5 ชุดทดสอบ}
+    \end{figure}
+    
+
+	\hspace{1cm}เนื่องจากไฟล์วิดีโอนั้นประกอบด้วยชุดของภาพหลายภาพ กล่าวคือ $V = \{\boldsymbol{u}_i| i = 1,2,3 ... N_f\}$ ทำให้ขั้นตอนวิธีการลบคำบรรยายออกจากวิดีโอ จะต้องทำการต่อเติมบริเวณที่เป็นบทบรรยายทีละภาพ ดังที่แสดงในขั้นตอนวิธีต่อไปนี้ \\
+	
+	\begin{algorithm}[H]
+		\caption{Removing subtitle from video}	
+		\SetAlgoNoLine
+		\SetKwFunction{FMain}{$V \longleftarrow RemoveS$}
+		\SetKwProg{Fn}{}{}{}
+		\Fn{\FMain{$V$}}{
+			\For{$ i = 1,2,... N_f$}{
+				$\bullet$ หาโดเมนต่อเติม $D$ จาก $\boldsymbol{u}_i$\\
+				$\bullet$ ต่อเติมภาพ $\boldsymbol{u}_i$ โดยใช้โดเมนต่อเติม $D$\\
+			}
+		}
+	\end{algorithm}
+	\vspace{1cm}
+    \hspace{1cm} โดยขั้นตอนการต่อเติมภาพ $\boldsymbol{u}_i$ ด้วยโดเมนต่อเติม $D$ นั้นจะสามารถใช้วิธีการเดียวกับการซ่อมแซมภาพศิลปะไทยได้ ส่วนการหาบทบรรยายอนิเมะ จะกล่าวถึงในหัวข้อย่อย
+    \subsection{การหาบทบรรยายบนอนิเมะ}	
+	\hspace{1cm}ก่อนจะลบบทบรรยายนั้น จำเป็นต้องหาบทบรรยายในภาพให้ได้เสียก่อน โดยบทบรรยายของอนิเมะนั้น มักจะใช้ขอบของตัวอักษรเป็นสีดำ อีกทั้งบทบรรยายนั้นจะลอยห่างออกมาจากขอบของวิดีโอ และขนาดของคำบรรยายนั้นจะมีขนาดอยู่ประมาณหนึ่งไม่ใหญ่หรือไม่เล็กเกินไป ด้วยสมบัตินี้เองทำให้จึงสามารถหาบริเวณบนเฟรมที่เป็นบทบรรยายได้โดยจะมีวิธีหาพื้นที่ซึ่งเป็นบทบรรยายดังนี้
+	
+	\vspace{1cm}
+	
+	\begin{algorithm}[H]
+		\caption{Finding subtitle}
+		\SetKwFunction{FMain}{$D \longleftarrow findsub$}
+		\SetAlgoNoLine
+		\SetKwProg{Fn}{}{}{}
+		\Fn{\FMain{$\boldsymbol{u}$}}{
+			$\bullet$ ทำการเปลี่ยนสีดำในภาพ $\boldsymbol{u}$ ให้เป็นสีขาวแล้วเปลี่ยนอื่นๆ ให้เป็นสีดำเพื่อหาขอบของคำบรรยาย\\
+			$\bullet$ เปลี่ยนบริเวณสีขาวในภาพให้เป็นสีดำ และเปลี่ยนบริเวณสีดำให้เป็นสีขาว\\
+			$\bullet$ ทำการลบบริเวณสีขาวซึ่งติดกับขอบของภาพออกไป เนื่องจากบทบรรยายจะลอยอยู่ ไม่ติดกับขอบเสมอ\\
+			$\bullet$  ลบบริเวณที่ใหญ่เกินกว่าจะเป็นบทบรรยาย \\
+			$\bullet$  ลบบริเวณที่เล็กเกินกว่าจะเป็นบทบรรยาย \\
+			$\bullet$ ทำการขยายพื้นที่ๆ เป็นสีขาวขึ้นด้วยความกว้างของขอบบทบรรยาย \\
+			$\bullet$ สีขาวที่เหลืออยู่ในภาพจะเป็นบทบรรยาย
+		}	
+    \end{algorithm}
+    
+    \hspace{1cm} วิธีการหาบทบรรยายที่กล่าวไปข้างต้น จะทำการทดสอบกับบทความ lorem ipsum\footnote{Cicero, De finibus bonorum et malorum; เข้าถึงได้ทาง https://en.wikipedia.org/wiki/Lorem\_ipsum สืบค้นเมื่อวันที่ 23 ตุลาคม 2561} ที่ถูกแปลเป็นภาษาไทย ภาษาอังกฤษ และภาษาญี่ปุ่น โดยมีความสามารถในการหาโดเมนต่อเติมใบบทบรรยายภาษาต่างๆ ดังนี้
+    
+    \begin{table}[H]
+		\centering
+		\footnotesize
+		\begin{tabular}[ht]{|l|c|c|c|c|c|}
+			\hline
+			ภาษา  & วีดีโอ & จำนวนพิกเซลในโดเมน & จำนวนพิกเซลที่ตรวจพบ & จำนวนพิกเซลที่ผิดพลาด & ร้อยละการผิดพลาด \\
+			\hline
+			ไทย & 1 & 23,190,522  & 24,044,004 & 2,108,772 &9.09\\
+				 & 2 & 23,232,287 & 24,026,820 & 2,204,025 & 9.49\\
+				& 3 & 23,189,082 & 24,300,589 & 2,081,340 & 8.98\\
+				& 4 & 23,277,706 & 23,796,276  & 2,126,004 & 9.13\\
+				& 5 & 23,221,502 & 24,247,935 & 2,185,864 & 9.41\\
+			\hline
+			อังกฤษ & 1 & 27,281,185 & 28,631,063 & 3,477,960  & 12.75\\
+			& 2 & 27,269,671 & 28,513,248 & 3,514,859 & 12.89\\
+			& 3 & 27,325,148 & 28,611,300 & 3,815,082 & 13.96\\
+			& 4 & 27,191,136 & 28,527,105 & 3,854,121 & 14.17\\
+			& 5 & 27,326,584 & 28,709,405 & 3,909,582 & 14.31\\
+			\hline
+			ญี่ปุ่น & 1 & 28,509,908 & 30,058,101 &  3,953,067 & 13.87\\
+			& 2 & 28,534,363  & 30,023,923 & 3,565,609 & 12.50\\
+			& 3 & 28,537,968 & 30,015,047 & 3,553,128 & 12.45\\
+			& 4 & 28,579,778 & 30,065,985 & 3,961,319 & 13.86\\
+			& 5 & 28,558,848 & 30,354,275 & 3,671,730 & 12.86\\
+			\hline
+		\end{tabular}
+		\caption{ความคลาดเคลื่อนของการหาโดเมนต่อเติม ในบทบรรยายภาษาต่างๆ}
+	\end{table}
+	\begin{table}[H]
+		\centering
+			\footnotesize
+		\begin{tabular}[ht]{|l|c|c|c|c|}
+			\hline
+			ภาษา  & จำนวนพิกเซลในโดเมน & จำนวนพิกเซลที่ตรวจพบ & จำนวนพิกเซลที่ผิดพลาด & ร้อยละการผิดพลาด \\
+			\hline
+			ไทย & 23,222,220 & 24,083,125 & 2,141,201 & 9.22 \\
+			อังกฤษ & 27,278,745 & 28,598,424 & 3,714,321 & 13.62 \\
+			ญี่ปุ่น & 28,544,173 & 30,103,466 & 3,740,971 & 13.11 \\
+			\hline
+		\end{tabular}
+		\caption{ความคลาดเคลื่อนเฉลี่ยของการหาโดเมนต่อเติม ในบทบรรยายภาษาต่างๆ}
+	\end{table}	
+	
+	\hspace{1cm} จากการทดลองทั้ง  3 ภาษาพบว่าวิธีการหาคำบรรยายนี้ มีร้อยละการผิดพลาดเฉลี่ยอยู่ที่ 11.98 ซึ่งการทดลองจากนี้ไปจะใช้วิธีการหาคำบรรยายนี้ในการหาโดเมนต่อเติมแบบอัตโนมัติ
+
+    \subsection{การลบคำบรรยายจากบทอนิเมะ}
+	\hspace{1cm} สำหรับอนิเมะนั้น แต่ละเฟรมจะเป็นรูปภาพ เราจึงสามารถประยุกต์ใช้วิธีการซ่อมแซมภาพจิตรกรรมไทย มาใช้ในการลบคำบรรยายได้ แต่ผู้วิจัยก็ได้สังเกตว่า สำหรับอนิเมะที่เป็นวิดีโอแล้ว ในขณะที่ประมวลผลวิดีโอ เราสามารถใช้ผลการต่อเติมภาพจากภาพที่แล้ว มาใช้เป็นคำตอบเริ่มต้นจึงได้ว่าขึ้นตอนการลบบทบรรยายออกจากวิดีโอมีดังนี้\\
+	
+    \vspace{0.5cm}
+
+    \begin{algorithm}[H]
+		\SetAlgoNoLine
+		\caption{Removeing subtitle from video (Method 1)}
+		\SetKwFunction{FMain}{$V \longleftarrow removeS1$}
+		\SetKwProg{Fn}{}{}{}
+		\Fn{\FMain{$V$}}{
+			\textbf{initialize} $i =1$\\
+			\While{$i < N_f - 1$}{
+				$\boldsymbol{u}_i$ คือเฟรมที่ $i$ ใน $V$ \\
+				$\boldsymbol{u}_{i+1}$ คือเฟรมที่ $i+1$ ใน $V$ \\
+				$D$ คือโดเมนต่อเติมใน $\boldsymbol{u}_{i+1}$ \\
+				$\boldsymbol{u}_{i+1} = removeS2(\boldsymbol{u}_{i},D,\boldsymbol{u}_{i+1})$
+			}
+		}	
+	\end{algorithm}
+	\vspace{0.5cm}
+	\hspace{1cm}  $removeS2(\boldsymbol{u}_{i},D,u_{i+1})$  คือขั้นตอนวิธีที่ \ref{algo:borrowframe} ซึ่งในทำนองเดียวกันเราสามารถเปลี่ยน $removeS2(u_{i},D,\boldsymbol{u}_{i+1})$ เป็น $removeS3(\boldsymbol{u}_{i},D,u_{i+1})$ เพื่อใช้กับขั้นตอนวิธี \ref{algo:skipframe} และเปลี่ยนเป็น  $removeS4(\boldsymbol{u}_{i},D,\boldsymbol{u}_{i+1})$ เพื่อใช้กับขั้นตอนวิธี \ref{algo:skipnborrowframe} ได้ \\
+	
+	\vspace{0.5cm}
+	
+	\hspace{1cm} ขั้นตอนวิธี การยืมเฟรม จะเป็นการนำผลลัพธ์จากเฟรมก่อนหน้ามาเป็นคำตอบในการเริ่มต้นในการประมวลผลเพื่อให้ผลลัพธ์ลู่เข้าได้เร็วขึ้น \\
+	
+		\vspace{0.5cm}
+	
+	\begin{algorithm}[H]
+		\SetAlgoNoLine
+		\label{algo:borrowframe}
+		\caption{Removing subtitle from video (Method 2)}  
+		\SetKwFunction{FMain}{$\boldsymbol{v} \longleftarrow removeS2$}
+		\SetKwProg{Fn}{}{}{}
+		\Fn{\FMain{$\boldsymbol{u} , D, \boldsymbol{v} $}}{
+			$s =$ ค่า SSIM ระหว่าง  $\boldsymbol{u}$ และ $\boldsymbol{v}$  บริเวณนอกโดเมนต่อเติม\\
+			\If{s > 0.9}{
+				คัดลอกบริเวณในโดเมนต่อเติมจาก $\boldsymbol{u} $ ไปยัง $\boldsymbol{z}$
+			}
+			$\boldsymbol{v} = MRSBC(\boldsymbol{u} ,\boldsymbol{z} ,\lambda, \theta, N_{gs}, N_0, N_1, N_2, \varepsilon,1,m)$
+		}	
+    \end{algorithm}
+    \hspace{1cm}ขั้นตอนวิธี การข้ามเฟรม สำหรับเฟรมใดที่ผลลัพธ์ใกล้เคียงกันมาก จะทำการข้ามการต่อเติมภาพในเฟรมนั้นไปโดยใช้คำตอบจากเฟรมก่อนหน้าแทนเพื่อลดเวลาการประมวลผล \\ 
+	\vspace{0.5cm}
+	\begin{algorithm}[H]
+		\SetAlgoNoLine
+		\label{algo:skipframe}
+		\caption{Removeing subtitle from video (Method 3)}  
+		\SetKwFunction{FMain}{$\boldsymbol{v}, \longleftarrow removeS3$}
+		\SetKwProg{Fn}{}{}{}
+		\Fn{\FMain{$\boldsymbol{u}, D, \boldsymbol{v}$}}{
+			$s =$ ค่า SSIM ระหว่าง  $\boldsymbol{u}$ และ $\boldsymbol{v}$  บริเวณนอกโดเมนต่อเติม\\
+			\uIf{s > 0.95}{
+				คัดลอกบริเวณในโดเมนต่อเติมจาก $\boldsymbol{u}$ ไปยัง $\boldsymbol{v}$
+			}
+			\Else{
+				$\boldsymbol{v} = MRSBC(\boldsymbol{u} ,\boldsymbol{z} ,\lambda, \theta, N_{gs}, N_0, N_1, N_2, \varepsilon,1,m)$
+			}
+		}	
+	\end{algorithm}
+	\vspace{0.5cm}
+	\hspace{1cm}ขั้นตอนวิธี การข้ามและยืมเฟรม คือขั้นตอนวิธี \ref{algo:borrowframe} และขั้นตอนวิธี \ref{algo:skipframe} ที่นำมาประยุกต์ใช้งานร่วมกัน\\
+	\vspace{0.5cm}
+	\begin{algorithm}[H]
+		\label{algo:skipnborrowframe}
+		\caption{Removing subtitle from video (Method 4)}  
+		\SetAlgoNoLine
+		\SetKwFunction{FMain}{$\boldsymbol{v} \longleftarrow removeS4$}
+		\SetKwProg{Fn}{}{}{}
+		\Fn{\FMain{$\boldsymbol{u} , D, \boldsymbol{v} $}}{
+			$s =$ ค่า SSIM ระหว่าง  $u$ และ $v$  บริเวณนอกโดเมนต่อเติม\\
+			\uIf{s > 0.95}{
+				คัดลอกบริเวณในโดเมนต่อเติมจาก $\boldsymbol{u} $ ไปยัง $\boldsymbol{v}$
+			}
+			\uElseIf{s > 0.9}{
+				คัดลอกบริเวณในโดเมนต่อเติมจาก $\boldsymbol{u} $ ไปยัง $\boldsymbol{z}$\\
+				$\boldsymbol{v} = MRSBC(\boldsymbol{u} ,\boldsymbol{z} ,\lambda, \theta, N_{gs}, N_0, N_1, N_2, \varepsilon,1,m)$
+			}\Else{
+				$\boldsymbol{v} = MRSBC(\boldsymbol{u} ,\boldsymbol{z} ,\lambda, \theta, N_{gs}, N_0, N_1, N_2, \varepsilon,1,m)$
+			}
+		}	
+	\end{algorithm}
+	\vspace{0.5cm}
+	\hspace{1cm}ซึ่งผลลัพธ์เปรียบเทียบระหว่างแบบใช้วิธี ยืมเฟรม ใช้วิธีข้ามเฟรม และวิธีข้ามและยืมเฟรม ได้ผลดังตาราง
+		\begin{table}[H]
+		\small
+		\centering
+		\begin{tabular}[ht]{|l|c|c|c|c|c|}
+			\hline
+			วิธีการ  & วิดีโอ &เวลาประมวล  (วินาที) & PSNR (dB) & SSIM \\
+			\hline
+			สปริทเบรกแมน & 1 & 130.03  & 32.19 & 0.9528  \\ 
+			และพีระมิดรูปภาพ& 2 & 135.17 & 29.98 & 0.9488 \\
+			(ขั้นตอนวิธี \ref{algo:MultiSplitBregmanColorInpaint})& 3 & 142.11 & 30.54 & 0.9485 \\
+			& 4 & 151.42 & 30.79 & 0.9494 \\
+			& 5 & 147.70 & 33.48 & 0.9556 \\
+			\hline
+			ยืมเฟรม & 1 & 127.77  & 33.13& 0.9701 \\ 
+			(ขั้นตอนวิธี \ref{algo:borrowframe})& 2 & 137.54 & 30.21 & 0.9590 \\
+			& 3 & 124.71 & 31.43 & 0.9620 \\
+			& 4 & 136.71 & 31.66 & 0.9614 \\
+			& 5 & 137.16 & 34.56 &  0.9748 \\
+			\hline
+			ข้ามเฟรม & 1 &  104.55 & 27.10 &  0.9429\\ 
+			(ขั้นตอนวิธี \ref{algo:skipframe})& 2 & 78.07 & 27.17 & 0.9351 \\
+			& 3 & 73.35 & 29.21 & 0.9393\\
+			& 4 & 116.20 & 29.91 & 0.9423 \\
+			& 5 & 74.28 & 31.95 &  0.9442\\
+			\hline
+			ข้ามและยืมเฟรม & 1 & 68.11 & 27.24 & 0.9424 \\ 
+			(ขั้นตอนวิธี \ref{algo:skipnborrowframe})& 2 & 73.91 & 27.22 & 0.9386 \\
+			& 3 & 77.34 & 29.36 & 0.9437 \\
+			& 4 & 81.98 & 30.35 & 0.9483  \\
+			& 5 & 77.45  & 32.46 & 0.9540 \\
+			\hline
+		\end{tabular}
+		\label{result:table-removesub1}
+		\caption{ผลการลบบทบรรยายออกจากอนิเมะด้วยวิธีการเชิงตัวเลขขั้นตอนวิธี \ref{algo:MultiSplitBregmanColorInpaint}, \ref{algo:borrowframe}, \ref{algo:skipframe} และ \ref{algo:skipnborrowframe}}
+	\end{table}	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}[ht]{|l|c|c|c|c|}
+			\hline
+			วิธีการ  & เวลาประมวล  (วินาที) & PSNR (dB) & SSIM \\
+			\hline
+			สปริทเบรกแมนและพีระมิดรูปภาพ & 141.29 & 31.39  &  0.9510\\
+			ยืมเฟรม & 132.78 & 32.20 & 0.9655\\
+			ข้ามเฟรม & 89.29 & 29.07 & 0.9408 \\
+			ยืมเฟรมและข้ามเฟรม & 75.76 & 29.33 & 0.9454 \\
+			\hline
+		\end{tabular}
+		\caption{ผลการซ่อมแซมภาพโดยวิธีการเชิงตัวเลขที่นำเสนอในรูปของค่าเฉลี่ยของผลที่ได้จากตารางที่ \ref{result:table-removesub1}}
+	\end{table}	
+	
+	\hspace{1cm}  จากนั้นทำการทดสอบการต่อเติมวิดีโอทั้ง 5 โดยวิธีที่คิดค้นขึ้นใช้วิธีการสปริทเบรกแมนพร้อมทั้งการใช้พีระมิดรูปภาพที่มีการทำซ้ำแต่ละชั้นเป็น 10/3/3/10  พร้อมทั้งใช้การข้ามเฟรมและยืมเฟรม ได้ผลลัพธ์ออกเป็นดังตารางนี้
+	 
+\begin{table}[H]
+	\centering
+	\begin{tabular}[ht]{|l|c|c|c|c|}
+		\hline
+		วิธีการ  & เวลาประมวล  (วินาที) & PSNR (dB) & SSIM \\
+		\hline
+		สปริทเบรกแมน & * & * & * \\
+		วิธีการที่พัฒนาขึ้น & 75.76 & 29.33 & 0.9454 \\
+		\hline
+	\end{tabular}
+	\caption{ผลการลบบทบรรยายออกจากอนิเมะโดยวิธีการสปริทเบรกแมนและวิธีการที่พัฒนาขึ้น}
+\end{table}	
+
+\hspace{1cm} สำหรับวิธีสปริทเบรกแมน เนื่องจากใช้เวลา 1 ชั่วโมงแล้วยังประมวลผลวิดีโอชุดทดสอบแรกไม่เสร็จ ทางผู้พัฒนาจึงตัดสินใจยุติการทดลอง เนื่องจากอาจต้องใช้เวลาการประมวลผลเป็นเวลาหลายชั่วโมงสำหรับวิดีโอความยาว 1 นาที ส่วนวิธีที่คิดค้นขึ้น พบว่าสำหรับวิดีโอที่มีความยาว 1 นาที สามารถทำงานได้เสร็จอย่างรวดเร็ว โดยใช้เวลาเพียง 75 วินาที
+\clearpage

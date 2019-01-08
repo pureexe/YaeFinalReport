@@ -27,5 +27,6 @@
         "**/*.aux"
     ],
     "latex-workshop.view.pdf.viewer": "tab",
-    "latex-workshop.message.badbox.show": false
+    "latex-workshop.message.badbox.show": false,
+    "editor.wordWrap": "on"
 }
