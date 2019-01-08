@@ -1,0 +1,15 @@
+\begin{algorithm}[H]
+    \caption{Bilinear Interpolation}
+    \SetAlgoNoLine
+    % https://stackoverflow.com/questions/26142288
+    \SetKwFunction{FMain}{$J \longleftarrow Bilinear$}
+    \SetKwProg{Fn}{}{}{}
+    \Fn{\FMain{$I,x,y$}}{
+        \textbf{Initialize}  $v =$ ความสูงของภาพ $I$, $w$ คือความกว้างของภาพ $I$,\\ $S_R = \frac{c}{a}, S_C = \frac{d}{b}, r = 1,2,...,v, c = 1,2,...,w,$\\$r' = 1,2,...x, c' = 1,2,...,y,  $ \\
+        $r_f = \lfloor r' \cdot S_R \rfloor $\\
+        $c_f = \lfloor c' \cdot S_C \rfloor $\\
+        $\triangle r = r_f - r$ \\
+        $\triangle c = c_f - c$ \\
+        $J(r',c') = I(r,c)\cdot(1-\triangle r)\cdot (1-\triangle c) $\\$+ I(r+1,c) \cdot \triangle r \cdot (1 - \triangle c) $\\$+I(r,c+1)\cdot(1-\triangle r)\cdot\triangle c$\\$+ I(r+1,c+1)\cdot\triangle r \cdot \triangle c$ \\
+    }
+\end{algorithm}

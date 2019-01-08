@@ -1,0 +1,22 @@
+\begin{algorithm}[H]
+    \label{algorithm:MultiSplitBregmanColorInpaint}
+    \caption{Multi-resolution SB method}
+    \SetAlgoNoLine
+    \SetKwFunction{FMain}{$u \longleftarrow MRSBC $}
+    \SetKwProg{Fn}{}{}{}
+    \Fn{\FMain{$\boldsymbol{u}, \boldsymbol{z},\lambda, \theta, N_{gs}, N_0,N_1,N_2, \varepsilon,c,m$}}{
+        \textbf{Initialize} $height = $ ความสูงของภาพ $\boldsymbol{u}$, $width = $ ความกว้างของภาพ $\boldsymbol{u}$ \\
+        \If{c < m}{
+            $\boldsymbol{x} = Bilinear(\boldsymbol{u},\lfloor width * 0.5 \rfloor,\lfloor height * 0.5 \rfloor)$\\
+            $y = Bilinear(\lambda,\lfloor width * 0.5 \rfloor,\lfloor height * 0.5 \rfloor)$\\
+            $r = MRSBC(\boldsymbol{x},\boldsymbol{z},y, \lambda, \theta,$ \\$ \hspace{1cm}  N_{gs}, N_0, N_1, N_2, \varepsilon,c+1,m)$\\
+            $\boldsymbol{u} = Bilinear(r,width,height)$\\
+        }
+        \uIf{$c = 1$}{$N_{SB}=N_0$}
+        \uElseIf{$c = m$}{$N_{SB} = N_2$}
+        \Else{
+            $N_{SB} = N_1$
+        }
+        $u = SBC(\boldsymbol{u}, \boldsymbol{z}, \lambda, \theta, N_{gs}, N_{SB}, \varepsilon) $  \\
+    }
+\end{algorithm}

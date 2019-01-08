@@ -1,0 +1,16 @@
+\begin{algorithm}[H]
+    \SetAlgoNoLine
+    \label{algorithm:subtitle_skipframe}
+    \caption{Removeing subtitle from video (Method 3)}  
+    \SetKwFunction{FMain}{$\boldsymbol{v}, \longleftarrow removeS3$}
+    \SetKwProg{Fn}{}{}{}
+    \Fn{\FMain{$\boldsymbol{u}, D, \boldsymbol{v}$}}{
+        $s =$ ค่า SSIM ระหว่าง  $\boldsymbol{u}$ และ $\boldsymbol{v}$  บริเวณนอกโดเมนต่อเติม\\
+        \uIf{s > 0.95}{
+            คัดลอกบริเวณในโดเมนต่อเติมจาก $\boldsymbol{u}$ ไปยัง $\boldsymbol{v}$
+        }
+        \Else{
+            $\boldsymbol{v} = MRSBC(\boldsymbol{u} ,\boldsymbol{z} ,\lambda, \theta, N_{gs}, N_0, N_1, N_2, \varepsilon,1,m)$
+        }
+    }	
+\end{algorithm}

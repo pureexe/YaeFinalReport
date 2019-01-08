@@ -1,0 +1,15 @@
+\begin{algorithm}[H]
+    \caption{ETM Method for TV-based Image Inpainting}		
+    \SetKwFunction{FMain}{$u \longleftarrow ETM$}\SetAlgoNoLine 
+    \SetKwProg{Fn}{}{}{}
+    \Fn{\FMain{$u,z,\lambda,\beta,\tau,N,\varepsilon$}}{
+        \textbf{initialize}
+        $i = 0$; $z = u$; $err = 1$\\
+        \While{$ i < N $ \textbf{and} $err > \varepsilon$}{
+            $u^{old} = u$\\
+            $u = u + \tau\left(\nabla \cdot\left(\dfrac{\nabla u}{\sqrt{u_x^2 + u_y^2+ \beta}}\right) + \lambda(u-z) \right)$ \\ 		
+            $err = \frac{||u-u^{old}||}{||u||}$ \\
+            $ i = i + 1 $
+        }
+    }
+\end{algorithm}

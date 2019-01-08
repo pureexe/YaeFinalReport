@@ -1,0 +1,19 @@
+\begin{algorithm}[H]
+    \label{algorithm:subtitle_skipnborrowframe}
+    \caption{Removing subtitle from video (Method 4)}  
+    \SetAlgoNoLine
+    \SetKwFunction{FMain}{$\boldsymbol{v} \longleftarrow removeS4$}
+    \SetKwProg{Fn}{}{}{}
+    \Fn{\FMain{$\boldsymbol{u} , D, \boldsymbol{v} $}}{
+        $s =$ ค่า SSIM ระหว่าง  $u$ และ $v$  บริเวณนอกโดเมนต่อเติม\\
+        \uIf{s > 0.95}{
+            คัดลอกบริเวณในโดเมนต่อเติมจาก $\boldsymbol{u} $ ไปยัง $\boldsymbol{v}$
+        }
+        \uElseIf{s > 0.9}{
+            คัดลอกบริเวณในโดเมนต่อเติมจาก $\boldsymbol{u} $ ไปยัง $\boldsymbol{z}$\\
+            $\boldsymbol{v} = MRSBC(\boldsymbol{u} ,\boldsymbol{z} ,\lambda, \theta, N_{gs}, N_0, N_1, N_2, \varepsilon,1,m)$
+        }\Else{
+            $\boldsymbol{v} = MRSBC(\boldsymbol{u} ,\boldsymbol{z} ,\lambda, \theta, N_{gs}, N_0, N_1, N_2, \varepsilon,1,m)$
+        }
+    }	
+\end{algorithm}

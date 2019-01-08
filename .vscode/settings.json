@@ -28,5 +28,6 @@
     ],
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.message.badbox.show": false,
-    "editor.wordWrap": "on"
+    "editor.wordWrap": "on",
+    "latex-workshop.latexindent.path": "C:/Program Files/MiKTeX 2.9/miktex/bin/x64/latexindent.exe"
 }

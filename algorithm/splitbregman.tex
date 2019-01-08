@@ -1,0 +1,25 @@
+\begin{algorithm}[H]
+    \SetAlgoNoLine
+    \caption{SB method for TV-based Image Inpainting}    
+    \SetKwFunction{FMain}{$u \longleftarrow SB$}
+    \SetKwProg{Fn}{}{}{}
+    
+    \Fn{\FMain{$u, u_{0}, z,\lambda, \theta, N_{gs}, N, \varepsilon$}}{
+        \textbf{initialize}
+        $i = 0$,
+        $\boldsymbol{b} = \vec{0}$,
+        $\boldsymbol{w} = \vec{0}$,
+        $u = u_{0}$ \\
+        \While{$ i < N $ \textbf{and} $err > \varepsilon$}{
+            $u^{old} = u$; 
+            $w^{old} = w$;
+            $b^{old} = b$;
+             \\
+            $u=\underset{u}{\arg\min} \{ \mathcal{J}_1(u) = \dfrac{1}{2} \int_{\Omega} \lambda(u-z)^2 d\Omega + \frac{\theta}{2} \int_{\Omega} (\boldsymbol{w}^{\text{old}} - \nabla u + \boldsymbol{b}^{\text{old}}) d\Omega \}$ \\
+            $w =\underset{\boldsymbol{w}}{\arg\min} \{ \mathcal{J}_2(\boldsymbol{w}) = \int_{\Omega}  | \boldsymbol{w}|  d\Omega  + \frac{\theta}{2} \int_{\Omega} (\boldsymbol{w} - \nabla u^{\text{New}} + \boldsymbol{b}^{\text{old}}) d\Omega \}$\\
+            $ b = b^{old} + \nabla u - \boldsymbol{w} $ \\
+            $err = \frac{||u-u^{old}||}{||u||}$ \\
+            $ i = i + 1 $ \\
+        }
+    }
+\end{algorithm}

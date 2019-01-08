@@ -1,0 +1,15 @@
+\begin{algorithm}[H]
+    \SetAlgoNoLine
+    \caption{Removeing subtitle from video (Method 1)}
+    \SetKwFunction{FMain}{$V \longleftarrow removeS1$}
+    \SetKwProg{Fn}{}{}{}
+    \Fn{\FMain{$V$}}{
+        \textbf{initialize} $i =1$\\
+        \While{$i < N_f - 1$}{
+            $\boldsymbol{u}_i$ คือเฟรมที่ $i$ ใน $V$ \\
+            $\boldsymbol{u}_{i+1}$ คือเฟรมที่ $i+1$ ใน $V$ \\
+            $D$ คือโดเมนต่อเติมใน $\boldsymbol{u}_{i+1}$ \\
+            $\boldsymbol{u}_{i+1} = removeS2(\boldsymbol{u}_{i},D,\boldsymbol{u}_{i+1})$
+        }
+    }	
+\end{algorithm}
