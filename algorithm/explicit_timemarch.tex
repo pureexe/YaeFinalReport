@@ -1,8 +1,19 @@
 \begin{algorithm}[H]
-    \caption{ETM Method for TV-based Image Inpainting}		
-    \SetKwFunction{FMain}{$u \longleftarrow ETM$}\SetAlgoNoLine 
+    \caption{วิธีการเดินเวลาแบบชัดแจ้งสำหรับการต่อเติมภาพที่ใช้การแปรผันรวม}
+    \KwIn{
+		\\
+		\hspace{1cm} $u$ คือรูปภาพที่ต้องการต่อเติม \\
+		\hspace{1cm} $\lambda$ คือพารามิเตอร์เร็กกิวลาร์ไรเซชัน ที่ได้กล่างถึงในสมการ (\ref{e2}) \\
+		\hspace{1cm} $\beta$ เป็นจำนวนจริงบวกที่ใช้เพื่อหลีกเลี่ยงการหารด้วยศูนย์\\
+		\hspace{1cm} $\tau$ เป็นจำนวนจริงบวกที่เป็นตัวแปรเดินเวลา \\
+		\hspace{1cm} $N$ เป็นจำนวนเต็มบวกสำหรับกำหนดจำนวนรอบที่ทำงาน \\
+		\hspace{1cm} $\varepsilon$ เป็นจำนวนจริงบวกของค่าความคลาดเคลื่อนสัมพัทธ์ \\
+	}
+	\KwOut{รูปภาพที่ผ่านการต่อเติมแล้ว}
+    \SetKwFunction{FMain}{$u \longleftarrow EplicitTimeMarching$}
+    \SetAlgoNoLine 
     \SetKwProg{Fn}{}{}{}
-    \Fn{\FMain{$u,z,\lambda,\beta,\tau,N,\varepsilon$}}{
+    \Fn{\FMain{$u,\lambda,\beta,\tau,N,\varepsilon$}}{
         \textbf{initialize}
         $i = 0$; $z = u$; $err = 1$\\
         \While{$ i < N $ \textbf{and} $err > \varepsilon$}{

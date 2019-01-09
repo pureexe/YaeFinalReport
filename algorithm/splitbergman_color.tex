@@ -1,11 +1,11 @@
 \begin{algorithm}[H]
     \SetAlgoNoLine
-    \caption{SB Method for Color TV-based Image Inpainting}
-    \SetKwFunction{FMain}{$\boldsymbol{u} \longleftarrow SBC$}
+    \caption{วิธีการสปริทเบรกแมนสำหรับการต่อเติมภาพสีด้วยวิธีการแปรผันรวม}
+    \SetKwFunction{FMain}{$\boldsymbol{u} \longleftarrow SplitBregmanColor$}
     \SetKwProg{Fn}{}{}{}
-    \Fn{\FMain{$\boldsymbol{u}, \boldsymbol{z} \lambda, \theta, N_{gs}, N, \varepsilon$}}{
+    \Fn{\FMain{$\boldsymbol{u}, \lambda, \theta, N_{gs}, N, \varepsilon$}}{
         \For{$l = 1:3$}{
-        $u_l \longleftarrow SB(u_l, z_l \lambda, \theta, N_{gs}, N, \varepsilon) $
+        $u_l \longleftarrow SplitBregman(u_l \lambda, \theta, N_{gs}, N, \varepsilon) $
         }
     }
 \end{algorithm}

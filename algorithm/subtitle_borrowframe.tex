@@ -1,14 +1,14 @@
 \begin{algorithm}[H]
     \SetAlgoNoLine
     \label{algorithm:subtitle_borrowframe}
-    \caption{Removing subtitle from video (Method 2)}  
-    \SetKwFunction{FMain}{$\boldsymbol{v} \longleftarrow removeS2$}
+    \caption{การลบบทบรรยายโดยใช้วิธีการยืมเฟรม}  
+    \SetKwFunction{FMain}{$\boldsymbol{v} \longleftarrow RemoveByBorrowFrame$}
     \SetKwProg{Fn}{}{}{}
     \Fn{\FMain{$\boldsymbol{u} , D, \boldsymbol{v} $}}{
         $s =$ ค่า SSIM ระหว่าง  $\boldsymbol{u}$ และ $\boldsymbol{v}$  บริเวณนอกโดเมนต่อเติม\\
         \If{s > 0.9}{
-            คัดลอกบริเวณในโดเมนต่อเติมจาก $\boldsymbol{u} $ ไปยัง $\boldsymbol{z}$
+            คัดลอกบริเวณในโดเมนต่อเติมจาก $\boldsymbol{u} $ ไปยัง $\boldsymbol{v}$
         }
-        $\boldsymbol{v} = MRSBC(\boldsymbol{u} ,\boldsymbol{z} ,\lambda, \theta, N_{gs}, N_0, N_1, N_2, \varepsilon,1,m)$
+        $\boldsymbol{v} = MultiSplitBregmanColor(\boldsymbol{v},\lambda, \theta, N_{gs}, N_0, N_1, N_2, \varepsilon,1,m)$
     }	
 \end{algorithm}

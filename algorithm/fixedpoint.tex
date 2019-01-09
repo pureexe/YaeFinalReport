@@ -1,21 +1,36 @@
 \begin{algorithm}[H]
 	\SetAlgoNoLine
-	\caption{FP Method for TV-based Image Inpainting}	
-	\SetKwFunction{FMain}{$u \longleftarrow FP$}
+	\caption{วิธีการทำซ้ำจุดตรึงสำหรับการต่อเติมภาพที่ใช้การแปรผันรวม}
+	\KwIn{
+		\\
+		\hspace{1cm} $u$ คือรูปภาพที่ต้องการต่อเติม \\
+		\hspace{1cm} $\lambda$ คือพารามิเตอร์เร็กกิวลาร์ไรเซชัน ที่ได้กล่างถึงในสมการ (\ref{e2}) \\
+		\hspace{1cm} $\beta$ เป็นจำนวนจริงบวกที่ใช้เพื่อหลีกเลี่ยงการหารด้วยศูนย์\\
+		\hspace{1cm} $N$ เป็นจำนวนเต็มบวกสำหรับกำหนดจำนวนรอบที่ทำงาน \\
+		\hspace{1cm} $\varepsilon$ เป็นจำนวนจริงบวกของค่าความคลาดเคลื่อนสัมพัทธ์ \\
+	}
+	\KwOut{รูปภาพที่ผ่านการต่อเติมแล้ว}	
+	\SetKwFunction{FMain}{$u \longleftarrow FixedPoint$}
 	\SetKwProg{Fn}{}{}{}
 	\Fn{\FMain{$u, z,\lambda, \beta, N, \varepsilon$}}{		
 		\textbf{initialize} $i=0$;$u = z$;$err = 1 $\\
 		\While{$ i < N $ \textbf{and} $err > \varepsilon$}{
 			$ u^{old} = u$ \\
-			$u = GS(u, z, \lambda, \beta, N_{gs})$\\
+			$u = GaussSeidel(u, z, \lambda, \beta, N_{gs})$\\
 			$err = \frac{||u-u^{old}||}{||u||}$ \\
 			$ i = i + 1 $
 		}
 	}
-	\SetKwFunction{FMain}{$u \longleftarrow GS$}
-	\Fn{\FMain{$u, z, \lambda, \beta, N_{gs}$}}{
+\end{algorithm}
+
+\begin{algorithm}[H]
+	\SetAlgoNoLine
+	\caption{การทำซ้ำเกาส์-ไซเดล สำหรับวิธีการจุดตรึง}
+	\SetKwProg{Fn}{}{}{}
+	\SetKwFunction{FMain}{$u \longleftarrow GaussSeidel$}
+	\Fn{\FMain{$u, \lambda, \beta, N_{gs}$}}{
 		\textbf{initialize} $k = 0$\\
-		compute $D(u)_{i,j} = \frac{1}{\sqrt{u_x^2+u_y^2+\beta}}, 1 \leq i \leq n_x, 1 \leq j \leq n_y$\\
+		$D(u)_{i,j} = \frac{1}{\sqrt{u_x^2+u_y^2+\beta}}, 1 \leq i \leq n_x, 1 \leq j \leq n_y$\\
 		\While{$k < N_{gs}$}{
 				$u_{i,j}^{k+1} = \frac{\lambda_{i,j}z_{i,j}+                (D_{i,j}(u_{i+1,j}^k+u_{i,j+1}^k)+D_{i-1,j}u_{i-1,j}^{k+1}+D_{i,j-1}u_{i,j-1}^{k+1})}{
 				\lambda_{i,j}+(2D_{i,j}+D_{i-1,j}+D_{i,j-1})}$\\

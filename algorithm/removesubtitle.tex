@@ -1,12 +1,12 @@
 \begin{algorithm}[H]
-    \caption{Removing subtitle from video}	
+    \caption{วิธีการลบบทบรรยายจากวิดีโอ}	
     \SetAlgoNoLine
-    \SetKwFunction{FMain}{$V \longleftarrow RemoveS$}
+    \SetKwFunction{FMain}{$V \longleftarrow SubtitleRemove$}
     \SetKwProg{Fn}{}{}{}
     \Fn{\FMain{$V$}}{
         \For{$ i = 1,2,... N_f$}{
-            $\bullet$ หาโดเมนต่อเติม $D$ จาก $\boldsymbol{u}_i$\\
-            $\bullet$ ต่อเติมภาพ $\boldsymbol{u}_i$ โดยใช้โดเมนต่อเติม $D$\\
+            $\bullet$ หาโดเมนต่อเติม $D$ จากเฟรม $\boldsymbol{u}_i$ ซึ่งเป็นภาพที่ $i$ ของวิดีโอ $V$\\
+            $\bullet$ ต่อเติมเฟรม $\boldsymbol{u}_i$ โดยใช้โดเมนต่อเติม $D$\\
         }
     }
 \end{algorithm}
