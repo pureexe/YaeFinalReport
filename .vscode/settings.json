@@ -1,8 +1,6 @@
 {
-    "latex-workshop.latex.autoBuild.onSave.enabled": false,
+    "latex-workshop.latex.autoBuild.run": "never",
     "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
-    "latex-workshop.latex.clean.enabled": false,
-    "latex-workshop.latex.clean.onFailBuild.enabled": false,
     "latex-workshop.latex.clean.fileTypes":[
         "*.aux",
         "*.bbl",
