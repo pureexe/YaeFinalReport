@@ -1,13 +1,125 @@
 \section{แคลคูลัสของการแปรผันเบื้องต้น}
 
+% สั้นไป
+% energy unction min int J(u)
+% พูดถึง minimizer
+% ลงไปให้ถึงการดริฟ
+% หาหนังสือ functional analysis / Optimization
+% จะบอคำตอบของ variational form ได้จาก pde โดยกราฟบอกว่ามันเชื่อมไปลากราซ์อย่างไร อย่าลืมยกตัวอย่าง
+
+
 \hspace{1cm} แคลคูลัสของการแปรผัน (Calculus of variations) คือสาขาวิชาในวิชา คณิตศาสตร์วิเคราห์ เพื่อใช้สำหรับแก้ปัญหาค่าเหมาะสม โดยจะสนใจที่จะหาฟังก์ชันที่เหมาะสมแทนที่จะหาค่าของตัวแปรที่เหมาะสม แคลคูลัสของการแปรผันนั้นมักจะเกี่ยวข้องกับปัญหาที่ต้องการปริมาณน้อยสุดหรือมากสุดซึ่งปรากฏอยู่ในรูปของอนุพันธ์หรือปริพันธ์ที่ไม่ทราบค่าฟังก์ชัน
 
 \hspace{1cm}ซึ่งฟังก์ชันหาค่าต่ำสุด มักจะมีรูปทั่วไปดังสมการ  \ref{equation:general-minimize} 
-
 \begin{align}
     \underset{u}{{min}} \int \mathcal{J}(u)
     \label{equation:general-minimize}
 \end{align}
 
-โดยที่ $\mathcal{J} : \mathbb{U} \rightarrow \mathbb{R} $ เป็นฟังก์ชันที่ส่งจากฟังก์ชันไปยังจำนวนจริง เรียกว่า ฟังก์ชันนัล (functional) และกำหนด $\mathbb{U}$ เป็นปริภูมิของคำตอบซึ่งประกอบด้วยฟังก์ชันค่าต่ำสุดของ $\mathcal{J}$ 
+โดยที่ $\mathcal{J} : \mathcal{U} \rightarrow \mathbb{R} $ เป็นฟังก์ชันที่ส่งจากฟังก์ชันไปยังจำนวนจริง เรียกว่า ฟังก์ชันนัล (functional) พร้อมทั้งกำหนด $\mathcal{U}$ เป็นปริภูมิของคำตอบซึ่งประกอบด้วยฟังก์ชันค่าต่ำสุดของ $\mathcal{J}$  และ $\mathcal{V}$ เป็นปริภูมิทดสอบซึ่งบริภูมินี้สามารถเขียนเป็นผลต่างระหว่าง 2 ฟังก์ชันได้ นั่นคือ
+\begin{align}
+    \mathcal{V} = \{v|v = u - \hat{u} \hspace{0.25cm} \text{และ} \hspace{0.25cm} u,\hat{u} \in \mathcal{U} \}
+\end{align}
 
+\begin{Definition}
+    (ย่านใกล้เคียง) ให้ $\mathcal{U}$ เป็นปริภูมิคำตอบ ฟังก์ชัน $\hat{u} \in \mathcal{U}$ และ $\epsilon > 0$ แล้ว $\mathcal{B}_{\epsilon}$ จะเป็นย่านใกล้เคียงของ $\hat{u}$ เมื่อ
+    \begin{align*}
+        \mathcal{B}_{\epsilon} = \{ u \in \mathcal{U} | || u - \hat{u} || < \epsilon \}
+    \end{align*}
+\end{Definition}
+
+จาก \ref{equation:general-minimize} โลคอลมินิไมเซอร์ (local minimizer) จะกำหนดโดย 
+
+\begin{Definition}
+    (โลคอลมินิไมเซอร์) ให้ $\mathcal{U}$ เป็นปริภูมิคำตอบ และฟังก์ชันนัล $\mathcal{J} : \mathcal{U} \rightarrow \mathbb{R} $ จะเรียก $\hat{u} \in \mathcal{U}$ ว่าโลตอลมินิไมเซอร์ของ $\mathcal{J}$ ถ้าทุก $\epsilon > 0 $ มี $\delta > 0$ โดยที่ $\mathcal{J}(\hat{u}) \leq \mathcal{J}(u)$ สำหรับทุก $u \in \mathcal{B}_{\epsilon}(\hat{u})$ 
+\end{Definition}
+
+ในการนิยามเงื่อนไขที่จำเป็นสำหรับโลคอลมินิไมเซอร์ของ $\mathcal{J}$ จำเป็นต้องมีการกำหนดการหาอนุพันธ์แบบมีทิศทาง
+
+\begin{Definition}
+    (G\^{a}teaus-differentiable)
+    $\mathcal{U}$ เป็นปริภูมิคำตอบม $\mathcal{V}$ เป็นปริภูมิทดสอบ และฟังก์ชันนัล $\mathcal{J} : \mathcal{U} \rightarrow \mathbb{R}$ แล้ว $\mathcal{J}$ เป็น G\^{a}teaus-differentiable เมื่อทุก $u \in \mathcal{U}$ อยู่ในทิศทางของ $v \in \mathcal{V}$ ถ้า
+    \begin{enumerate}
+        \item มีจำนวน $\hat{\epsilon} > 0$ ซึ่งทำให้ $u_{\epsilon} = u + \epsilon v \in \mathcal{U}$ สำหรับทุก $|e| \leq \hat{\epsilon}$
+        \item ฟังก์ชัน $J(\epsilon) = \mathcal{J}(u_\epsilon)$
+    \end{enumerate}
+    โดยอนุพันธ์อันดัแรกของ G\^{a}teaus หรือคการแปรผันอันดับแรก (first variation) ของ $\mathcal{J}$ สำหรับ $u$ ที่อยู่ในทิศทางของ $v$ กำหนดโดย
+    \begin{align*}
+        \delta \mathcal{J}(u;v) = J'(0) = \frac{d\mathcal{J}(u + \epsilon v)}{d \epsilon} \Big|_{\epsilon = 0} = \lim_{\epsilon = 0}\frac{\mathcal{J}(u + \epsilon v)}{\epsilon} 
+    \end{align*}
+\end{Definition}
+
+และนิยามจุดคงตัว (stationary point) โดย
+
+\begin{Definition}
+(จุดคงตัว) $\mathcal{U}$ เป็นปริภูมิคำตอบม $\mathcal{V}$ เป็นปริภูมิทดสอบ และฟังก์ชันนัล $\mathcal{J} : \mathcal{U} \rightarrow \mathbb{R}$ สมมติให้ บาง $\hat{u} \in \mathcal{U}$ แล้ว $\mathcal{J}$ เป็น G\^{a}teaus-differentiable สำหรับทุกฟังก์ชันทดสอบ $v \in \mathcal{V}$ แล้ว $\hat{u}$ จะเรียกว่าจุดคงของ $\mathcal{J}$ ก็ต่อเมื่อ $\delta\mathcal{J}(\hat{u};v) = 0$ สำหรับทุก $v \in \mathcal{V}$
+\end{Definition}
+
+เงื่อนไขที่จำเป็นสำหรับมินิไมเซอร์นั้นสามารถสร้างได้จากการใช้จุดคงตัว
+
+\begin{Theorem}
+    (เงื่อนไขที่จำเป็นสำหรับโลคอลมินิไมเซอร์) ให้ $\mathcal{U}$ เป็นปริภูมิคำตอบ ซึ่ง $\hat{u} \in \mathcal{U}$, ฟังก์ชันนัล $\mathcal{J} : \mathcal{U} \rightarrow \mathbb{R}$, $\mathcal{V}$ เป็นปริภูมิทดสอบโดยที่ $v$ เป็นฟังก์ชันทดสอบซึ่ง $v \in \mathcal{V}$ และ $\mathcal{J}$ เป็น G\^{a}teaus-differentiable สำหรับทุก $\hat{u}$\\
+    ถ้า $\hat{u}$ เป็นโลคอลมินิไมเซอร์ของ $\mathcal{J}$ แล้ว $\hat{u}$ เป็นจุดคงตัวของ  $\mathcal{J}$\\
+    สำหรับบทพิสูจน์จะพบได้ใน \cite{nessery_minimizer}
+    \label{theroem:nessery_minimizer}
+\end{Theorem}
+
+ด้วยทฤษฎีบทนี้เราจะศึกษาเงื่อนไขของจุดคงตัวเพิ่มเติมโดยเราเลือกฟังก์ชันนัลทั่วไป $\mathcal{J}$ ซึ่งนิยามโดย
+
+\begin{align}
+    \mathcal{J}(u) = \int_{\Omega} F[x,u(x),\nabla u(x)] dx
+    \label{equation:general_functional}
+\end{align}
+
+โดยที่ $\Omega \subset \mathbb{R}^{d}, d>1$ เป็นเซ็ตเปิดมีขอบเขตและ $F$ เป็นฟังก์ชันนัลที่ขึ้นอยู่กับ $x=(x_1,x_2,...,X_d)^\top$ สมมติให้ $\mathcal{J}$ เป็น G\^{a}teaus-differentiable ในทุกทิศทางของปริภูมิทดสอบ ดังนั้นจึงสมมุติได้ว่า $F$  เป็นอนุพันธ์ย่อยที่ต่อเนื่อง
+
+ก่อนที่จะแนะนำเงื่อนไขสำหรับจุดคงตัวของ $\mathcal{J}$ เราแนะนำ
+
+\begin{align}
+    \nabla_{u} F = \partial F / \partial u = F_u
+\end{align}
+
+สำหรับเกรเดียนซ์ของ $F$ ซึ่งขึ้นอยู่กับ $u$ จะกำหนดโดย
+
+\begin{align}
+    \nabla F = (\partial F / \partial x_1, ... \partial F / \partial x_d, )^\top
+\end{align}
+
+ในทำนองเดียวกันเกรเดียนซ์ของ $F$ ซึ่งขึ้นอยู่กับ $\nabla u$ กำหนดโดย
+
+\begin{align}
+    \nabla_{\nabla u} F = (\partial F / \partial u_{x_1},..., \partial F / \partial u_{x_d})^\top \in \mathbb{R}^d
+\end{align}
+
+โดยในขั้นนี้เราจะเลือกคำตอบที่เจาะจงโดยการเพิ่มเงื่อนไขค่าขอบเข้าไป ตัวอย่างเช่น
+
+\begin{align}
+    \tilde{\mathcal{U}} = \{u \in \mathcal{U} | u = c \text{บน} \partial \Omega \}
+\end{align}
+
+และเช่นเดียวกันปริภูมิทดสอบจะถูกกำหนดโดย
+
+\begin{align}
+    \tilde{\mathcal{V}} = \{v \in \mathcal{V} | v = 0 \text{บน} \partial \Omega \}
+\end{align}
+
+อีกทั้งขั้นตอนที่กล่าวมาไม่เพียงครอบคลุมปริภูมิทั่วไป $\mathcal{U}$ และ $\mathcal{V}$ แต่ยังครอบคลุมไปถึงกรณีที่เป็นเวคเตอร์เมื่อ $ \boldsymbol{u} = (u_1,u_2,...,u_d)^\top : \mathbb{R}^{d} \rightarrow \mathbb{R}^{d}$
+
+\begin{Lemma}
+    (จุดคงตัวของ $\mathcal{J}$) ฟังก์ชัน $u \in \mathcal{U}$ เป็นจุดคงตัวของฟังก์ชันนัลทั่วไป $\mathcal{J}$ \ref{equation:general_functional} ถ้า
+    \begin{align}
+        \int_{\Omega} \Big \langle \nabla_u F - \nabla \cdot \nabla_{\nabla u} F,v \Big \rangle_{\mathbb{R}^{d}} dx = 0
+        \label{equation:lemma_stationarypoint}
+    \end{align}
+    \label{lemma:stationary_point}
+    บทพิสูจน์ของทฤษฏีบทประกอบนี้สามารถดูได้จาก \cite{general_functional_stationary}
+\end{Lemma}
+
+เห็นได้ชัดว่า \ref{equation:lemma_stationarypoint} เป็นจริงสำหรับฟังก์ชันทดสอบคงตัวที่ค่าไม่เจาะจง เพราะถ้า $\nabla_u F - \nabla \cdot \nabla_{\nabla u}$ การยืนยันทฤษฏีบทนี้ เป็นทฤษฏีบทที่รู้กันดีอยู่แล้ว ดังนั้น $u \in \tilde{U}$ เป็นจุดคงตัวของฟังก์ชันนัล $\mathcal{J}$ ซึ่งเป็น G\^{a}teaus-differentiable ถ้า 
+
+\begin{align}
+    \nabla u F - \nabla \ \nabla_{\nabla u} F = 0 \text{บน} \Omega
+    \label{equation:lemma_stationarypoint2}
+\end{align}
+
+โดยการใช้ทฤษฏีบท \ref{theroem:nessery_minimizer} กับ  \ref{equation:lemma_stationarypoint2} จะได้เงื่อนไขที่จำเป็นสำหรับโลคอลมินิไมเซอร์ของ \ref{equation:general-minimize} จาก $ d > 1$ และ \ref{equation:lemma_stationarypoint2} จะนำไปสู่สมการเชิงอนุพันธ์ย่อย ซึ่งรู้จักกันในชื่อของสมการออยเลอร์-ลากรางซ์ ที่มีเงื่อนไขค่าขอบ โดยจะเรียก \ref{equation:general-minimize} ที่มีเงื่อนไขค่าขอบว่า รูปแบบการแปรผัน (variational formulation) และถ้าเงื่อนไขค่าขอบนั้นถูกกำหนดไว้ชัดเจนตามทฤษฏีบทประกอบที่ \ref{lemma:stationary_point} จะเรียกเงื่อนไขนี้ว่า เงื่อนไขจำเป็น (essential condition) และในทางกลับกันหากค่าขอบไม่ถูกกำหนดไว้ชัดเจนจะเรียกว่า เงื่อนไขธรรมชาติ (natural condition)
