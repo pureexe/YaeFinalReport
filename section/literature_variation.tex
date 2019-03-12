@@ -60,7 +60,7 @@
 \begin{Theorem}
     (เงื่อนไขที่จำเป็นสำหรับโลคอลมินิไมเซอร์) ให้ $\mathcal{U}$ เป็นปริภูมิคำตอบ ซึ่ง $\hat{u} \in \mathcal{U}$, ฟังก์ชันนัล $\mathcal{J} : \mathcal{U} \rightarrow \mathbb{R}$, $\mathcal{V}$ เป็นปริภูมิทดสอบโดยที่ $v$ เป็นฟังก์ชันทดสอบซึ่ง $v \in \mathcal{V}$ และ $\mathcal{J}$ เป็น G\^{a}teaus-differentiable สำหรับทุก $\hat{u}$\\
     ถ้า $\hat{u}$ เป็นโลคอลมินิไมเซอร์ของ $\mathcal{J}$ แล้ว $\hat{u}$ เป็นจุดคงตัวของ  $\mathcal{J}$\\
-    สำหรับบทพิสูจน์จะพบได้ใน \cite{nessery_minimizer}
+    สำหรับบทพิสูจน์จะพบได้ใน \cite{ref:calculus_of_variation}
     \label{theroem:nessery_minimizer}
 \end{Theorem}
 
@@ -94,13 +94,13 @@
 โดยในขั้นนี้เราจะเลือกคำตอบที่เจาะจงโดยการเพิ่มเงื่อนไขค่าขอบเข้าไป ตัวอย่างเช่น
 
 \begin{align}
-    \tilde{\mathcal{U}} = \{u \in \mathcal{U} | u = c \text{บน} \partial \Omega \}
+    \tilde{\mathcal{U}} = \{u \in \mathcal{U} | u = c \text{ บน } \partial \Omega \}
 \end{align}
 
 และเช่นเดียวกันปริภูมิทดสอบจะถูกกำหนดโดย
 
 \begin{align}
-    \tilde{\mathcal{V}} = \{v \in \mathcal{V} | v = 0 \text{บน} \partial \Omega \}
+    \tilde{\mathcal{V}} = \{v \in \mathcal{V} | v = 0 \text{ บน } \partial \Omega \}
 \end{align}
 
 อีกทั้งขั้นตอนที่กล่าวมาไม่เพียงครอบคลุมปริภูมิทั่วไป $\mathcal{U}$ และ $\mathcal{V}$ แต่ยังครอบคลุมไปถึงกรณีที่เป็นเวคเตอร์เมื่อ $ \boldsymbol{u} = (u_1,u_2,...,u_d)^\top : \mathbb{R}^{d} \rightarrow \mathbb{R}^{d}$
@@ -112,14 +112,40 @@
         \label{equation:lemma_stationarypoint}
     \end{align}
     \label{lemma:stationary_point}
-    บทพิสูจน์ของทฤษฏีบทประกอบนี้สามารถดูได้จาก \cite{general_functional_stationary}
+    บทพิสูจน์ของทฤษฏีบทประกอบนี้สามารถดูได้จาก \cite{ref:general_functional_stationary}
 \end{Lemma}
 
 เห็นได้ชัดว่า \ref{equation:lemma_stationarypoint} เป็นจริงสำหรับฟังก์ชันทดสอบคงตัวที่ค่าไม่เจาะจง เพราะถ้า $\nabla_u F - \nabla \cdot \nabla_{\nabla u}$ การยืนยันทฤษฏีบทนี้ เป็นทฤษฏีบทที่รู้กันดีอยู่แล้ว ดังนั้น $u \in \tilde{U}$ เป็นจุดคงตัวของฟังก์ชันนัล $\mathcal{J}$ ซึ่งเป็น G\^{a}teaus-differentiable ถ้า 
 
 \begin{align}
-    \nabla u F - \nabla \ \nabla_{\nabla u} F = 0 \text{บน} \Omega
+    \nabla u F - \nabla \ \nabla_{\nabla u} F = 0 \text{ บน } \Omega
     \label{equation:lemma_stationarypoint2}
 \end{align}
 
-โดยการใช้ทฤษฏีบท \ref{theroem:nessery_minimizer} กับ  \ref{equation:lemma_stationarypoint2} จะได้เงื่อนไขที่จำเป็นสำหรับโลคอลมินิไมเซอร์ของ \ref{equation:general-minimize} จาก $ d > 1$ และ \ref{equation:lemma_stationarypoint2} จะนำไปสู่สมการเชิงอนุพันธ์ย่อย ซึ่งรู้จักกันในชื่อของสมการออยเลอร์-ลากรางซ์ ที่มีเงื่อนไขค่าขอบ โดยจะเรียก \ref{equation:general-minimize} ที่มีเงื่อนไขค่าขอบว่า รูปแบบการแปรผัน (variational formulation) และถ้าเงื่อนไขค่าขอบนั้นถูกกำหนดไว้ชัดเจนตามทฤษฏีบทประกอบที่ \ref{lemma:stationary_point} จะเรียกเงื่อนไขนี้ว่า เงื่อนไขจำเป็น (essential condition) และในทางกลับกันหากค่าขอบไม่ถูกกำหนดไว้ชัดเจนจะเรียกว่า เงื่อนไขธรรมชาติ (natural condition)
+โดยการใช้ทฤษฏีบท \ref{theroem:nessery_minimizer} กับ  \ref{equation:lemma_stationarypoint2} จะได้เงื่อนไขที่จำเป็นสำหรับโลคอลมินิไมเซอร์ของ \ref{equation:general-minimize} จาก $ d > 1$ และ \ref{equation:lemma_stationarypoint2} จะนำไปสู่สมการเชิงอนุพันธ์ย่อย ซึ่งรู้จักกันในชื่อของสมการออยเลอร์-ลากรางซ์ ที่มีเงื่อนไขค่าขอบ โดยจะเรียก \ref{equation:general-minimize} ที่มีเงื่อนไขค่าขอบว่า รูปแบบการแปรผัน (variational formulation) และถ้าเงื่อนไขค่าขอบนั้นถูกกำหนดไว้ชัดเจนตามทฤษฏีบทประกอบที่ \ref{lemma:stationary_point} จะเรียกเงื่อนไขนี้ว่า เงื่อนไขจำเป็น (essential condition) และในทางกลับกันหากค่าขอบไม่ถูกกำหนดไว้ชัดเจนจะเรียกว่า เงื่อนไขธรรมชาติ (natural condition) 
+
+โดยสรุปแล้วทุกคำตอบ $u* \in \mathcal{U}$ ในปัญหาค่าเหมาะสมทั่วไปดังเช่น \ref{equation:general-minimize} ที่มีฟังก์ชันนัล $\mathcal{J}$ ซึ่งเป็น G\^{a}teaus-differentiable ที่ถูกกำหนดโดย \ref{equation:general_functional} จะเป็นคำตอบของปัญหาค่าขอบซึ่งเป็นส่วนประกอบของสมการออยเลอร์-ลากรางซ์
+
+\begin{align*}
+    \nabla_u F - \nabla \cdot \nabla_{\nabla u} F = 0 \text{ บน } \Omega
+\end{align*}
+
+ส่วนเงื่อนไขค่าขอบนั้นสามารถเป็นแบบเงื่อนไขจำเป็น หรือเงื่อนไขธรรมชาติก็ได้
+
+\begin{align*}
+    \langle \nabla_{\nabla u} F, n \rangle_{\mathbb{R}^{d}} = 0 \text{ บน } \partial \Omega
+\end{align*}
+
+เมื่อ $n = (n_1, ..., n_d)^\top$ หมายถึงเวคเตอร์หนึ่งหน่วยปกติภายนอก (outer normal vector unit) ของ $\partial \Omega$
+
+\begin{Example}
+    ให้ $d = 2, \Omega = [0,1]^2, F = |\nabla u|^2 \text{เมื่อ} u = u(x)$ และรูปแบบแปรผันเป็น 
+    \begin{align*}
+        \underset{min}{u} \int_{\Omega} |\nabla u|^2 dx 
+    \end{align*}
+    จะเทียบเท่ากับปัญหาค่าขอบ
+    \begin{align*}
+        - \triangle u = 0 \text{ บน } \Omega \\
+        \frac{ \partial  u }{ \partial \boldsymbol{n}} = 0 \text{ บน } \partial \Omega
+    \end{align*}
+\end{Example}
