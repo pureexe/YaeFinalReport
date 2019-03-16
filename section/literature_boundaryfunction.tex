@@ -1,18 +1,65 @@
 \section{ฟังก์ชันของการแปรผันที่มีขอบเขต}
-\textcolor{red}{ยังไม่ได้แก้ไข} 
+ให้ $\Omega$ เป็นเซ็ตเปิดมีขอบเขตของ $ \mathbb{R}^{d}$ และให้ $u \in L^{1}(\Omega)$ กำหนดให้การแปรผันรวม $u$ เป็น
 
-\hspace{1cm} เมื่อใช้วิธีการแปรผันจนได้สมการอนุพันธ์ย่อยแล้ว จะพบว่าสมการอนุพันธ์ย่อยนั้น เป็นปัญหาค่าขอบ (boundary value problem) ซึ่งจะมีเงื่อนไขเพิ่มเติมเป็น ค่าขอบ (boundary value) ตัวอย่างเช่นเมื่อ $\Omega = [0,1]^2$ และ $u=u(x)$ และสูตรการแปรผัน (varational fomular) เป็น 
-\begin{align*}
-    \underset{u}{{min}} \int_{\Omega} |\nabla u |^2 dx
-\end{align*}
+\begin{align} 
+    \int_{\Omega} |Du| = \text{sup} \Big\{ \int_\Omega u \nabla \cdot \varphi \Big\}
+\end{align}
 
-เมื่อใช้วิธ๊การแปรผันแล้วจะได้ปัญหาค่าขอบ
+เมื่อ  เป็น (Lebesgue measure) แลt $C_0^1 ( \Omega , \mathbb{R}^d)$ คือปริภูมิของฟังก์ชันต่อเนื่องที่หาอนุพันธ์ได้และกระชับใน $\Omega$
 
-\begin{align*}
-\left \{ \begin{array}{ll}  - \triangle u = 0,  & \hspace{1cm} x \in \Omega \\ \dfrac{\partial u}{\partial n} = 0, & \hspace{1cm} x \in \partial \Omega \end{array} \right .
-\end{align*}
+\hspace{1cm} ตามที่ได้ถูกกล่าวถึงใน \cite{ref:bounded_variation} สำหรับกรณีเฉพาะซึ่งเป็นที่น่าสนใจ $u \in C^1 (\Omega, \mathbb{R}^d )$ โดยการใช้ปริพันธ์แบบแยกส่วน
 
-\hspace{1cm} ซึ่งปัญหาค่าขอบที่ดังที่ได้ยกตัวอย่างให้เห็นนี้เป็นปัญหาค่าขอบแบบนิวแมน (neuman) เนื่องจาก $\dfrac{\partial u}{\partial n} = 0$ ซึ่งค่าขอบแบบนิวแมนนี้เอง จะเป็นสิ่งที่ใช้ในโครงงานวิจัยเรื่องนี้ โดยจะสามารถสร้างค่าขอบนิวแมนได้โดยการขยายโดเมนออก จากนั้นให้ค่าของฟังก์ชันในโดเมนที่ถูกขยายมีค่าเท่ากับค่าที่ใกล้ที่สุดเมื่อวัดระยะทางด้วยระยะทางแบบยูคลิด ดังภาพ \ref{figure:boundary_condition} โดยภาพซ้ายจะมีโดเมนอยู่ในช่วง $[1,8]^2$ ซึ่งการคำนวณบางอย่างเช่นการหาแกรเดียนจำเป็นต้องใช้ค่าขอบเพื่อคำนวณ จึงทำการขยายโดเมนเป็น $[0,9]^2$ โดยจะขยายบริเวณสีแดงที่เป็นขอบในภาพออกไป โดยใช้ค่าที่ใกล้ที่สุดที่อยู่ในขอบสีแดง
+\begin{align}
+    \int_\Omega u \nabla \cdot \varphi d x = - \int_\Omega \sum_{i=1}^{d} \frac{\partial u}{\partial x_i} \varphi_i d x
+\end{align}
 
-\input{figure/boundary_condition}
+สำหรับทุก $\varphi \in C_0^1 (\Omega,\mathbb{R}^{d})^{d} $ และ
 
+\begin{align}
+    \int_\Omega | D u | = \int_\Omega | \nabla u | dx
+\end{align}
+
+ฟังก์ชัน $u \in L^1 (\Omega)$ เรียกว่ามีขอบเขตการแปรผันใน $\Omega$ ถ้า $\int_\Omega |Du| < \infty$ โดยเรากำหนดให้ $BV(\Omega)$ เป็นปริภูมิของฟังก์ชันทั้งหมดใน $L^1(\Omega)$ การแปรผันที่มีขอบเขต
+
+\begin{Example}
+    ฟังก์ชัน $f1, f2 \text{และ} f3 $ ต่อไปนี้กำหนดโดย
+    \begin{align}
+        f1(x) = sin x,
+    \end{align}
+    \begin{align}
+        f2(x) = \left\{
+            \begin{array}{ll}
+              1/4, \hspace{1cm}  x \in [0,\Pi/8] \\
+              1/2, \hspace{1cm}  x \in [\Pi/8,\Pi/4] \\
+              3/4, \hspace{1cm}  x \in [\Pi/4,3\Pi/8] \\
+              1, \hspace{1cm}  x \in [3\Pi/8,\Pi/2] \\
+            \end{array}
+          \right.
+    \end{align}
+    \begin{align}
+        f3(x) = \frac{2x}{\Pi},
+    \end{align}
+    จาก $BV(\Omega)$ ซึ่ง $\Omega = [0, \Pi/2]$ และมีการแปรผันรวมมีค่าเป็น 1 ให้ฟังก์ชัน $f4$ กำหนดโดย
+    \begin{align}
+        f4(x) = \left\{ 
+            \begin{array}{ll}
+                0, \hspace{1cm}  x = 0 \\
+                sin 1/x, \hspace{1cm} x \in (0,a) \text{และ} a > 0
+            \end{array}
+        \right.
+    \end{align}
+    
+    มีการแปรผันไม่จำกัดและไม่อยู่ใน $BV(\Omega)$ ซึ่ง $\Omega = [0,a]$ สำหรับทุก $a > 0$
+    \input{figure/boundary_slove.tex}
+\end{Example}
+
+ซึ่งสำหรับในหัวข้อนี้เราสามารถสรุปได้เป็นสูตรของคลอเลีย (Coarea formula)
+
+\begin{Theorem} (Coarea fomula) ให้ $\Omega \subset \mathbb{R}^d$ เป็นเซ็ตเปิดและให้ $ u \in BV(\Omega)$ และ $L_{\lambda} = \{ x \in \Omega | u(x) < \lambda \}$ เป็นระดับโดเมน (level domain) แล้ว
+    \begin{align*}
+        \int_{\Omega} | D u | = \int_{- \infty}^{\infty} Per(L_{\lambda}, \Omega) d \lambda
+    \end{align*}
+    เมื่อ $Per(L_{\lambda}, \Omega) = \int_{\Omega} |D_{x^{L_{\lambda}}}|$ คือ perimeter ของ $L_{\lambda}$ ใน $\Omega$ และ $\chi^{L_{\lambda}}$ คือลักษณะเฉพาะ (characteristic) ของฟังก์ชัน $L_{\lambda}$
+
+    โดยบนพิสูจน์สามารถดูได้ใน \cite{ref:bounded_variation} 
+\end{Theorem}
