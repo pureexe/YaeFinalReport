@@ -41,12 +41,12 @@
 
 \noindent\hspace{1cm}สำหรับการหาเกรเดียนซ์ (Gradient) จะใช้การหาอนุพันธ์โดยวิธีฟอร์เวิร์ดดิฟเฟอร์เรนจ์ดังที่กล่าวไปในข้างต้น ในแนวแกน x และแนวแกน y คำตอบที่ได้จะเป็นเวคเตอร์ของอนุพันธ์แนวแกน x และอนุพันธ์แนวแกน y  ได้เวคเตอร์ดังนี้ 
 \begin{align*}
-	\nabla \vec{v_{u_i}} = (\frac{d}{dx} u_{i,j},\frac{d}{dy} u_{i,j})^{\top}	
+	\nabla \vec{v_{u_i}} = (\frac{\partial }{\partial x} u_{i,j},\frac{\partial}{\partial y} u_{i,j})^{\top}	
 \end{align*}
 
 \noindent\hspace{1cm}สำหรับไดเวอร์เจน (Divergence) จะเป็นการหาผลรวมของอนุพันธ์ในแต่ละแกนของเวคเตอร์ด้วยวิธีฟอร์เวิร์ดดิฟเฟอร์เรนจ์ นั่นคือ 
 \begin{align*} 
-	\nabla \cdot (\vec{v_{i,j}}) = \frac{\partial d}{\partial x}\vec{v_{i,j}}_x + \frac{\partial d}{\partial y}\vec{v_{i,j}}_y
+	\nabla \cdot (\vec{v_{i,j}}) = \frac{\partial}{\partial x}\vec{v_{i,j}}_x + \frac{\partial}{\partial y}\vec{v_{i,j}}_y
 \end{align*}
 
 \noindent\hspace{1cm}สำหรับลาปาเซียน (Lapacian) นั่นคือการทำหาไดเวอร์เจนบนเวคเตอร์ที่หาแกรเดียนแล้ว แต่ทั้งนี้สามารถหาลาปาเชียนได้จาก
