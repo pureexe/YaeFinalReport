@@ -65,7 +65,6 @@
 \end{Theorem}
 
 ด้วยทฤษฎีบทนี้เราจะศึกษาเงื่อนไขของจุดคงตัวเพิ่มเติมโดยเราเลือกฟังก์ชันนัลทั่วไป $\mathcal{J}$ ซึ่งนิยามโดย
-
 \begin{align}
     \mathcal{J}(u) = \int_{\Omega} F[x,u(x),\nabla u(x)] dx
     \label{equation:general_functional}
@@ -73,32 +72,27 @@
 
 โดยที่ $\Omega \subset \mathbb{R}^{d}, d>1$ เป็นเซ็ตเปิดมีขอบเขตและ $F$ เป็นฟังก์ชันนัลที่ขึ้นอยู่กับ $x=(x_1,x_2,...,X_d)^\top$ สมมติให้ $\mathcal{J}$ เป็น G\^{a}teaus-differentiable ในทุกทิศทางของปริภูมิทดสอบ ดังนั้นจึงสมมุติได้ว่า $F$  เป็นอนุพันธ์ย่อยที่ต่อเนื่อง
 
-ก่อนที่จะแนะนำเงื่อนไขสำหรับจุดคงตัวของ $\mathcal{J}$ เราแนะนำ
-
+ก่อนที่จะแนะนำเงื่อนไขสำหรับจุดคงตัวของ $\mathcal{J}$ จะแนะนำ
 \begin{align}
     \nabla_{u} F = \partial F / \partial u = F_u
 \end{align}
 
 สำหรับเกรเดียนซ์ของ $F$ ซึ่งขึ้นอยู่กับ $u$ จะกำหนดโดย
-
 \begin{align}
     \nabla F = (\partial F / \partial x_1, ... \partial F / \partial x_d, )^\top
 \end{align}
 
 ในทำนองเดียวกันเกรเดียนซ์ของ $F$ ซึ่งขึ้นอยู่กับ $\nabla u$ กำหนดโดย
-
 \begin{align}
     \nabla_{\nabla u} F = (\partial F / \partial u_{x_1},..., \partial F / \partial u_{x_d})^\top \in \mathbb{R}^d
 \end{align}
 
 โดยในขั้นนี้เราจะเลือกคำตอบที่เจาะจงโดยการเพิ่มเงื่อนไขค่าขอบเข้าไป ตัวอย่างเช่น
-
 \begin{align}
     \tilde{\mathcal{U}} = \{u \in \mathcal{U} | u = c \text{ บน } \partial \Omega \}
 \end{align}
 
 และเช่นเดียวกันปริภูมิทดสอบจะถูกกำหนดโดย
-
 \begin{align}
     \tilde{\mathcal{V}} = \{v \in \mathcal{V} | v = 0 \text{ บน } \partial \Omega \}
 \end{align}
@@ -116,7 +110,6 @@
 \end{Lemma}
 
 เห็นได้ชัดว่า \ref{equation:lemma_stationarypoint} เป็นจริงสำหรับฟังก์ชันทดสอบคงตัวที่ค่าไม่เจาะจง เพราะถ้า $\nabla_u F - \nabla \cdot \nabla_{\nabla u}$ การยืนยันทฤษฏีบทนี้ เป็นทฤษฏีบทที่รู้กันดีอยู่แล้ว ดังนั้น $u \in \tilde{U}$ เป็นจุดคงตัวของฟังก์ชันนัล $\mathcal{J}$ ซึ่งเป็น G\^{a}teaus-differentiable ถ้า 
-
 \begin{align}
     \nabla u F - \nabla \ \nabla_{\nabla u} F = 0 \text{ บน } \Omega
     \label{equation:lemma_stationarypoint2}
@@ -125,13 +118,11 @@
 โดยการใช้ทฤษฏีบท \ref{theroem:nessery_minimizer} กับ  \ref{equation:lemma_stationarypoint2} จะได้เงื่อนไขที่จำเป็นสำหรับโลคอลมินิไมเซอร์ของ \ref{equation:general-minimize} จาก $ d > 1$ และ \ref{equation:lemma_stationarypoint2} จะนำไปสู่สมการเชิงอนุพันธ์ย่อย ซึ่งรู้จักกันในชื่อของสมการออยเลอร์-ลากรางซ์ ที่มีเงื่อนไขค่าขอบ โดยจะเรียก \ref{equation:general-minimize} ที่มีเงื่อนไขค่าขอบว่า รูปแบบการแปรผัน (variational formulation) และถ้าเงื่อนไขค่าขอบนั้นถูกกำหนดไว้ชัดเจนตามทฤษฏีบทประกอบที่ \ref{lemma:stationary_point} จะเรียกเงื่อนไขนี้ว่า เงื่อนไขจำเป็น (essential condition) และในทางกลับกันหากค่าขอบไม่ถูกกำหนดไว้ชัดเจนจะเรียกว่า เงื่อนไขธรรมชาติ (natural condition) 
 
 โดยสรุปแล้วทุกคำตอบ $u* \in \mathcal{U}$ ในปัญหาค่าเหมาะสมทั่วไปดังเช่น \ref{equation:general-minimize} ที่มีฟังก์ชันนัล $\mathcal{J}$ ซึ่งเป็น G\^{a}teaus-differentiable ที่ถูกกำหนดโดย \ref{equation:general_functional} จะเป็นคำตอบของปัญหาค่าขอบซึ่งเป็นส่วนประกอบของสมการออยเลอร์-ลากรางซ์
-
 \begin{align*}
     \nabla_u F - \nabla \cdot \nabla_{\nabla u} F = 0 \text{ บน } \Omega
 \end{align*}
 
 ส่วนเงื่อนไขค่าขอบนั้นสามารถเป็นแบบเงื่อนไขจำเป็น หรือเงื่อนไขธรรมชาติก็ได้
-
 \begin{align*}
     \langle \nabla_{\nabla u} F, n \rangle_{\mathbb{R}^{d}} = 0 \text{ บน } \partial \Omega
 \end{align*}
@@ -139,11 +130,42 @@
 เมื่อ $n = (n_1, ..., n_d)^\top$ หมายถึงเวคเตอร์หนึ่งหน่วยปกติภายนอก (outer normal vector unit) ของ $\partial \Omega$
 
 \begin{Example}
-    ให้ $d = 2, \Omega = [0,1]^2, F = |\nabla u|^2 \text{เมื่อ} u = u(x)$ และรูปแบบแปรผันเป็น 
+    ให้ $d = 2, \Omega = [0,1]^2, F = |\nabla u| \text{เมื่อ} u = u(x)$ และรูปแบบแปรผันเป็น 
     \begin{align*}
-        \underset{min}{u} \int_{\Omega} |\nabla u|^2 dx 
+        \underset{min}{u} \int_{\Omega} |\nabla u| dx 
     \end{align*}
-    จะเทียบเท่ากับปัญหาค่าขอบ
+    กำหนดให้ \[
+        \mathcal{R}(u) = \int_\Omega |\nabla u| d \Omega = \int_\Omega \sqrt{u_x^2+u_y^2} d \Omega
+    \]
+    สำหรับการแปรผันอันดับหนึ่งของ  $\mathcal{R}$ กำหนดให้ $\Phi (s)=s$ จะได้
+    \begin{align*}
+    \frac{\delta}{\delta u}\mathcal{R}(u;v) &= \left.\frac{d}{d\varepsilon}\mathcal{R}(u+\varepsilon v) \right|_{\varepsilon = 0} 
+    = \left.\frac{d}{d\varepsilon} \int_{\Omega} \Phi (|\nabla (u + \varepsilon v)|)d\Omega 
+    \right|_{\varepsilon = 0} 
+    \end{align*}
+    ดังนั้น
+    \begin{align*}
+    \frac{\delta}{\delta u}\mathcal{R}(u;v) 
+    &= \int_{\Omega} \left.\frac{d}{d\varepsilon} \Phi ({\sqrt{(u_x+\varepsilon v_x)^2 + (u_y+\varepsilon v_y)^2 }})\right|_{\varepsilon = 0} d\Omega \\
+    &= \int_{\Omega}^{}\left[\Phi'({\sqrt{(u_x+\varepsilon v_x)^2 + (u_y+\varepsilon v_y)^2 }}) \frac{(u_x+\varepsilon v_x)v_x}{{\sqrt{(u_x+\varepsilon v_x)^2+ (u_y+\varepsilon v_y)^2 }}}\right.\\
+    &\quad + \Phi'({\sqrt{(u_x+\varepsilon v_x)^2 + (u_y+\varepsilon v_y)^2 }}) \left.\left.\frac{(u_y+\varepsilon v_y)v_y}{{\sqrt{(u_x+\varepsilon v_x)^2 + (u_y+\varepsilon v_y)^2 }}}\right] \right|_{\varepsilon = 0} d\Omega 
+    \\
+    &= \int_{\Omega} \Phi'(|\nabla u|)\left(\frac{u_x v_x}{|\nabla u|} + \frac{u_y v_y}{|\nabla u|} \right) d\Omega \\
+    &= \int_{\Omega} \frac{\Phi'(|\nabla u|)}{|\nabla u|} (\nabla u \cdot \nabla v)d\Omega \\
+    &= \int_{\Omega}\Phi'(|\nabla u|) \frac{\nabla u}{|\nabla u|} \cdot \nabla v d\Omega
+    \end{align*}
+    โดยเอกลักษณ์อันดับหนึ่งของกรีน จะได้ว่า
+    \begin{align*}
+    \frac{\delta}{\delta u}\mathcal{R}(u;v) &= - \int_{\Omega}^{} v \nabla \cdot \left(\Phi'(|\nabla u|) \frac{\nabla u}{|\nabla u|} \right)d\Omega + \int_{\partial \Omega}^{} v \left(\Phi'(|\nabla u|) \frac{\nabla u}{|\nabla u|} \cdot \boldsymbol{n}\right) dS \\
+    &= -\int_{\Omega}^{} v \nabla \cdot \left(\Phi'(|\nabla u|) \frac{\nabla u}{|\nabla u|} \right)d\Omega + \int_{\partial \Omega}^{} v \left(\Phi'(|\nabla u|)  \frac{\partial u}{\partial \boldsymbol{n}}\right) dS
+    \end{align*}
+    เพราะฉะนั้น  
+    \[
+    \frac{\delta}{\delta u}\mathcal{R}(u;v) = -\int_{\Omega}^{} v \nabla \cdot \left(\Phi'(|\nabla u|) \frac{\nabla u}{|\nabla u|} \right)d\Omega + \int_{\partial \Omega}^{} v \left(\Phi'(|\nabla u|)  \frac{\partial u}{\partial \boldsymbol{n}}\right) dS
+    \]
+    เมื่อ $  \boldsymbol{n} $ แทนเวกเตอร์หนึ่งหน่วยที่ตั้งฉากกับขอบของภาพในทิศทางชี้ออก
+
+    จะได้สมการออยเลอร์ที่สมนัยกับปัญหานี้คือ
     \begin{align*}
         - \triangle u = 0 \text{ บน } \Omega \\
         \frac{ \partial  u }{ \partial \boldsymbol{n}} = 0 \text{ บน } \partial \Omega

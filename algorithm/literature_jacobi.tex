@@ -1,0 +1,17 @@
+\begin{algorithm}[H]
+    \label{algorithm:subtitle_skipnborrowframe}
+    \caption{ขั้นตอนวิธีจาโคบี}  
+    \SetAlgoNoLine
+    \SetKwFunction{FMain}{$[x] \longleftarrow Jacobi$}
+    \SetKwProg{Fn}{}{}{}
+    \Fn{\FMain{$A , b, x^{(0)}, IMAX, \epsilon$}}{
+        1. ให้ $k=1, N = size(x^{(0)}), \text{done = False}$\\
+        2. ถ้า done = False ทำซ้ำขั้นตอนที่ 3 และ 4\\
+        3. $x_i^{(x)} = \sum_{j=1}^{(k-1)} \Big( \frac{- a_{ij} x_j^{(k-1)} }{ a_ii } + \frac{b_i}{a_{ii}} \Big) $ \\
+        4. \uIf{ $ || b - Ax^{(k)} || < \epsilon $ หรือ $ || x^{(k)} - x^{(k-1)} || < \epsilon $ หรือ $k \geq \epsilon$}{
+            ให้ done = True และ $x = x^{(k)}$
+        }\Else{
+            ให้ $k = k + 1$
+        }
+    }	
+\end{algorithm}
