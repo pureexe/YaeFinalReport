@@ -1,9 +1,17 @@
 \usepackage{fontspec}
 \usepackage{xunicode}
 \usepackage{xltxtra}
+%\defaultfontfeatures{Scale=1.23}
+%\XeTeXlinebreaklocale “th_TH” % สำหรับตัดคำ
+%\setmainfont[Scale=1.23]{THSarabunPSK}
+
+
+%--------------------------------ภาษาไทย--------------------------------
 \defaultfontfeatures{Scale=1.23}
-\XeTeXlinebreaklocale “th_TH” % สำหรับตัดคำ
 \setmainfont[Scale=1.23]{THSarabunPSK}
+\XeTeXlinebreaklocale "th_TH"
+\XeTeXlinebreakskip = 0pt plus 1pt %----ตัดคำขอบขวาจะตรงr
+
 %==============================================
 \renewcommand{\chaptername}{บทที่}
 \makeatother
