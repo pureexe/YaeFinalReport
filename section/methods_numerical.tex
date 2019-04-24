@@ -1,47 +1,8 @@
 \section{ขั้นตอนวิธีเชิงตัวเลขพื้นฐาน}
-\subsection{การดิสครีไทซ์เซชันแบบไฟไนต์ดิฟเฟอเรนจ์}
-
-\hspace{1cm}ไฟไนต์ดิฟเฟอร์เรนจ์ (Finite Difference) คือวิธีการสำหรับการประมาณค่าอนุพันธ์เมื่อใช้วิธีเชิงตัวเลข ซึ่งในโครงงานวิจัยชิ้นนี้จะมีตัวดำเนินการที่เกี่ยวข้องกับอนุพันธ์ด้วยกัน 3 ตัวได้แก่ แกรเดียน ไดเวอร์เจน และ ลาปาเซียนซึ่งสามารถทำการหาได้ดังนี้
-
-\subsubsection{การหาอนุพันธ์}
-
-\hspace{1cm}ทั้ง แกรเดียน ไดเวอร์เจน และ ลาปาเซียน ล้วนมีพื้นฐานมาจากการหาค่าอนุพันธ์ในโครงงานวิจัยนี้จะใช้วิธีการฟอร์เวิร์ดดิฟเฟอร์เรนจ์ (Forward Difference) และใช้เงื่อนไขค่าขอบแบบนิวแมน (neumann boundary condition)
-
-\noindent\hspace{1cm}นั่นคือการหาอนุพันน์ของค่าความเข้มที่พิกัดทางกายภาพเป็น $(i,j)$
-\begin{align*}
-	\frac{d}{dx} u_{i,j} = \frac{u_{i,j+1} - u_{i,j}}{h}
-\end{align*}
-
-เมื่อระบบกริดที่ใช้มีความห่างเพียงหนึ่งหน่วย จึงได้ว่า $h=1$ ทั้งนี้ระยะห่าง $h$ อาจเปลี่ยนไปตามชั้นของพีระมิดรูปภาพ
-
-\input{figure/x-derivertive}
-
-\hspace{1cm} จากภาพ \ref{figure:grayscale-explain} เมื่อต้องการหาอนุพันธ์เทียบแกน x จะทำตามภาพที่ \ref{figure:x-derivertive}โดยทำการสร้างภาพซึ่งทำการตัดขอบทางซ้ายออกหนึ่งคอลัมม์และเพิ่มขอบทางขวาหนึ่งคอลัมม์โดยใช้เงื่อนไขค่าขอบแบบนิวแมน จากนั้นภาพที่สร้างขึ้นไปลบกับภาพเดิมจะได้อนุพันธ์ของภาพนั้นดังที่ปรากฏทางขวา ทั้งนี้หาก $ h \neq 1 $ สามารถทำการหารภาพผลลัพธ์ด้วยค่า $h$ ได้เพื่อให้ได้ค่าที่ต้องการ
-
-\subsubsection{การหาแกรเดียน}
-\noindent\hspace{1cm}สำหรับการหาแกรเดียน (Gradient) จะใช้การหาอนุพันธ์โดยวิธีฟอร์เวิร์ดดิฟเฟอร์เรนจ์ดังที่กล่าวไปในหัวข้อก่อนหน้า ั้งในแนวแกน x และแนวแกน y คำตอบที่ได้จะเป็นเวคเตอร์ของอนุพันธ์แนวแกน x และอนุพันธ์แนวแกน y  ได้เวคเตอร์ดังนี้ 
-
-\begin{align*}
-	\nabla \vec{v_{u_i}} = (\frac{d}{dx} u_{i,j},\frac{d}{dy} u_{i,j})^{\top}	
-\end{align*}
-
-\subsubsection{การหาไดเวอร์เจน}
-\noindent\hspace{1cm}สำหรับไดเวอร์เจน (Divergence) จะเป็นการหาผลรวมของอนุพันธ์ในแต่ละแกนของเวคเตอร์ด้วยวิธีฟอร์เวิร์ดดิฟเฟอร์เรนจ์ นั่นคือ 
-
-\begin{align*} 
-	\nabla \cdot (\vec{v_{i,j}}) = \frac{\partial d}{\partial x}\vec{v_{i,j}}_x + \frac{\partial d}{\partial y}\vec{v_{i,j}}_y
-\end{align*}
-
-\subsubsection{การหาลาปาเชียน}
-\noindent\hspace{1cm}สำหรับลาปาเซียน (Lapacian) นั่นคือการทำหาไดเวอร์เจรบนเวคเตอร์ที่หาแกรเดียนแล้ว แต่ทั้งนี้สามารถหาลาปาเชียนได้จาก
-
-\begin{align*}
-	\triangle u_{i,j} = u_{i-1,j} + u_{i+1,j} + u_{i,j-1} + u_{i,j+1} - 4 u_{i,j} 
-\end{align*}
 
 \subsection{ขั้นตอนวิธีเดินเวลา (explicit time marching method)}
 
-\hspace{1cm} คณะวิจัย \cite{ref:ROF-template} ได้แนะนำวิธีการเชิงตัวเลขสำหรับการกำจัดสัญญาณรบกวนโดยใช้วิธีการเดินเวลาแบบชัดแจ้ง ซึ่งสามารถประยุกต์เป็นวิธีเชิงตัวเลขสำหรับการต่อเติมภาพได้ดังนี้
+\hspace{1cm} คณะวิจัย \cite{ref:ROF-template} ได้แนะนำวิธีการเชิงตัวเลขสำหรับการกำจัดสัญญาณรบกวนโดยใช้วิธีการเดินเวลาแบบชัดแจ้ง ซึ่งวิธีการเชิงตัวเลขดังกล่าวสามารถประยุกต์ใช้เพื่อแก้สมการ \ref{e3} สามารถประยุกต์เป็นวิธีเชิงตัวเลขสำหรับการต่อเติมภาพได้ดังนี้
 	
 \hspace{1cm} เริ่มจากการแนะนําตัวแปรเวลาสังเคราะห์ (time artificial variable) จากนั้นหาคําตอบแบบสภาวะคงตัว (steady-state solution) ในขณะที่ $t\rightarrow \infty$ ของสมการเชิงอนุพันธ์ย่อยไม่เป็นเชิงเส้นที่ขึ้นอยู่กับเวลา 
 \begin{align}
@@ -49,11 +10,33 @@
 	\label{e4}
 \end{align}
 เมื่อ $t_k=t_0+k\tau\ (\tau>0)$  แทนขั้นเวลาที่ $k$ และ $t_0=0$ แทนขั้นเวลาเริ่มต้น
+
+\hspace{1cm} หลังจากใช้การประมาณแบบไฟไนต์ดิฟเฟอร์เรนจ์ดังที่กล่าวในตอนต้นจะได้รูปแบบการทำซ้ำเป็น 
+\begin{align}
+	(u^{[k+1]})_{i,j} = (u^{[k]})_{i,j}+\tau\left(\mathcal{K}(u^{[k]})_{i,j} - (\lambda)_{i,j} \left( (u^{[k]})_{i,j}+(z)_{i,j} \right) \right)
+\end{align}
+
+โดยที่
+
+\begin{align*}
+	\mathcal{K}(u)_{i,j}&=\left[{\partial_x^-} \left( {D(u)_{i,j}\partial_x^+(u)_{i,j}}\right)+ 
+		{\partial_y^-} \left( {D(u)_{i,j}\partial_y^+(u)_{i,j}}\right)\right]\\
+	&=\left( (\Sigma)_{i,j}(u)_{i,j}-(\bar\Sigma)_{i,j}(u)_{i,j}\right)\\
+	(\Sigma)_{i,j}(u)_{i,j}&= \left( D_1(u)_{i,j}+D_2(u)_{i,j}+2D_3(u)_{i,j}\right)(u)_{i,j}\\
+	(\bar\Sigma)_{i,j}(u)_{i,j}&= D_1(u)_{i-1,j}(u)_{i-1,j}+D_2(u)_{i,j-1}(u)_{i,j-1}\\
+	&\quad+D_3(u)_{i,j}\left((u)_{i+1,j}+(u)_{i,j+1}\right)
+	\end{align*}
+	\begin{align*}
+	D(u)_{i,j}&= \tfrac{1}{\sqrt{(\partial_{x}^{+}(u)_{i,j})^2+(\partial_{y}^{+}(u)_{i,j})^2+\beta}},\ \ 0<\beta \ll 1\\
+	D_1(u)_{i,j}&=D(u)_{i-1,j}, \ \
+	D_2(u)_{i,j}=D(u)_{i,j-1}, \ \
+	D_3(u)_{i,j}=D(u)_{i,j} \\
+	\partial_{x}^{\pm}(u)_{i,j}&=\pm\left( (u)_{i \pm 1,j}-(u)_{i,j}\right)\\
+	\partial_{y}^{\pm}(u)_{i,j}&=\pm\left( (u)_{i,j\pm 1}-(u)_{i,j}\right)
+\end{align*}
 	
  \vspace{0.5cm} \hspace{0.5cm}วิธีเดินเวลาแบบชัดแจ้งสำหรับภาพเฉดเทามีขั้นตอนวิธีดังนี้  \\
  
- % \vspace{0.5cm} 
-
 \input{algorithm/explicit_timemarch}
 
 \subsection{วิธีการทำซ้ำแบบจุดตรึง (fixed-point iteration method) }
@@ -83,17 +66,17 @@
 
 \hspace{1cm} เริ่มจากการแนะนำเวกเตอร์เสริม $\boldsymbol{w}$ พารามิเตอร์เบรกแมน (Bregman parameter) $\boldsymbol{b}$ และพารามิเตอร์เพนัลที (panalty parameter) $\theta>0$ และเขียน (\ref{e1}) ใหม่ ดังนี้
 \begin{align}
-	\min_{u,\boldsymbol{w}} \{ \mathcal{J}(u,\boldsymbol{w}) = \dfrac{1}{2} \int_{\Omega} \lambda(u-z)^2 d\Omega +  \int_{\Omega}  | \boldsymbol{w}|  d\Omega + \frac{\theta}{2} \int_{\Omega} (\boldsymbol{w} - \nabla u + \boldsymbol{b}) d\Omega \}
+	\min_{u,\boldsymbol{w}} \{ \mathcal{J}(u,\boldsymbol{w}) = \dfrac{1}{2} \int_{\Omega} \lambda(u-z)^2 d\Omega +  \int_{\Omega}  | \boldsymbol{w}|  d\Omega + \frac{\theta}{2} \int_{\Omega} (\boldsymbol{w} - \nabla u + \boldsymbol{b})^{2} d\Omega \}
 	\label{e6}
 \end{align}
 \hspace{1cm}สำหรับการหาคำตอบของ (\ref{e6}) เราจะใช้วิธีการหาค่าต่ำที่สุดแบบสลับ (alternating minimization method) โดยเริ่มจากการตรึง $\boldsymbol{w}^{\text{old}}$ และ $\boldsymbol{b}^{\text{old}}$ จากนั้นแก้ปัญหาย่อยสำหรับ $u$
 \begin{align}
-	u^{\text{New}}=\underset{u}{\arg\min} \{ \mathcal{J}_1(u) = \dfrac{1}{2} \int_{\Omega} \lambda(u-z)^2 d\Omega + \frac{\theta}{2} \int_{\Omega} (\boldsymbol{w}^{\text{old}} - \nabla u + \boldsymbol{b}^{\text{old}}) d\Omega \}
+	u^{\text{New}}=\underset{u}{\arg\min} \{ \mathcal{J}_1(u) = \dfrac{1}{2} \int_{\Omega} \lambda(u-z)^2 d\Omega + \frac{\theta}{2} \int_{\Omega} (\boldsymbol{w}^{\text{old}} - \nabla u + \boldsymbol{b}^{\text{old}})^{2} d\Omega \}
 	\label{e7}
 \end{align}
 ต่อไปใช้ $u^{\text{New}}$ ที่ได้จากการแก้ปัญหาย่อย (\ref{e7}) เพื่อแก้ปัญหาย่อยสำหรับ $\boldsymbol{w}$
 \begin{align}
-	\boldsymbol{w}^{\text{New}}=\underset{\boldsymbol{w}}{\arg\min} \{ \mathcal{J}_2(\boldsymbol{w}) = \int_{\Omega}  |\boldsymbol{w}|  d\Omega  + \frac{\theta}{2} \int_{\Omega} (\boldsymbol{w} - \nabla u^{\text{New}} + \boldsymbol{b}^{\text{old}}) d\Omega \}
+	\boldsymbol{w}^{\text{New}}=\underset{\boldsymbol{w}}{\arg\min} \{ \mathcal{J}_2(\boldsymbol{w}) = \int_{\Omega}  |\boldsymbol{w}|  d\Omega  + \frac{\theta}{2} \int_{\Omega} (\boldsymbol{w} - \nabla u^{\text{New}} + \boldsymbol{b}^{\text{old}})^{2} d\Omega \}
 	\label{e8}
 \end{align}
 	สุดท้ายจึงปรับปรุงพารามิเตอร์เบรกแมนโดย 
@@ -107,6 +90,29 @@
 \vspace{0.5cm}
 \input{algorithm/splitbregman}
 \vspace{0.5cm}
+
+\hspace{1cm} จาก \ref{e7} โดยแคลคูลัสของการแปรผันจะได้สมการออยเลอร์ลากราจ์ที่เกี่ยวข้องเป็น
+\begin{align}
+\left \{ \begin{array}{ll}   - \theta \triangle u + \lambda u = \lambda z - \theta \nabla \cdot (\boldsymbol{w}-\boldsymbol{b})	 \\
+ \dfrac{\partial u}{\partial \boldsymbol{n}} = 0, & \hspace{1cm} x \in \partial \Omega \end{array} \right . 
+ \label{equation:euler_j1}
+\end{align}
+จึงได้ว่าผลเฉลยของ $ u = \underset{u}{\arg\min} \mathcal{J}_1(u) $ สามารถหาได้จากการแก้ผลเฉลยของสมการอนุพันธ์ \ref{equation:euler_j1} โดยการใช้วิธีการไฟไนต์ดิฟเฟอเรนจ์และวิธีการเกาส์-ไซเดลจำนวน $N_{gs}$ รอบ
+
+และจาก \ref{e8} โดยแคลคูลัสของการแปรผันจะได้สมการออยเลอร์ลากราจ์ที่เกี่ยวข้องเป็น
+\begin{align}
+	\left \{ \begin{array}{ll} 	\frac{\boldsymbol{w}}{|\boldsymbol{w}|} + \theta(\boldsymbol{w}-\nabla u-\boldsymbol{b}) = 0  \\
+	\dfrac{\partial u}{\partial \boldsymbol{n}} = 0, & \hspace{1cm} x \in \partial \Omega \end{array} \right .
+\end{align}
+ซึ่งสมการเชิงอนุพันธ์ดังกล่าวมีผลเฉลยแบบแม่นตรงคือ
+\begin{align}
+	\boldsymbol{w} = max\bigg\{(\nabla u + \boldsymbol{b}) - \frac{1}{\theta},0\bigg\}
+	\label{equation:euler_w_exact}
+\end{align}
+ซึ่งสามารถใช้สมการผลเฉลยแบบแม่นตรง \ref{equation:euler_w_exact} เพื่อแก้หาผลเฉลยของ \label{e8} ได้
+
+
+\iffalse
 \textbf{หมายเหตุ:}
 \begin{itemize}
 	\item [(1)] ผลเฉลยของ $ u = \underset{u}{\arg\min} \mathcal{J}_1(u) $ กำหนดโดยการแก้ปัญหาผลเฉลยของ
@@ -114,3 +120,5 @@
 	 โดยใช้วิธีการไฟไนต์ดิฟเฟอเรนจ์และวิธีการเกาส์-ไซเดลจำนวน $N_{gs}$ รอบ
 	\item [(2)] ผลเฉลยของ $ \boldsymbol{w} = \underset{\boldsymbol{w}}{\arg\min} \mathcal{J}_2(\boldsymbol{w}) $ กำหนดโดย $$\boldsymbol{w} = max\bigg\{(\nabla u + \boldsymbol{b}) - \frac{1}{\theta},0\bigg\}$$
 \end{itemize}
+
+\fi
