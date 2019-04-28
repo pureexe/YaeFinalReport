@@ -1,33 +1,30 @@
 \section{ขั้นตอนวิธีเชิงตัวเลขพื้นฐาน}
 
-\subsection{ขั้นตอนวิธีเดินเวลา (explicit time marching method)}
+\subsection{การเดินเวลาแบบชัดแจ้ง}
 
-\hspace{1cm} คณะวิจัย \cite{ref:ROF-template} ได้แนะนำวิธีการเชิงตัวเลขสำหรับการกำจัดสัญญาณรบกวนโดยใช้วิธีการเดินเวลาแบบชัดแจ้ง ซึ่งวิธีการเชิงตัวเลขดังกล่าวสามารถประยุกต์ใช้เพื่อแก้สมการ \ref{e3} สามารถประยุกต์เป็นวิธีเชิงตัวเลขสำหรับการต่อเติมภาพได้ดังนี้
+\hspace{1cm} คณะวิจัย \cite{ref:ROF-template} ได้แนะนำวิธีการเชิงตัวเลขสำหรับการกำจัดสัญญาณรบกวนโดยใช้วิธีการเดินเวลาแบบชัดแจ้ง ซึ่งวิธีการเชิงตัวเลขดังกล่าวสามารถoe,kประยุกต์ใช้เพื่อแก้สมการ (\ref{e3})  ดังนี้
 	
-\hspace{1cm} เริ่มจากการแนะนําตัวแปรเวลาสังเคราะห์ (time artificial variable) จากนั้นหาคําตอบแบบสภาวะคงตัว (steady-state solution) ในขณะที่ $t\rightarrow \infty$ ของสมการเชิงอนุพันธ์ย่อยไม่เป็นเชิงเส้นที่ขึ้นอยู่กับเวลา 
+\hspace{1cm} เริ่มจากการแนะนําตัวแปรเวลาสังเคราะห์ (time artificial variable) จากนั้นหาคําตอบแบบสภาวะคงตัว (steady-state solution) ในขณะที่ $t\rightarrow \infty$ ของสมการเชิงอนุพันธ์ย่อยไม่เป็นเชิงเส้นที่ขึ้นอยู่กับเวลาต่อไปนี้ 
 \begin{align}
 	u(\mathbf{x},t_{k+1})=u(\mathbf{x},t_{k})+\tau\left(\nabla \cdot\left(\dfrac{\nabla u (\mathbf{x},t_k)}{| \nabla u (\mathbf{x},t_k) | }\right) + \lambda(\mathbf{x})(u (\mathbf{x},t_k)-z(\mathbf{x})) \right),\ u(\mathbf{x},t_0)=z
 	\label{e4}
 \end{align}
 เมื่อ $t_k=t_0+k\tau\ (\tau>0)$  แทนขั้นเวลาที่ $k$ และ $t_0=0$ แทนขั้นเวลาเริ่มต้น
 
-\hspace{1cm} หลังจากใช้การประมาณแบบไฟไนต์ดิฟเฟอร์เรนจ์ดังที่กล่าวในตอนต้นจะได้รูปแบบการทำซ้ำเป็น 
+\hspace{1cm} หลังจากใช้การประมาณแบบไฟไนต์ดิฟเฟอร์เรนจ์ดังที่กล่าวในบทที่ 2จะได้รูปแบบการทำซ้ำเป็น 
 \begin{align}
 	(u^{[k+1]})_{i,j} = (u^{[k]})_{i,j}+\tau\left(\mathcal{K}(u^{[k]})_{i,j} - (\lambda)_{i,j} \left( (u^{[k]})_{i,j}+(z)_{i,j} \right) \right)
 \end{align}
 
 โดยที่
-
 \begin{align*}
 	\mathcal{K}(u)_{i,j}&=\left[{\partial_x^-} \left( {D(u)_{i,j}\partial_x^+(u)_{i,j}}\right)+ 
 		{\partial_y^-} \left( {D(u)_{i,j}\partial_y^+(u)_{i,j}}\right)\right]\\
 	&=\left( (\Sigma)_{i,j}(u)_{i,j}-(\bar\Sigma)_{i,j}(u)_{i,j}\right)\\
 	(\Sigma)_{i,j}(u)_{i,j}&= \left( D_1(u)_{i,j}+D_2(u)_{i,j}+2D_3(u)_{i,j}\right)(u)_{i,j}\\
 	(\bar\Sigma)_{i,j}(u)_{i,j}&= D_1(u)_{i-1,j}(u)_{i-1,j}+D_2(u)_{i,j-1}(u)_{i,j-1}\\
-	&\quad+D_3(u)_{i,j}\left((u)_{i+1,j}+(u)_{i,j+1}\right)
-	\end{align*}
-	\begin{align*}
-	D(u)_{i,j}&= \tfrac{1}{\sqrt{(\partial_{x}^{+}(u)_{i,j})^2+(\partial_{y}^{+}(u)_{i,j})^2+\beta}},\ \ 0<\beta \ll 1\\
+	&\quad+D_3(u)_{i,j}\left((u)_{i+1,j}+(u)_{i,j+1}\right) \\
+	D(u)_{i,j} &= \tfrac{1}{\sqrt{(\partial_{x}^{+}(u)_{i,j})^2+(\partial_{y}^{+}(u)_{i,j})^2+\beta}},\ \ 0<\beta \ll 1\\
 	D_1(u)_{i,j}&=D(u)_{i-1,j}, \ \
 	D_2(u)_{i,j}=D(u)_{i,j-1}, \ \
 	D_3(u)_{i,j}=D(u)_{i,j} \\
@@ -35,13 +32,13 @@
 	\partial_{y}^{\pm}(u)_{i,j}&=\pm\left( (u)_{i,j\pm 1}-(u)_{i,j}\right)
 \end{align*}
 	
- \vspace{0.5cm} \hspace{0.5cm}วิธีเดินเวลาแบบชัดแจ้งสำหรับภาพเฉดเทามีขั้นตอนวิธีดังนี้  \\
+ \vspace{0.5cm} \hspace{1cm} Algorithm \ref{algorithm:explicit_timemarch} นำเสนอวิธีการเดินเวลาแบบชัดแจ้งสำหรับการต่อเติมภาพเฉดเทาที่ใช้การแปรผันรวม \\
  
 \input{algorithm/explicit_timemarch}
 
 \subsection{วิธีการทำซ้ำแบบจุดตรึง (fixed-point iteration method) }
 
-\hspace{1cm} คณะวิจัย \cite{ref:FixpointSolver} ได้แนะนำวิธีการเชิงตัวเลขสำหรับการกำจัดสัญญาณรบกวนโดยใช้วิธีการทำซ้ำแบบจุดตรึง ซึ่งสามารถประยุกต์เป็นวิธีเชิงตัวเลขสำหรับการต่อเติมภาพได้ดังนี้
+\hspace{1cm} คณะวิจัย \cite{ref:FixpointSolver} ได้แนะนำวิธีการเชิงตัวเลขสำหรับการกำจัดสัญญาณรบกวนโดยใช้วิธีการทำซ้ำแบบจุดตรึง ซึ่งสามารถกล่าวถึงได้โดยสังเขปดังนี้
 	
 \hspace{1cm} เริ่มจากแนะนำดัชนีการทำซ้ำแบบจุดตรึง $\nu=0,1,2,\cdots$ และนิยามรูปแบบการทำซ้ำโดย
 \begin{align}
