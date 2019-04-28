@@ -36,7 +36,7 @@
  
 \input{algorithm/explicit_timemarch}
 
-\subsection{วิธีการทำซ้ำแบบจุดตรึง (fixed-point iteration method) }
+\subsection{วิธีการทำซ้ำแบบจุดตรึง}
 
 \hspace{1cm} คณะวิจัย \cite{ref:FixpointSolver} ได้แนะนำวิธีการเชิงตัวเลขสำหรับการกำจัดสัญญาณรบกวนโดยใช้วิธีการทำซ้ำแบบจุดตรึง ซึ่งสามารถกล่าวถึงได้โดยสังเขปดังนี้
 	
@@ -51,7 +51,7 @@
 |\nabla u| \approx| \nabla u |_\beta=\sqrt{u_x^2+u_y^2+\beta},\ 0< \beta \ll 1
  \end{align*}
 
-\hspace{1cm}วิธีการทำซ้ำแบบจุดตรึงมีขั้นตอนดังนี้ \\
+\hspace{1cm} Algorithm \ref{algorithm:fixedpoint} สรุปวิธีการทำซ้ำแบบจุดตรึงสำหรับต่อเติมภาพเฉดเทาที่ใช้การแปรผันรวม \\
 \vspace{0.5cm} 
 \input{algorithm/fixedpoint}
 \vspace{0.5cm}
@@ -59,9 +59,9 @@
 
 \hspace{1cm} เพื่อเอาชนะความยากเชิงตัวเลขนี้ คณะวิจัยโดย \cite{ref:splitbergman-inpaint} ได้แนะนำวิธีการสปริทเบรกแมนซึ่งสามารถกล่าวถึงพอสังเขป ดังนี้
 
-\subsection{วิธีการสปริทเบรกแมน (Split Bregman method)}
+\subsection{วิธีการสปริทเบรกแมน}
 
-\hspace{1cm} เริ่มจากการแนะนำเวกเตอร์เสริม $\boldsymbol{w}$ พารามิเตอร์เบรกแมน (Bregman parameter) $\boldsymbol{b}$ และพารามิเตอร์เพนัลที (panalty parameter) $\theta>0$ และเขียน (\ref{e1}) ใหม่ ดังนี้
+\hspace{1cm} เริ่มจากการแนะนำเวกเตอร์เสริม $\boldsymbol{w}$ พารามิเตอร์เบรกแมน (Bregman parameter) $\boldsymbol{b}$ และพารามิเตอร์ \break เพนัลที (panalty parameter) $\theta>0$ และเขียน (\ref{e1}) ใหม่ ดังนี้
 \begin{align}
 	\min_{u,\boldsymbol{w}} \{ \mathcal{J}(u,\boldsymbol{w}) = \dfrac{1}{2} \int_{\Omega} \lambda(u-z)^2 d\Omega +  \int_{\Omega}  | \boldsymbol{w}|  d\Omega + \frac{\theta}{2} \int_{\Omega} (\boldsymbol{w} - \nabla u + \boldsymbol{b})^{2} d\Omega \}
 	\label{e6}
@@ -83,39 +83,37 @@
 \end{align}
 ดำเนินการเช่นนี้จนกระทั่ง $||u^{\text{new}}-u^{\text{old}}||< \epsilon_1$ หรือ $\text{New}>\epsilon_2$ เมื่อ $\epsilon_1,\epsilon_2>0$ \\ 
 \vspace{0.5cm}
-\hspace{1cm}วิธีการสปริทเบรกแมนมีขั้นตอนวิธีดังนี้ \\
+\hspace{1cm} Algorithm \ref{algorithm:splitbregman} แสดงขั้นตอนต่างๆ ของวิธีการสปริทเบรกแมน \\
 \vspace{0.5cm}
 \input{algorithm/splitbregman}
 \vspace{0.5cm}
 
-\hspace{1cm} จาก \ref{e7} โดยแคลคูลัสของการแปรผันจะได้สมการออยเลอร์ลากราจ์ที่เกี่ยวข้องเป็น
+\hspace{1cm}  โดยแคลคูลัสของการแปรผันจะได้สมการออยเลอร์ลากราจ์สำหรับ (\ref{e7}) เทียบกับตัวแปร $u$ กำหนดโดย
 \begin{align}
-\left \{ \begin{array}{ll}   - \theta \triangle u + \lambda u = \lambda z - \theta \nabla \cdot (\boldsymbol{w}-\boldsymbol{b})	 \\
+\left \{ \begin{array}{ll}   - \theta \Delta u + \lambda u = \lambda z - \theta \nabla \cdot (\boldsymbol{w}-\boldsymbol{b}) & \hspace{1cm} x \in  \Omega 	 \\
  \dfrac{\partial u}{\partial \boldsymbol{n}} = 0, & \hspace{1cm} x \in \partial \Omega \end{array} \right . 
  \label{equation:euler_j1}
 \end{align}
-จึงได้ว่าผลเฉลยของ $ u = \underset{u}{\arg\min} \mathcal{J}_1(u) $ สามารถหาได้จากการแก้ผลเฉลยของสมการอนุพันธ์ \ref{equation:euler_j1} โดยการใช้วิธีการไฟไนต์ดิฟเฟอเรนจ์และวิธีการเกาส์-ไซเดลจำนวน $N_{gs}$ รอบ
+\hspace{1cm} ในการแก้สมการ (\ref{equation:euler_j1}) โดยวิธีการเชิงตัวเลขเราจะใช้วิธีการไฟไนต์ดิฟเฟอเรนจ์ดังนี้
 
-และจาก \ref{e8} โดยแคลคูลัสของการแปรผันจะได้สมการออยเลอร์ลากราจ์ที่เกี่ยวข้องเป็น
+\hspace{1cm} กำหนดให้ $m_x$, $m_y$ เป็นจำนวนนับแทนจำนวนจุดกริด(พิกเซล)ในทาง $x$ และทาง $y$ ตามลำดับ และ
+\begin{align*}
+	\Omega_{h}=\left\{ \mathbf{x} \in \Omega | \mathbf{x}=(x_i,y_j)^{\top} = (ih_x,jh_y), 1 \leq i \leq m_x, 1 \leq j \leq m_y  \right\}
+\end{align*}
+แทนโดเมนของผลเฉลยที่ถูกดิสครีตไทซ์ ให้ $u(x,y)$ แทนคำตอบของปัญหา  (\ref{equation:euler_j1}), ให้ $(\lambda)_{i,j}$ แทน $\lambda(x_i,y_j)$,   ให้ $(u)_{i,j}$ แทน $u(x_i,y_j)$, ให้ $(z)_{i,j}$ แทน $z(x_i,y_j)$, $u(x_i,y_j)$, ให้ $(z)_{i,j}$ แทน $z(x_i,y_j)$, $u(x_i,y_j)$, ให้ $(w)_{i,j}$ แทน $\boldsymbol{w}(x_i,y_j)$, ให้ $(b)_{i,j}$ แทน $\boldsymbol{b}(x_i,y_j)$ และ $h$ แทนระยะห่างของแต่ละจุดกริด เราจะทำการใช้สูตรฟอร์เวิร์ดดิฟเฟอร์เรนจ์ได้ดังนี้
+\begin{align}
+	\nonumber - \theta \frac{1}{h^2}\Big( (u)_{i-1,j} + (u)_{i+1,j} + (u)_{i,j-1} + (u)_{i,j+1} - 4(u)_{i+j} \Big) + (\lambda)_{i,j} (u)_{i,j} \\ \nonumber = (\lambda)_{i,j} (z)_{i,j} - \theta \Bigg( \bigg( \frac{1}{h} \Big((w)_{i,j}-(b)_{i,j}\Big) - \frac{1}{h} \Big((w)_{i-1,j}-(b)_{i-1,j}\Big) \bigg) \\ + \bigg( \frac{1}{h} \Big((w)_{i,j}-(b)_{i,j} \Big) - \frac{1}{h} \Big((w)_{i,j-1}-(b)_{i,j-1} \Big) \bigg) \Bigg)
+\end{align}
+ภายใต้เงื่อนไขขอบ $(u)_{i,j} = (u)_{1,j}$ เมื่อ $i < 0$, $(u)_{i,j} = (u)_{m_x,j}$ เมื่อ $i > m_x$, $(u)_{i,j} = (u)_{i,0}$ เมื่อ $j < 0$ และ $(u)_{i,m_y} = (u)_{i,m_y}$ เมื่อ $j > m_y$ 
+
+
+\hspace{1cm} ในทำนองเดียวกันโดยแคลคูลัสของการแปรผันจะได้สมการออยเลอร์ลากราจ์สำหรับ $\mathcal{J}_2$ ใน (\ref{e8}) เทียบกับตัวแปร $\boldsymbol{w}$ กำหนดโดย
 \begin{align}
 	\left \{ \begin{array}{ll} 	\frac{\boldsymbol{w}}{|\boldsymbol{w}|} + \theta(\boldsymbol{w}-\nabla u-\boldsymbol{b}) = 0  \\
 	\dfrac{\partial u}{\partial \boldsymbol{n}} = 0, & \hspace{1cm} x \in \partial \Omega \end{array} \right .
 \end{align}
-ซึ่งสมการเชิงอนุพันธ์ดังกล่าวมีผลเฉลยแบบแม่นตรงคือ
+ซึ่งสมการเชิงอนุพันธ์ดังกล่าวมีผลเฉลยแบบแม่นตรง \cite{ref:splitbergman-inpaint} คือ 
 \begin{align}
 	\boldsymbol{w} = max\bigg\{(\nabla u + \boldsymbol{b}) - \frac{1}{\theta},0\bigg\}
 	\label{equation:euler_w_exact}
 \end{align}
-ซึ่งสามารถใช้สมการผลเฉลยแบบแม่นตรง \ref{equation:euler_w_exact} เพื่อแก้หาผลเฉลยของ \label{e8} ได้
-
-
-\iffalse
-\textbf{หมายเหตุ:}
-\begin{itemize}
-	\item [(1)] ผลเฉลยของ $ u = \underset{u}{\arg\min} \mathcal{J}_1(u) $ กำหนดโดยการแก้ปัญหาผลเฉลยของ
-	 $$ - \theta \triangle u + \lambda u = \lambda z - \theta \nabla \cdot (\boldsymbol{w}-\boldsymbol{b})$$ 
-	 โดยใช้วิธีการไฟไนต์ดิฟเฟอเรนจ์และวิธีการเกาส์-ไซเดลจำนวน $N_{gs}$ รอบ
-	\item [(2)] ผลเฉลยของ $ \boldsymbol{w} = \underset{\boldsymbol{w}}{\arg\min} \mathcal{J}_2(\boldsymbol{w}) $ กำหนดโดย $$\boldsymbol{w} = max\bigg\{(\nabla u + \boldsymbol{b}) - \frac{1}{\theta},0\bigg\}$$
-\end{itemize}
-
-\fi

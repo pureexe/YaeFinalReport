@@ -1,25 +1,26 @@
 \begin{algorithm}[H]
+    \label{algorithm:splitbregman}
     \SetAlgoNoLine
-    \caption{วิธีสปริทเบรกแมนสำหรับการต่อเติมภาพที่ใช้การแปรผันรวม}
+    \caption{วิธีสปริทเบรกแมนสำหรับการต่อเติมภาพเฉดเทาที่ใช้การแปรผันรวม}
     \SetKwFunction{FMain}{$u \longleftarrow SplitBregman$}
     \SetKwProg{Fn}{}{}{}
     \KwIn{
 		\\
 		\hspace{1cm} $u$ คือรูปภาพที่ต้องการต่อเติม \\
-		\hspace{1cm} $\lambda$ คือพารามิเตอร์เร็กกิวลาร์ไรเซชัน ที่ได้กล่างถึงในสมการ (\ref{e2}) \\
+		\hspace{1cm} $\lambda$ คือเร็กกิวลาร์ไรเซชันพารามิเตอร์ ที่ได้กล่างถึงในสมการ (\ref{e2}) \\
         \hspace{1cm} $\theta$ คือพารามิเตอร์เพนัลที ซึ่งเป็นจำนวนจริงบวก\\
-        \hspace{1cm} $N_{gs}$ เป็นจำนวนเต็มบวกสำหรับกำหนดจำนวนรอบที่ทำงานของการทำเกาส์-ไซเดล \\
-		\hspace{1cm} $N$ เป็นจำนวนเต็มบวกสำหรับกำหนดจำนวนรอบที่ทำงานของสปริทเบรกแมน \\
+        \hspace{1cm} $N_{GS}$ เป็นจำนวนเต็มบวกสำหรับกำหนดจำนวนรอบที่ทำงานของการทำเกาส์-ไซเดล \\
+		\hspace{1cm} $N_{SB}$ เป็นจำนวนเต็มบวกสำหรับกำหนดจำนวนรอบที่ทำงานของสปริทเบรกแมน \\
 		\hspace{1cm} $\varepsilon$ เป็นจำนวนจริงบวกของค่าความคลาดเคลื่อนสัมพัทธ์ \\
 	}
 	\KwOut{รูปภาพที่ผ่านการต่อเติมแล้ว}	
-    \Fn{\FMain{$u,\lambda, \theta, N_{gs}, N, \varepsilon$}}{
+    \Fn{\FMain{$u,\lambda, \theta, N_{GS}, N_{SB}, \varepsilon$}}{
         \textbf{initialize}
         $i = 0$,
         $\boldsymbol{b} = \vec{0}$,
         $\boldsymbol{w} = \vec{0}$,
         $z = u$ \\
-        \While{$ i < N $ \textbf{and} $err > \varepsilon$}{
+        \While{$ i < N_{SB} $ \textbf{and} $err > \varepsilon$}{
             $u^{old} = u$; 
             $w^{old} = w$;
             $b^{old} = b$;
