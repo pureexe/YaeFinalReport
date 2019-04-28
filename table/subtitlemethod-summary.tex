@@ -4,10 +4,10 @@
         \hline
         วิธีการ  & เวลาประมวล  (วินาที) & PSNR (dB) & SSIM \\
         \hline
-        สปริทเบรกแมนและพีระมิดรูปภาพ & 141.29 & 31.39  &  0.9510\\
-        ยืมเฟรม & 132.78 & 32.20 & 0.9655\\
-        ข้ามเฟรม & 89.29 & 29.07 & 0.9408 \\
-        ยืมเฟรมและข้ามเฟรม & 75.76 & 29.33 & 0.9454 \\
+        วิธีสปริทเบรกแมนและพีระมิดรูปภาพ  (Algorithm \ref{algorithm:MultiSplitBregmanColorInpaint}) & 141.29 & 31.39  &  0.9510\\
+        วิธียืมเฟรม (Algorithm \ref{algorithm:subtitle_borrowframe})& 132.78 & 32.20 & 0.9655\\
+        วิธีข้ามเฟรม (Algorithm \ref{algorithm:subtitle_skipframe})& 89.29 & 29.07 & 0.9408 \\
+        วิธียืมเฟรมและข้ามเฟรม (Algorithm \ref{algorithm:subtitle_skipnborrowframe})& 75.76 & 29.33 & 0.9454 \\
         \hline
     \end{tabular}
     \caption{ผลการซ่อมแซมภาพโดยวิธีการเชิงตัวเลขที่นำเสนอในรูปของค่าเฉลี่ยของผลที่ได้จากตารางที่ \ref{table:subtitle_remove_method}}

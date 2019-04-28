@@ -4,9 +4,9 @@
         \hline
         วิธีการ  & เวลาประมวล  (วินาที) & PSNR (dB) & SSIM \\
         \hline
-        การเดินเวลา & 120.68 & 16.72 & 0.9960 \\
-        การทำซ้ำจุดตรึง & 74.81 & 38.67 & 0.9999 \\
-        การสปริทเบรกแมน & 14.06 & 39.42 & 0.9999  \\
+        วิธีเดินเวลา (Algorithm \ref{algorithm:explicit_timemarch})& 120.68 & 16.72 & 0.9960 \\
+        วิธีทำซ้ำจุดตรึง (Algorithm \ref{algorithm:fixedpoint})& 74.81 & 38.67 & 0.9999 \\
+        วิธีสปริทเบรกแมน (Algorithm \ref{algorithm:splitbregman}) & 14.06 & 39.42 & 0.9999  \\
         \hline
     \end{tabular}
     \caption{แสดงการซ่อมแซมเฉลี่ยของวิธีการเชิงตัวเลข}
