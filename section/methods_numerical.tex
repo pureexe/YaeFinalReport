@@ -2,7 +2,7 @@
 
 \subsection{การเดินเวลาแบบชัดแจ้ง}
 
-\hspace{1cm} คณะวิจัย \cite{ref:ROF-template} ได้แนะนำวิธีการเชิงตัวเลขสำหรับการกำจัดสัญญาณรบกวนโดยใช้วิธีการเดินเวลาแบบชัดแจ้ง ซึ่งวิธีการเชิงตัวเลขดังกล่าวสามารถoe,kประยุกต์ใช้เพื่อแก้สมการ (\ref{e3})  ดังนี้
+\hspace{1cm} คณะวิจัย \cite{ref:ROF-template} ได้แนะนำวิธีการเชิงตัวเลขสำหรับการกำจัดสัญญาณรบกวนโดยใช้วิธีการเดินเวลาแบบชัดแจ้ง ซึ่งวิธีการเชิงตัวเลขดังกล่าวสามารถนำมาประยุกต์ใช้เพื่อแก้สมการ (\ref{e3})  ดังนี้
 	
 \hspace{1cm} เริ่มจากการแนะนําตัวแปรเวลาสังเคราะห์ (time artificial variable) จากนั้นหาคําตอบแบบสภาวะคงตัว (steady-state solution) ในขณะที่ $t\rightarrow \infty$ ของสมการเชิงอนุพันธ์ย่อยไม่เป็นเชิงเส้นที่ขึ้นอยู่กับเวลาต่อไปนี้ 
 \begin{align}
@@ -109,7 +109,7 @@
 
 \hspace{1cm} ในทำนองเดียวกันโดยแคลคูลัสของการแปรผันจะได้สมการออยเลอร์ลากราจ์สำหรับ $\mathcal{J}_2$ ใน (\ref{e8}) เทียบกับตัวแปร $\boldsymbol{w}$ กำหนดโดย
 \begin{align}
-	\left \{ \begin{array}{ll} 	\frac{\boldsymbol{w}}{|\boldsymbol{w}|} + \theta(\boldsymbol{w}-\nabla u-\boldsymbol{b}) = 0  \\
+	\left \{ \begin{array}{ll} 	\frac{\boldsymbol{w}}{|\boldsymbol{w}|} + \theta(\boldsymbol{w}-\nabla u-\boldsymbol{b}) = 0   & \hspace{1cm} x \in \Omega \\
 	\dfrac{\partial u}{\partial \boldsymbol{n}} = 0, & \hspace{1cm} x \in \partial \Omega \end{array} \right .
 \end{align}
 ซึ่งสมการเชิงอนุพันธ์ดังกล่าวมีผลเฉลยแบบแม่นตรง \cite{ref:splitbergman-inpaint} คือ 
