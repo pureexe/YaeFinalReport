@@ -1,24 +1,24 @@
 \section{การวัดคุณภาพของภาพที่ผ่านกระบวนการต่อเติม}
 
-\hspace{1cm} การประเมินคุณภาพของขั้นตอนวิธีการต่อเติมภาพ จะใช้ค่า Peak Signal Noise Ratio (PSNR) \cite{ref:PSNR} และ Structral Similarity index (SSIM) \cite{ref:SSIM} 
+\hspace{1cm} การประเมินคุณภาพของขั้นตอนวิธีการต่อเติมภาพ จะใช้ค่า Peak signal-to-noise ratio (PSNR) \cite{ref:PSNR} และ Structral Similarity index (SSIM) \cite{ref:SSIM} 
 
-\subsection{Peak Signal Noise Ratio}
+\subsection{Peak signal-to-noise ratio (PSNR)}
 
 \hspace{1cm} PSNR นิยามโดย
 
 \begin{align}
-	\text{PSNR}  = 10 \cdot log_{10} ( \frac{1}{\sqrt{\frac{1}{N}} \sum (u - \bar{u})^2})
+	\text{PSNR}  = 10 \cdot log_{10} ( \frac{1}{\sqrt{\frac{1}{N} \sum (u - \bar{u})^2}})
 \end{align}
 
 เมื่อ $N$ แทนจำนวนพิกเซลในภาพ, $u$ แทนภาพต้นฉบับและ $\tilde{u}$ แทนภาพที่ได้จากการซ่อมแซมโดยวิธีเชิงตัวเลข
 
-\hspace{1cm} PSNR ใช้สำหรับวัดคุณภาพของภาพ มีหน่วยเป็น เดซิเบล (dB) ซึ่งมีช่วงค่าอยู่ในระหว่าง 0 ถึง อนันต์ โดยค่า PSNR ที่ได้ยิ่งเข้าใกล้สู่อนันต์แปลว่าคุณภาพที่ได้ในแต่ละพิกเซลนั้นยิ่งมีคุณภาพที่ดี
+\hspace{1cm} PSNR ใช้สำหรับวัดคุณภาพของภาพ มีหน่วยเป็น เดซิเบล (dB) และมีค่าอยู่ระหว่าง 0 ถึง $\infty$ โดยค่า PSNR ที่ได้ยิ่งเข้าใกล้สู่ค่าอนันต์แปลว่าภาพที่ได้จากการซ่อมแซมมีคุณภาพดี
 
-\subsection{Structral Similarity index}
+\subsection{Structral Similarity index (SSIM)}
 \hspace{1cm} SSIM นิยามโดย
 \begin{align*}
 	\text{SSIM}(u,\tilde{u}) = \frac{(2\mu_u\mu_{\tilde{u}} + 0.0001)(2\sigma_{u\tilde{u}} + 0.0009)}{(\mu_u^2+\mu_{\tilde{u}}^2+0.0001)(\sigma_u^2+\sigma_{\tilde{u}}^2+0.0009)}
 \end{align*}
 $u$ แทนภาพต้นฉบับ, $\tilde{u}$ แทนภาพที่ได้จากการซ่อมแซมโดยวิธีเชิงตัวเลข,  $\mu_u$ คือค่าเฉลี่ยของ $u$, $\mu_{\tilde{u}}$ คือค่าเฉลี่ยของ $\tilde{u}$, $\sigma_u$ คือความแปรปรวนของ $u$ และ $\sigma_{\tilde{u}}$ คือความแปรปรวนของ $\tilde{u}$
 
-\hspace{1cm} SSIM ใชสำหรับวัดคุณภาพของเค้าโครงในภาพผลลัพธ์ว่ามีเค้าโครงคล้ายกับภาพของเดิมมากเพียงใด โดยค่า SSIM จะมีค่าอยู่ระหว่าง 0 ถึง 1 หากค่าที่ได้ยิ่งเข้าใกล้สู่ 1 นั้นคือเค้าโครงใกล้เคียงกับภาพเดิมก่อนทำการต่อเติมภาพ
+\hspace{1cm} SSIM ใชสำหรับวัดคุณภาพของเค้าโครงในภาพผลลัพธ์ว่ามีเค้าโครงคล้ายกับภาพต้นฉบับมากเพียงใด โดยค่า SSIM จะมีค่าอยู่ระหว่าง 0 ถึง 1 หากค่าที่ได้ยิ่งเข้าใกล้สู่ 1 หมายถึงภาพที่ได้รับการซ่อมแซมมีเค้าโครงใกล้เคียงกับภาพต้นฉบับ

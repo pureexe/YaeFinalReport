@@ -1,6 +1,6 @@
 \section{แคลคูลัสของการแปรผันเบื้องต้น}
 
-\hspace{1cm} ในหัวข้อย่อยนี้ เราจะกล่าวถึงปัญหาการหาค่าเหมาะสมที่สุดประเภทหนึ่งสำหรับหาฟังก์ชันที่เหมาะสม (แทนที่จะเป็นการหาค่าเหมาะสมของตัวแปรดังเช่นปัญหาการหาค่าเหมาะสมที่สุดทั่วไป) ซึ่งทำให้ปริมมาณที่กำหนด (มักนำเสนอปริมาณนี้ในรูปของอินทิกรัลจำกัดเขต) มีภาวะหยุดนิ่ง (stationary) เนื่องจากค่าของฟังก์ชันเปลี่ยนแปลงตามตัวแปรอิสระ ปัญหาการหาค่าเหมาะสมที่สุดประเภทนี้จึงถูกแก้ด้วยแคลคูลัสของการแปรผันทั้งนี้แคลคูลัสของการแปรผันสามารถนำมาใช้หาค่าขีดสุดของปริมาณที่เขียนในรูปอินทิกรัลจำกัดเขตที่ประกอบด้วยฟังก์ชันไม่ทราบค่าและ/หรืออนุพันธ์ของฟังก์ชันไม่ทราบค่า
+\hspace{1cm} ในหัวข้อย่อยนี้ เราจะกล่าวถึงปัญหาการหาค่าเหมาะสมที่สุดประเภทหนึ่งสำหรับหาฟังก์ชันที่เหมาะสม (แทนที่จะเป็นการหาค่าเหมาะสมของตัวแปรดังเช่นปัญหาการหาค่าเหมาะสมที่สุดทั่วไป) ซึ่งทำให้ปริมาณที่กำหนด (มักนำเสนอปริมาณนี้ในรูปของอินทิกรัลจำกัดเขต) มีภาวะหยุดนิ่ง (stationary) เนื่องจากค่าของฟังก์ชันเปลี่ยนแปลงตามตัวแปรอิสระ ปัญหาการหาค่าเหมาะสมที่สุดประเภทนี้จึงถูกแก้ด้วยแคลคูลัสของการแปรผันทั้งนี้แคลคูลัสของการแปรผันสามารถนำมาใช้หาค่าขีดสุดของปริมาณที่เขียนในรูปอินทิกรัลจำกัดเขตที่ประกอบด้วยฟังก์ชันไม่ทราบค่าและ/หรืออนุพันธ์ของฟังก์ชันไม่ทราบค่า
 
 \hspace{1cm} พิจารณาปัญหาค่าต่ำที่สุดต่อไปนี้
 \begin{align}
@@ -25,42 +25,41 @@
 \end{Definition}
 
 \begin{Definition}
-    (G\^{a}teave-differentiable)
-    ให้ $\mathcal{U}$ เป็นปริภูมิคำตอบม $\mathcal{V}$ เป็นปริภูมิทดสอบ และ $\mathcal{J} : \mathcal{U} \rightarrow \mathbb{R}$ เป็นฟังก์ชันนัล แล้ว เรากล่าวว่า $\mathcal{J}$ หาอนุพันธ์แบบกาโตวได้สำหรับทุก $u \in \mathcal{U}$ อยู่ในทิศทางของ $v \in \mathcal{V}$ เมื่อ
+    (G\^{a}teaux-differentiable)
+    ให้ $\mathcal{U}$ เป็นปริภูมิคำตอบ $\mathcal{V}$ เป็นปริภูมิทดสอบ และ $\mathcal{J} : \mathcal{U} \rightarrow \mathbb{R}$ เป็นฟังก์ชันนัล แล้ว เรากล่าวว่า $\mathcal{J}$ หาอนุพันธ์แบบกาโตว์ได้สำหรับทุก $u \in \mathcal{U}$ อยู่ในทิศทางของ $v \in \mathcal{V}$ เมื่อ
     \begin{enumerate}
         \item มีจำนวน $\hat{\epsilon} > 0$ ซึ่งทำให้ $u_{\epsilon} = u + \epsilon v \in \mathcal{U}$ สำหรับทุก $|\epsilon| \leq \hat{\epsilon}$
         \item ฟังก์ชัน $J(\epsilon) = \mathcal{J}(u_\epsilon)$ หาอนุพันธ์ได้ที่ $\epsilon = 0$
     \end{enumerate}
-    อนุพันธ์กาโตวอันดับหนึ่งหรือการแปรผันอันดับแรก (first variation) ของ $\mathcal{J}$ สำหรับ $u$ ในทิศทางของ $v$ กำหนดโดย
+    อนุพันธ์กาโตว์อันดับหนึ่งหรือการแปรผันอันดับแรก (first variation) ของ $\mathcal{J}$ สำหรับ $u$ ในทิศทางของ $v$ กำหนดโดย
     \begin{align*}
-        \delta \mathcal{J}(u;v) = J'(0) = \frac{d\mathcal{J}(u + \epsilon v)}{d \epsilon} \Big|_{\epsilon = 0} = \lim_{\epsilon = 0}\frac{\mathcal{J}(u + \epsilon v)}{\epsilon} 
+        \delta \mathcal{J}(u;v) =J'(0) = \frac{d\mathcal{J}(u + \epsilon v)}{d \epsilon} \Big|_{\epsilon = 0} = \lim_{\epsilon = 0}\frac{\mathcal{J}(u + \epsilon v)}{\epsilon} 
     \end{align*}
 \end{Definition}
 
 \begin{Definition}
-(จุดคงตัว) ให้ $\mathcal{U}$ เป็นปริภูมิคำตอบ $\mathcal{V}$ เป็นปริภูมิทดสอบ และ $\mathcal{J} : \mathcal{U} \rightarrow \mathbb{R}$ เป็นฟังก์ชันนัล สมมติให้ $\mathcal{J}$ หาอนุพันธ์แบบกาโตวได้ที่บาง $\hat{u} \in \mathcal{U}$ สำหรับทุกฟังก์ชันทดสอบ $v \in \mathcal{V}$ แล้ว $\hat{u}$ จะเรียกว่าจุดคงตัวของ $\mathcal{J}$ ก็ต่อเมื่อ $\delta\mathcal{J}(\hat{u};v) = 0$ สำหรับทุก $v \in \mathcal{V}$
+(จุดคงตัว) ให้ $\mathcal{U}$ เป็นปริภูมิคำตอบ $\mathcal{V}$ เป็นปริภูมิทดสอบ และ $\mathcal{J} : \mathcal{U} \rightarrow \mathbb{R}$ เป็นฟังก์ชันนัล สมมติให้ $\mathcal{J}$ หาอนุพันธ์แบบกาโตว์ได้ที่บาง $\hat{u} \in \mathcal{U}$ สำหรับทุกฟังก์ชันทดสอบ $v \in \mathcal{V}$ แล้ว $\hat{u}$ จะเรียกว่าจุดคงตัวของ $\mathcal{J}$ ก็ต่อเมื่อ $\delta\mathcal{J}(\hat{u};v) = 0$ สำหรับทุก $v \in \mathcal{V}$
 \end{Definition}
 
 \begin{Theorem}
-    ให้ $\mathcal{U}$ เป็นปริภูมิคำตอบ, $\hat{u} \in \mathcal{U}$, $\mathcal{J} : \mathcal{U} \rightarrow \mathbb{R}$ เป็นฟังก์ชันนัล และ $\mathcal{V}$ เป็นปริภูมิทดสอบ สมมติว่า $\mathcal{J}$ หาอนุพันธ์แบบกาโตวได้สำหรับ $\hat{u}$ ในทุกๆ ทิศทางที่ $v \in \mathcal{V}$ ดังนั้น
-    \\
-    \hspace{1cm} ถ้า $\hat{u}$ เป็นโลคอลมินิไมเซอร์ของ $\mathcal{J}$ แล้ว $\hat{u}$ เป็นจุดคงตัวของ  $\mathcal{J}$
+    ให้ $\mathcal{U}$ เป็นปริภูมิคำตอบ, $\hat{u} \in \mathcal{U}$, $\mathcal{J} : \mathcal{U} \rightarrow \mathbb{R}$ เป็นฟังก์ชันนัล และ $\mathcal{V}$ เป็นปริภูมิทดสอบ สมมติว่า $\mathcal{J}$ หาอนุพันธ์แบบกาโตว์ได้สำหรับ $\hat{u}$ ในทุกๆ ทิศทางที่ $v \in \mathcal{V}$ ดังนั้น \\
+    \hspace*{1cm} ถ้า $\hat{u}$ เป็นโลคอลมินิไมเซอร์ของ $\mathcal{J}$ แล้ว $\hat{u}$ เป็นจุดคงตัวของ  $\mathcal{J}$ 
     \label{theroem:nessery_minimizer}
 \end{Theorem}
-\hspace{1cm} ด้วยทฤษฎีบทนี้เราสามารถสำรวจเงื่อนไขสำหรับจุดคงตัวของฟังก์ชันนัลทั่วไป $\mathcal{J}$ ซึ่งนิยามโดย
+\hspace{1cm} ด้วยทฤษฎีบทนี้เราสามารถสำรวจเงื่อนไขสำหรับจุดคงตัวของฟังก์ชันนัล $\mathcal{J}$ ซึ่งนิยามโดย
 \begin{align}
-    \mathcal{J}(u) = \int_{\Omega} F[x,u(x),\nabla u(x)] dx
+    \mathcal{J}(u) = \int_{\Omega} F[\boldsymbol{x},u(\boldsymbol{x}),\nabla u(\boldsymbol{x})] dx
     \label{equation:general_functional}
 \end{align}
 
-\hspace{1cm} โดยที่ $\Omega \subset \mathbb{R}^{d} (d>1)$ เป็นเซตเปิดที่มีขอบเขตและ $F$ เป็นฟังก์ชันนัลที่ขึ้นอยู่กับ $x=(x_1,x_2,...,x_d)^\top$, $u: \mathbb{R}^{c} \rightarrow \mathbb{R}$, $\nabla u (x) = ( \frac{\partial}{\partial x_1},\frac{\partial}{\partial x_2}, ... , \frac{\partial}{\partial x_d} )^\top$ สมมติให้ $\mathcal{J}$ หาอนุพันธ์แบบกาโตวได้ ดังนั้นเราจึงสามารถพิจารณาได้ว่า $F$ เป็นอนุพันธ์ย่อยที่ต่อเนื่องภายใต้ตัวแปรของมัน
+โดยที่ $\Omega \subset \mathbb{R}^{d} (d>1)$ เป็นเซตเปิดที่มีขอบเขตและ $F$ เป็นฟังก์ชันนัลที่ขึ้นอยู่กับ $\boldsymbol{x}=(x_1,x_2,...,x_d)^\top$, $u: \mathbb{R}^{d} \rightarrow \mathbb{R}$, $\nabla u (x) = ( \frac{\partial}{\partial x_1},\frac{\partial}{\partial x_2}, ... , \frac{\partial}{\partial x_d} )^\top$ สมมติให้ $\mathcal{J}$ หาอนุพันธ์แบบกาโตว์ได้ ดังนั้นเราจึงสามารถพิจารณาได้ว่า $F$ เป็นอนุพันธ์ย่อยที่ต่อเนื่องภายใต้ตัวแปรของมัน
 
-เราจะใช้
+\hspace{1cm} เราจะใช้
 \begin{align}
     \nabla_{u} F = \partial F / \partial u = F_u
 \end{align}
 
-แทนเกรเดียนต์ของ $F$ ภายใต้ $u$ เพื่อสร้างความแตกต่างกับเกรเดียนต์ของ $F$ ภายใต้ $x$ ซึ่งแืนสัญลักษณ์ของ
+แทนเกรเดียนต์ของ $F$ ภายใต้ $u$ เพื่อสร้างความแตกต่างกับเกรเดียนต์ของ $F$ ภายใต้ $\boldsymbol{x}$ ซึ่งเป็นสัญลักษณ์ของ
 \begin{align}
     \nabla F = (\partial F / \partial x_1, ... \partial F / \partial x_d, )^\top
 \end{align}
@@ -81,7 +80,7 @@
 \end{align}
 
 \begin{Lemma}
-    (จุดคงตัวของ $\mathcal{J}$) ฟังก์ชัน $u \in \mathcal{U}$ เป็นจุดคงตัวของฟังก์ชันนัลทั่วไป $\mathcal{J}$ (\ref{equation:general_functional}) ถ้าเงื่อนไข
+    (จุดคงตัวของ $\mathcal{J}$) ฟังก์ชัน $u \in \mathcal{U}$ เป็นจุดคงตัวของฟังก์ชันนัล $\mathcal{J}$ (\ref{equation:general_functional}) ถ้าเงื่อนไข
     \begin{align}
         \int_{\Omega} \Big \langle \nabla_u F - \nabla \cdot \nabla_{\nabla u} F,v \Big \rangle_{\mathbb{R}^{d}} dx = 0
         \label{equation:lemma_stationarypoint}
@@ -90,31 +89,31 @@
     เป็นจริงสำหรับทุกๆ ฟังก์ชันทดสอบ $v \in \mathcal{V}$
 \end{Lemma}
 
-เห็นได้ชัดว่า (\ref{equation:lemma_stationarypoint}) เป็นจริงสำหรับฟังก์ชันใดๆ เมื่อ $\nabla_u F - \nabla \cdot \nabla_{\nabla u} = 0$ ดังนั้น $u \in \hat{u}$ เป็นจุดคงตัวของฟังก์ชันนัล $\mathcal{J}$ (\ref{equation:general_functional}) เมื่อ 
+\hspace{1cm} เห็นได้ชัดว่า (\ref{equation:lemma_stationarypoint}) เป็นจริงสำหรับฟังก์ชันใดๆ เมื่อ $\nabla_u F - \nabla \cdot \nabla_{\nabla u} = 0$ ดังนั้น $u \in \hat{u}$ เป็นจุดคงตัวของฟังก์ชันนัล $\mathcal{J}$ (\ref{equation:general_functional}) เมื่อ 
 \begin{align}
     \nabla_{u} F - \nabla \cdot \nabla_{\nabla u} F = 0 \text{ บน } \Omega
     \label{equation:lemma_stationarypoint2}
 \end{align}
 
-โดยการใช้ผลของทฤษฏีบท \ref{theroem:nessery_minimizer} กับ (\ref{equation:lemma_stationarypoint2}) เป็นเงื่อนไขที่จำเป็นสำหรับโลคอลมินิไมเซอร์ของ (\ref{equation:general-minimize}) ซึ่งถ้า $ d > 1$ จะได้ว่า (\ref{equation:lemma_stationarypoint2}) จะนำไปสู่สมการเชิงอนุพันธ์ย่อย (ซึ่งรู้จักกันในชื่อของสมการออยเลอร์-ลากรางซ์) ที่มีเงื่อนไขค่าขอบ โดยจะเรียก (\ref{equation:general-minimize}) ว่า รูปแบบการแปรผัน (variational formulation) ของปัญหาค่าขอบ (\ref{equation:lemma_stationarypoint2}
+โดยการใช้ผลของทฤษฏีบท \ref{theroem:nessery_minimizer} กับ (\ref{equation:lemma_stationarypoint2}) เป็นเงื่อนไขที่จำเป็นสำหรับโลคอลมินิไมเซอร์ของ (\ref{equation:general-minimize}) ซึ่งถ้า $ d > 1$ จะได้ว่า (\ref{equation:lemma_stationarypoint2}) จะนำไปสู่สมการเชิงอนุพันธ์ย่อย (ซึ่งรู้จักกันในชื่อของสมการออยเลอร์-ลากรางจ์) ที่มีเงื่อนไขค่าขอบ โดยจะเรียก (\ref{equation:general-minimize}) ว่า รูปแบบการแปรผัน (variational formulation) ของปัญหาค่าขอบ (\ref{equation:lemma_stationarypoint2}
 ) และถ้าเงื่อนไขค่าขอบนั้นถูกกำหนดไว้อย่างชัดเจนจะเรียกเงื่อนไขนี้ว่า เงื่อนไขจำเป็น (essential condition) และในทางกลับกันหากค่าขอบไม่ถูกกำหนดไว้อย่างชัดเจนจะเรียกว่า เงื่อนไขธรรมชาติ (natural condition) 
 
-โดยสรุปทุกคำตอบ $u \in \mathcal{U}$ ในปัญหาค่าเหมาะสมที่สุด ดังเช่น (\ref{equation:general-minimize}) $\mathcal{J}$ ใน (\ref{equation:general_functional}) เป็นคำตอบของปัญหาค่าขอบที่ประกอบด้วยสมการ
+\hspace{1cm} โดยสรุปทุกคำตอบ $u \in \mathcal{U}$ ของปัญหาค่าเหมาะสมที่สุด ดังเช่น (\ref{equation:general-minimize}) $\mathcal{J}$ ใน (\ref{equation:general_functional}) เป็นคำตอบของปัญหาค่าขอบที่ประกอบด้วยสมการ
 \begin{align*}
     \nabla_u F - \nabla \cdot \nabla_{\nabla u} F = 0 \text{ บน } \Omega 
 \end{align*}
-และเงื่อนไขบนขอบธรรมชาติบน $\partial \Omega$
+และเงื่อนไขขอบธรรมชาติบน $\partial \Omega$
 
 \begin{Example}
-    ให้ $d = 2, \Omega = [0,1]^2, F = |\nabla u| \text{เมื่อ} u = u(\mathbf{x})$ จะได้ว่ารูปแบบเชิงแปรผันต่อไปนี้ 
+    ให้ $d = 2, \Omega = [0,1]^2, F = |\nabla u| \text{ เมื่อ } u = u(\mathbf{x})$ จะได้ว่ารูปแบบเชิงแปรผันต่อไปนี้ 
     \begin{align*}
         \underset{u}{\min} \int_{\Omega} |\nabla u| d \Omega 
     \end{align*}
     เทียบเท่ากับปัญหาค่าขอบที่กำหนดโดย
     \begin{align}
-        \left \{ \begin{array}{ll}  - \nabla \cdot  \Big( \dfrac{\nabla u}{|\nabla u|} \Big) = 0,  & \hspace{1cm} \mathbf{x} \in (1,n)^2 \\ \dfrac{\partial u}{\partial \boldsymbol{n}} = 0, & \hspace{1cm} \mathbf{x} \in \partial \Omega \end{array} \right .
+        \left \{ \begin{array}{ll}  - \nabla \cdot  \Big( \dfrac{\nabla u}{|\nabla u|} \Big) = 0,  & \hspace{1cm} \mathbf{x} \in \Omega = (1,n)^2 \\ \dfrac{\partial u}{\partial \boldsymbol{n}} = 0, & \hspace{1cm} \mathbf{x} \in \partial \Omega \end{array} \right .
     \end{align}
-    กำหนดให้ \[
+    \hspace{1cm} กำหนดให้ \[
         \mathcal{R}(u) = \int_\Omega |\nabla u| d \Omega = \int_\Omega \sqrt{u_x^2+u_y^2} d \Omega
     \]
     เพื่อสะดวกในการคำนวณการแปรผันอันดับหนึ่งของ  $\mathcal{R}$ กำหนดให้ $\Phi (s)=s$ จะได้
@@ -145,9 +144,9 @@
     \]
     เมื่อ $  \boldsymbol{n} $ แทนเวกเตอร์หนึ่งหน่วยที่ตั้งฉากกับขอบของภาพในทิศทางชี้ออก
 
-    จะได้สมการออยเลอร์ที่สมนัยกับปัญหานี้คือ
+    ดังนั้นเมื่อกำหนดให้ $\frac{\partial u}{\partial \boldsymbol{n}} = 0$ จะได้สมการออยเลอร์ที่สมนัยกับปัญหานี้คือ
     \begin{align*}
-        - \Delta u = 0 \text{ บน } \Omega \\
+        - \nabla \cdot  \Big( \dfrac{\nabla u}{|\nabla u|} \Big) = 0 \text{ บน } \Omega \\
         \frac{ \partial  u }{ \partial \boldsymbol{n}} = 0 \text{ บน } \partial \Omega
     \end{align*}
 \end{Example}

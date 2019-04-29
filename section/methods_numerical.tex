@@ -2,8 +2,14 @@
 
 \subsection{การเดินเวลาแบบชัดแจ้ง}
 
-\hspace{1cm} คณะวิจัย \cite{ref:ROF-template} ได้แนะนำวิธีการเชิงตัวเลขสำหรับการกำจัดสัญญาณรบกวนโดยใช้วิธีการเดินเวลาแบบชัดแจ้ง ซึ่งวิธีการเชิงตัวเลขดังกล่าวสามารถนำมาประยุกต์ใช้เพื่อแก้สมการ (\ref{e3})  ดังนี้
-	
+\hspace{1cm} คณะวิจัย \cite{ref:ROF-template} ได้แนะนำวิธีการเชิงตัวเลขสำหรับการกำจัดสัญญาณรบกวนโดยใช้วิธีการเดินเวลาแบบชัดแจ้ง เพื่อแก้สมการออยเลอร์-ลากรางจ์ที่สมนัยกับปัญหาการแปรผัน (\ref{e1}) ต่อไปนี้
+
+\begin{align}
+\left \{ \begin{array}{ll}  - \nabla \cdot  \Big( \dfrac{\nabla u}{|\nabla u|} \Big) + \lambda (u-z) = 0,  & \hspace{1cm} \mathbf{x} \in \Omega = (1,n)^2 \\ \dfrac{\partial u}{\partial \boldsymbol{n}} = 0, & \hspace{1cm} x \in \partial \Omega \end{array} \right . 
+\label{e3}
+\end{align}
+เมื่อ $\boldsymbol{n}$ แทนเวกเตอร์หน่วยที่ตั้งฉากกับของของภาพ
+
 \hspace{1cm} เริ่มจากการแนะนําตัวแปรเวลาสังเคราะห์ (time artificial variable) จากนั้นหาคําตอบแบบสภาวะคงตัว (steady-state solution) ในขณะที่ $t\rightarrow \infty$ ของสมการเชิงอนุพันธ์ย่อยไม่เป็นเชิงเส้นที่ขึ้นอยู่กับเวลาต่อไปนี้ 
 \begin{align}
 	u(\mathbf{x},t_{k+1})=u(\mathbf{x},t_{k})+\tau\left(\nabla \cdot\left(\dfrac{\nabla u (\mathbf{x},t_k)}{| \nabla u (\mathbf{x},t_k) | }\right) + \lambda(\mathbf{x})(u (\mathbf{x},t_k)-z(\mathbf{x})) \right),\ u(\mathbf{x},t_0)=z
@@ -11,7 +17,7 @@
 \end{align}
 เมื่อ $t_k=t_0+k\tau\ (\tau>0)$  แทนขั้นเวลาที่ $k$ และ $t_0=0$ แทนขั้นเวลาเริ่มต้น
 
-\hspace{1cm} หลังจากใช้การประมาณแบบไฟไนต์ดิฟเฟอร์เรนจ์ดังที่กล่าวในบทที่ 2จะได้รูปแบบการทำซ้ำเป็น 
+\hspace{1cm} หลังจากใช้การประมาณแบบไฟไนต์ดิฟเฟอร์เรนจ์ดังที่กล่าวในบทที่ 2 จะได้รูปแบบการทำซ้ำเป็น 
 \begin{align}
 	(u^{[k+1]})_{i,j} = (u^{[k]})_{i,j}+\tau\left(\mathcal{K}(u^{[k]})_{i,j} - (\lambda)_{i,j} \left( (u^{[k]})_{i,j}+(z)_{i,j} \right) \right)
 \end{align}
