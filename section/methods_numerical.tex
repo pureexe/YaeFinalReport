@@ -108,7 +108,7 @@
 \end{align*}
 แทนโดเมนของผลเฉลยที่ถูกดิสครีตไทซ์ ให้ $u(x,y)$ แทนคำตอบของปัญหา  (\ref{equation:euler_j1}), ให้ $(\lambda)_{i,j}$ แทน $\lambda(x_i,y_j)$,   ให้ $(u)_{i,j}$ แทน $u(x_i,y_j)$, ให้ $(z)_{i,j}$ แทน $z(x_i,y_j)$, $\boldsymbol{b} = (b_x,b_y)^\top$, $\boldsymbol{w}=(w_x,w_y)^\top$ และ $h$ แทนระยะห่างของแต่ละจุดกริด 
 
-ใช้การประมาณแบบไฟไนต์ดิฟเฟอเรนซ์สำหรับตัวดำเนินการลาปลาซ $\Delta u$ ด้วยสเตนซิล 5 จุดได้ว่า
+ใช้การประมาณแบบไฟไนต์ดิฟเฟอเรนจ์สำหรับตัวดำเนินการลาปลาซ $\Delta u$ ด้วยสเตนซิล 5 จุดได้ว่า
 \begin{align}
 	\Delta u = \frac{1}{h_x^2} \big( (u)_{i-1,j} - 2(u)_{i,j} + (u)_{i+1,j}\big) + \frac{1}{h_y^2} \big( (u)_{i,j-1} - 2(u)_{i,j} + (u)_{i,j+1}\big)
 \end{align}
@@ -119,15 +119,15 @@
 \end{align}
 พิจารณา $\nabla \cdot (\boldsymbol{w}-\boldsymbol{b})$ ได้ว่า
 \begin{align}
-	\nabla \cdot (\boldsymbol{w}-\boldsymbol{b}) = \frac{\partial}{\partial x} (\boldsymbol{w_x}-\boldsymbol{b_x}) + \frac{\partial}{\partial y} (\boldsymbol{w_y}-\boldsymbol{b_y}) 
+	\nabla \cdot (\boldsymbol{w}-\boldsymbol{b}) = \frac{\partial}{\partial x} (w_x - b_x) + \frac{\partial}{\partial y} (w_y - b_y) 
 \end{align}
-จะใช้วิธีฟอร์เวิร์ดไฟไนต์ดิฟเฟอเรนต์ เมื่อพิจารณาแยกในแต่ละส่วนประกอบจึงได้ว่า
+โดยสูตรแบ็คเวิร์ดดิฟเฟอเรนจ์จะได้ว่า
 \begin{align}
-	\frac{\partial}{\partial x} (\boldsymbol{w_x}-\boldsymbol{b_x})  =  \frac{1}{h} \Big((w_x)_{i,j}-(b_x)_{i,j}\Big) - \frac{1}{h} \Big((w_x)_{i-1,j}-(b_x)_{i-1,j}\Big)  \\ 
-	\frac{\partial}{\partial y} (\boldsymbol{w_y}-\boldsymbol{b_y}) )  =  \frac{1}{h} \Big((w_y)_{i,j}-(b_y)_{i,j}\Big) - \frac{1}{h} \Big((w_y)_{i-1,j}-(b_y)_{i-1,j}\Big) 
+	\frac{\partial}{\partial x} (w_x-b_x)  =  \frac{1}{h} \Big((w_x)_{i,j}-(b_x)_{i,j}\Big) - \frac{1}{h} \Big((w_x)_{i-1,j}-(b_x)_{i-1,j}\Big)  \\ 
+	\frac{\partial}{\partial y} (w_y-b_y)  =  \frac{1}{h} \Big((w_y)_{i,j}-(b_y)_{i,j}\Big) - \frac{1}{h} \Big((w_y)_{i,j-1}-(b_y)_{i,j-1}\Big) 
 \end{align}
 
-ทำให้ได้ว่า $\nabla \cdot (\boldsymbol{w}-\boldsymbol{b})$ จะสามารถหาค่าได้จาก
+ทำให้ได้ว่า $\nabla \cdot (\boldsymbol{w}-\boldsymbol{b})$ สามารถกำหนดได้โดย
 \begin{align}
 	\nonumber \nabla \cdot (\boldsymbol{w}-\boldsymbol{b}) = &\bigg( \frac{1}{h} \Big((w_x)_{i,j}-(b_x)_{i,j}\Big) - \frac{1}{h} \Big((w_x)_{i-1,j}-(b_x)_{i-1,j}\Big) \bigg) \\ 
 	&+ \bigg( \frac{1}{h} \Big((w_y)_{i,j}-(b_y)_{i,j}\Big) - \frac{1}{h} \Big((w_y)_{i-1,j}-(b_y)_{i-1,j}\Big) \bigg)
