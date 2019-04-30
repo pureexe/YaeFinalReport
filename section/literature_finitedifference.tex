@@ -45,7 +45,6 @@
     \hspace{1cm} กำหนดให้ $u(x,y)$ แทนคำตอบของปัญหา (\ref{equation:demo_discrete}), $(f)_{i,j}$ แทน $f(x_i,y_j)$ และ $(u)_{i,j}$ แทนฟังก์ชันกริด (grid function) ซึ่งสัมพันธ์กับคำตอบแม่นตรงที่จุดกริด $(x_i,y_j)^{\top}$ 
     
     \hspace{1cm} การประมาณแบบไฟไนต์ดิฟเฟอเรนซ์สำหรับตัวดำเนินการลาปลาซ $\Delta u$ สามารถถูกนำเสนอด้วยสเตนซิล 5 จุด (5-point stencil) ได้ดังนี้
-
     \begin{align}
         \nonumber \Delta u(x,y) = &\frac{1}{h_x^2} \Big( u(x+h_x,y) + u(x-h_x,y) - 2 u(x,y) \Big) \\&+ \frac{1}{h_y^2} \Big( u(x,y+h_y) + u(x,y-h_y) - 2 u(x,y) \Big) 
         \label{equation:5point-stencil}
