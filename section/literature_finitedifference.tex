@@ -41,9 +41,20 @@
     \begin{align*}
         h = (h_x,h_y)^{\top} = (\frac{1}{m_x+1},\frac{1}{m_y+1})^{\top}
     \end{align*}
-    กำหนดให้ $u(x,y)$ แทนคำตอบของปัญหา (\ref{equation:demo_discrete}), $(f)_{i,j}$ แทน $f(x_i,y_j)$ และ $(u)_{i,j}$ แทนฟังก์ชันกริด (grid function) ซึ่งสัมพันธ์กับคำตอบแม่นตรงที่จุดกริด $(x_i,y_j)^{\top}$ เราจะทำการแทนที่อนุพันธ์ย่อยอันดับสองใน  (\ref{equation:demo_discrete}) ด้วยสูตรเซนทรัลดิฟเฟอเรนซ์ได้ดังนี้
+
+    \hspace{1cm} กำหนดให้ $u(x,y)$ แทนคำตอบของปัญหา (\ref{equation:demo_discrete}), $(f)_{i,j}$ แทน $f(x_i,y_j)$ และ $(u)_{i,j}$ แทนฟังก์ชันกริด (grid function) ซึ่งสัมพันธ์กับคำตอบแม่นตรงที่จุดกริด $(x_i,y_j)^{\top}$ 
+    
+    \hspace{1cm} การประมาณแบบไฟไนต์ดิฟเฟอเรนซ์สำหรับตัวดำเนินการลาปลาซ $\Delta u$ สามารถถูกนำเสนอด้วยสเตนซิล 5 จุด (5-point stencil) ได้ดังนี้
+
+    \begin{align}
+        \nonumber \Delta u(x,y) = &\frac{1}{h_x^2} \Big( u(x+h_x,y) + u(x-h_x,y) - 2 u(x,y) \Big) \\&+ \frac{1}{h_y^2} \Big( u(x,y+h_y) + u(x,y-h_y) - 2 u(x,y) \Big) 
+        \label{equation:5point-stencil}
+    \end{align}
+
+    เราจะทำการแทนที่การดำเนินการลาปลาซใน  (\ref{equation:demo_discrete}) ด้วยสูตรไฟไนต์ดิฟเฟอร์เรนซ์ได้ดังนี้
     \begin{align}
         - \Big( \frac{1}{h_x^2} \big( (u)_{i-1,j} - 2(u)_{i,j} + (u)_{i+1,j}\big) + \frac{1}{h_y^2} \big( (u)_{i,j-1} - 2(u)_{i,j} + (u)_{i,j+1}\big) \Big) = (f)_{i,j}
+        \label{equation:extracted_finite}
     \end{align}
-    ภายใต้เงื่อนไขขอบ $(u)_{i,j} = 0$ เมื่อ $i = 0$ หรือ $m_x$, $j = 0$ หรือ $m_y$ 
+    ภายใต้เงื่อนไขขอบ $(u)_{i,j} = 0$ เมื่อ $i = 0$ หรือ $m_x$, $j = 0$ หรือ $m_y$ ซึ่ง (\ref{equation:extracted_finite}) เป็นระบบสมการเชิงเส้นซึ่งสามารถแก้ได้ด้วยวิธีการเกาส์ไซเดลที่จะพูดถึงในหัวข้อถัดไป
 \end{Example}
