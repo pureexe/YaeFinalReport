@@ -17,7 +17,7 @@
     \SetAlgoNoLine
     \SetKwFunction{FMain}{$u \longleftarrow MultiSplitBregmanColor $}
     \SetKwProg{Fn}{}{}{}
-    \Fn{\FMain{$\boldsymbol{u}, \lambda, \theta, N_{gs}, N_0,N_1,N_2, \varepsilon,c,m$}}{
+    \Fn{\FMain{$\boldsymbol{u}, \lambda, \theta, N_{GS}, N_0,N_1,N_2, \varepsilon,c,m$}}{
         \textbf{Initialize} $height = $ ความสูงของภาพ $\boldsymbol{u}$, $width = $ ความกว้างของภาพ $\boldsymbol{u}$ \\
         \If{c < m}{
             $\boldsymbol{x} = Bilinear(\boldsymbol{u},\lfloor width * 0.5 \rfloor,\lfloor height * 0.5 \rfloor)$\\
@@ -30,6 +30,6 @@
         \Else{
             $N_{SB} = N_1$
         }
-        $u = SplitBregmanColor(\boldsymbol{u}, \lambda, \theta, N_{gs}, N_{SB}, \varepsilon) $  \\
+        $u = SplitBregmanColor(\boldsymbol{u}, \lambda, \theta, N_{GS}, N_{SB}, \varepsilon) $  \\
     }
 \end{algorithm}
